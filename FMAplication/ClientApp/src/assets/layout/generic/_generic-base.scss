@@ -1,0 +1,23 @@
+// General
+
+a,
+button,
+.btn {
+  outline: none !important;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+}
+
+.cur-point{
+  cursor: pointer;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+  color: #2bbbad !important;
+}

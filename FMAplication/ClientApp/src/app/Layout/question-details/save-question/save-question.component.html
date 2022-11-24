@@ -1,0 +1,57 @@
+<div class="main-card mb-3 card">
+
+  <div class="card-body">
+    <div class="question-header border-bottom mb-2">
+      <h5 class="card-title">Questions</h5>
+    </div>
+    <div class="form-row">
+      <div class="col-sm-12">
+
+        <div [formGroup]='form'>
+          <div class="form-group">
+            <label for="questionTitle">Question Title</label>
+            <input formControlName="questionTitle" name="questionTitle" id="questionTitle" placeholder="" type="text"
+              class="form-control"
+              [ngClass]="{'is-invalid':form.get('questionTitle').invalid && (form.get('questionTitle').dirty || form.get('questionTitle').touched)}">
+            <span class="invalid-feedback">
+              <span *ngIf="form.get('questionTitle').errors?.required">
+                Question Title is required
+              </span>
+              <span *ngIf="form.get('questionTitle').errors?.minlength">
+                Question Title must be at least 3 characters long
+              </span>
+            </span>
+            <!-- <small class="text-danger" [class.d-none]="form.get('questionTitle').valid || form.get('questionTitle').untouched">
+          Question Title is required
+        </small> -->
+          </div>
+          <div class="position-relative form-group">
+            <label for="questionType">Question Type</label>
+            <select formControlName="questionType" name="questionType" id="questionType" class="form-control"
+              (change)="bindQueObject($event)">
+              <option *ngFor="let key of questionTypeOptions" [value]="key" [label]="questionTypes[key]"></option>
+            </select>
+          </div>
+          <div class="position-relative form-group">
+            <label for="status">Status</label>
+            <select formControlName="status" name="status" id="status" class="form-control">
+              <option *ngFor="let key of keys" [value]="key" [label]="statusOptions[key]"></option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <app-question-options [question]="question" (createNewOption)="createNewQueOption(question)">
+    </app-question-options>
+    <div class="text-right">
+      <button type="button" class="mr-2 btn-hover-shine btn btn-dark" 
+      (click)="handleBack()"><i class="pe-7s-back pr-1"></i> Back </button>
+
+      <button class="mt-1 btn btn-primary" (click)="submit()" [disabled]="!form.valid"><i
+          class="fa fa-save pr-1"></i>Save</button>
+    </div>
+  </div>
+
+</div>

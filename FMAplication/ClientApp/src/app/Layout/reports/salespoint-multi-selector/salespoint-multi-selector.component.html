@@ -1,0 +1,193 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>{{reportName}}</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li class="role-dropdown-item custom-control" *ngIf="settings.enableRegions">
+                            <label>Select Regions</label>
+                            <!-- <pre>{{selectedValues.selectedRegions}} -> {{selectedValues.selectedRegions.length}}</pre> -->
+                            <div class="custom-checkbox custom-control pl-0">
+                                <ng-select [items]="selectedItems.selectedRegions" [multiple]="true" bindLabel="node.name"
+                                    [selectableGroup]="true" (change)="onChangeDropdown($event,'regions')"
+                                    [selectableGroupAsModel]="false" [closeOnSelect]="false" bindValue="node.nodeId"
+                                    groupBy="selectedAllGroup" [(ngModel)]="selectedValues.selectedRegions">
+
+                                    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        Select All
+                                    </ng-template>
+                                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        {{item.node.name}}
+                                    </ng-template>
+                                </ng-select>
+
+                            </div>
+                        </li>
+
+                        <li class="role-dropdown-item custom-control" *ngIf="settings.enableAreas">
+                            <label>Select Areas</label>
+                            <!-- <pre>{{selectedValues.selectedAreas}} -> {{selectedValues.selectedAreas.length}}</pre> -->
+                            <div class="custom-checkbox custom-control pl-0">
+                                <ng-select [items]="selectedItems.selectedAreas" [multiple]="true" bindLabel="node.name"
+                                    (change)="onChangeDropdown($event , 'areas')" [selectableGroup]="true"
+                                    [selectableGroupAsModel]="false" [closeOnSelect]="false" bindValue="node.nodeId"
+                                    groupBy="selectedAllGroup" [(ngModel)]="selectedValues.selectedAreas">
+                                    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        Select All
+                                    </ng-template>
+                                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        {{item.node.name}}
+                                    </ng-template>
+                                </ng-select>
+
+                            </div>
+                        </li>
+
+                        <li class="role-dropdown-item custom-control" *ngIf="settings.enableTerritories">
+                            <label>Select Territories</label>
+                            <!-- <pre>{{selectedValues.selectedTerritories}} -> {{selectedValues.selectedTerritories.length}}</pre> -->
+                            <div class="custom-checkbox custom-control pl-0">
+                                <ng-select [items]="selectedItems.selectedTerritories" [multiple]="true"
+                                    bindLabel="node.name" (change)="onChangeDropdown($event ,'teritories')"
+                                    [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+                                    bindValue="node.nodeId" groupBy="selectedAllGroup"
+                                    [(ngModel)]="selectedValues.selectedTerritories">
+                                    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        Select All
+                                    </ng-template>
+                                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        {{item.node.name}}
+                                    </ng-template>
+                                </ng-select>
+
+                            </div>
+                        </li>
+
+                        <li class="role-dropdown-item custom-control" *ngIf="settings.enableSalespoint">
+                            <label>Select SalesPoints</label>
+                            <!-- <pre>{{selectedValues.selectedSalesPoints}} -> {{selectedValues.selectedSalesPoints.length}}</pre> -->
+                            <div class="custom-checkbox custom-control pl-0">
+                                <ng-select [items]="selectedItems.selectedSalesPoints" [multiple]="true"
+                                    bindLabel="name" (change)="onChangeDropdown($event ,'salespoints')" [selectableGroup]="true"
+                                    [selectableGroupAsModel]="false" [closeOnSelect]="false" bindValue="salesPointId"
+                                    groupBy="selectedAllGroup" [(ngModel)]="selectedValues.selectedSalesPoints">
+                                    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        Select All
+                                    </ng-template>
+                                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        {{item.name}}
+                                    </ng-template>
+                                </ng-select>
+
+                            </div>
+                        </li>
+
+                        <li class="role-dropdown-item custom-control" *ngIf="settings.enablePosmItems">
+                            <label>Select Posm Products</label>
+                            <div class="custom-checkbox custom-control pl-0">
+                                <ng-select [items]="selectedItems.selectedPosmProducts" [multiple]="true"
+                                    bindLabel="name" [selectableGroup]="true" [selectableGroupAsModel]="false"
+                                    [closeOnSelect]="false" bindValue="id" groupBy="selectedAllGroup"
+                                    [(ngModel)]="selectedValues.selectedPosmProducts">
+                                    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        Select All
+                                    </ng-template>
+                                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        {{item.name}}
+                                    </ng-template>
+                                </ng-select>
+
+                            </div>
+                        </li>
+
+                        <li class="role-dropdown-item custom-control" *ngIf="settings.enableWarehouses">
+                            <label>Select Warehouses</label>
+                            <div class="custom-checkbox custom-control pl-0">
+                                <ng-select [items]="selectedItems.selectedWarehouses" [multiple]="true" bindLabel="name"
+                                    [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+                                    bindValue="id" groupBy="selectedAllGroup"
+                                    [(ngModel)]="selectedValues.selectedWarehouses">
+                                    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        Select All
+                                    </ng-template>
+                                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                                        {{item.name}}
+                                    </ng-template>
+                                </ng-select>
+
+                            </div>
+                        </li>
+
+                        <div class="row" *ngIf="settings.enableDateRangeFilter">
+                            <div class="col-md-0"></div>
+                            <div class="col-md-4 m-3">
+                                <div class="form-group w-100">
+                                    <div class="input-group w-100">
+                                        <label class="m-2"> From: </label>
+                                        <input class="form-control" [(ngModel)]="selectedItems.selectedFromDate"
+                                            placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker"
+                                            placement="bottom">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                                type="button"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 m-3">
+                                <div class="form-group w-100">
+                                    <div class="input-group w-100">
+                                        <label class="m-2"> To: </label>
+                                        <input class="form-control" [(ngModel)]="selectedItems.selectedToDate"
+                                            placeholder="yyyy-mm-dd" name="dp2" ngbDatepicker #d2="ngbDatepicker"
+                                            placement="bottom">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()"
+                                                type="button"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row no-gutters" *ngIf="!!settings.checkboxConfig">
+                            <div class="col-md-4 px-4">
+                                <div class="form-group w-100">
+                                    <div class="input-group w-100">
+                                        <div class="custom-control custom-checkbox mr-sm-2">
+                                            <input type="checkbox" class="custom-control-input" name="is-posm" id="is-posm" 
+                                                [(ngModel)]="selectedValues.isCheckboxSelected">
+                                            <label class="custom-control-label" for="is-posm">{{settings.checkboxConfig.label}}</label>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>                                                      
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <button class="btn btn-primary" type="button" (click)="export()">Export Report</button>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+
+.map-info-table tbody tr td:nth-child(1), .map-info-table tbody tr td:nth-child(3) {
+    width: 20%;
+}
+
+label {
+    padding-left: 0.3rem;
+    width: 100%;
+}
+
+.activity-info-table tbody tr td:nth-child(1), .activity-info-table tbody tr td:nth-child(3) {
+    width: 20%;
+    font-weight: 700;
+}

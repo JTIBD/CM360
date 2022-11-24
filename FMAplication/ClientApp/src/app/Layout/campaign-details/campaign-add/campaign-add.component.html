@@ -1,0 +1,83 @@
+
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">{{campModel==null || campModel.id==null || campModel.id==0 ? 'Create New' : 'Edit'}} Campaign</div>
+        <div class="btn-actions-pane-right">
+            <!--<button type="button" class="mb-2 mr-2 btn-transition btn btn-outline-success" (click)="fnRouteCampList()">
+                <fa class="mr-2" name="list"></fa>
+                Back to list
+            </button>-->
+        </div>
+    </div>
+    <div class="card-body">
+        <form #campForm="ngForm" (submit)="fnSaveCampaign()">
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="campaignName">Campaign Name</label>
+                        <input required name="campaignName" #campaignName="ngModel"
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':campaignName.valid,'is-invalid':campaignName.invalid && campaignName.touched }"
+                               [(ngModel)]="campModel.campaignName" />
+                        <small class="text-danger" [class.d-none]="campaignName.valid || campaignName.untouched">
+                            Campaign name is required
+                        </small>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="campaignDetails">Campaign Details</label>
+                        <textarea name="campaignDetails" #campaignDetails="ngModel"
+                            class="form-control" [(ngModel)]="campModel.campaignDetails" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="tagged-cm-id">Start Date</label>
+                        <div class="form-inline mb-3 ">
+                            <div class="form-group w-100">
+                                <div class="input-group w-100">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" name="selectedStartDate1"
+                                        [(ngModel)]="selectedStartDate" ngbDatepicker #selectedStartDate1="ngbDatepicker" >
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary calendar" (click)="selectedStartDate1.toggle()" type="button"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="tagged-cm-id">End Date</label>
+                        <div class="form-inline mb-3 ">
+                            <div class="form-group w-100">
+                                <div class="input-group w-100">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" name="selectedEndDate1"
+                                        [(ngModel)]="selectedEndDate" ngbDatepicker #selectedEndDate1="ngbDatepicker" >
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary calendar" (click)="selectedEndDate1.toggle()" type="button"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="status">Status</label>
+                        <ng-select name="status" #status="ngModel" [(ngModel)]="campModel.status">
+                            <ng-option *ngFor="let key of enumStatusTypes;" [value]="key.id">{{key.label}}</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="mb-2 mr-2 btn-hover-shine btn btn-dark" (click)="fnRouteCampList()"><i class="pe-7s-back pr-1"></i> Back </button>
+                <button [disabled]="!campForm.valid" type="submit" class="mb-2 btn btn-primary"><i class="fa fa-save pr-1"></i> Save </button>
+            </div>
+        </form>
+    </div>
+</div>

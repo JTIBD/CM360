@@ -1,0 +1,38 @@
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Salespoint Stock Adjustment</div>
+        <div class="btn-actions-pane-right">
+           
+           
+            <button [disabled]="!permissionGroup.canCreate"  type="button" class="mb-2 mr-2 btn-transition btn btn-outline-success" (click)="addNewStockAdjust()">
+                <fa class="mr-2" name="plus"></fa>
+                Add New
+            </button>
+        </div>
+    </div>
+    <div>
+        
+           
+
+        <div class="card">
+            <app-p-table [pTableSetting]="transactionPtableSettings" [pTableMasterData]="stockAdjustmentTableData"
+            (cellClickCallbackFn)="fnTransactionPtableCellClick($event)" (customActivityOnRecord)="haneleCustomActivityOnRecord($event)"
+            (serverSiteCallbackFn)="fnSearch($event)" (dropdownCallbackFn) = "dropDownChange($event)"
+            (callbackFnOnPageSizeChange)="handlePazeSizeChange($event)" (dateRangeCallbackFn)="handleDateRange($event)">
+            </app-p-table>
+            <div class="p-table-footer">
+                <div class="row">
+                    <!-- <div class="col col-xs-4">
+                        <div [innerHTML]="showingPageDetails"></div>
+                    </div> -->
+                    <div class="col-12">
+                        <p-paginator #paging class="page-item"
+                        [rows]="pageSize" 
+                        (onPageChange)="paginate($event)" [currentPageReportTemplate]="getPaginationStatus()" ></p-paginator>
+                    </div>
+    
+                </div>
+            </div>
+        </div>            
+    </div>
+</div>

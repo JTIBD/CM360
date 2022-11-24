@@ -1,0 +1,71 @@
+
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Receive From Central Warehouse</div>
+    </div>
+    <div class="card-body">
+        <form #cmTaskForm="ngForm" class="cm-activity-form">
+            <div class="mb-3">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="position-relative form-group">
+                            <label for="outlet-id">Transaction No:</label>
+                            <ng-select id="outlet-id" name="fmuser" [multiple]="false"
+                                [dropdownPosition]="'bottom'" 
+                                [(ngModel)]="selectedTransactionNumber"
+                                (change)="fnChangeTransactionSelecton($event)">
+                                <ng-option *ngFor="let dis of distributions" [value]="dis.id">{{dis.transactionNumber}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="position-relative form-group">
+                            <label for="reference">Reference:</label>
+                            <input name="reference" #name="ngModel" id="reference"
+                                   type="text" class="form-control"                                   
+                                   [(ngModel)]="reference" />                           
+                        </div>
+                        <div class="position-relative form-group">
+                            <label for="remarks">Remarks:</label>
+                            <input name="remarks" #name="ngModel" id="remarks"
+                                   type="text" class="form-control"                                   
+                                   [(ngModel)]="remarks" />                                                        
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="position-relative form-group">
+                            <label for="transactionDate">Transaction Date:</label>
+                            <input name="transactionDate" id="transactionDate" readonly disabled
+                                   type="text" class="form-control"                                   
+                                   [value]="selectedTransactionDate" />
+                        </div>
+                        <div class="position-relative form-group">
+                            <label for="receivedDate">Received Date:</label>
+                            <input name="name" id="receivedDate" readonly disabled
+                                   type="text" class="form-control"                                   
+                                   [value]="receivedDate" />
+                        </div>
+                        <div class="position-relative form-group">
+                            <label for="distributor">Destination WareHouse:</label>
+                            <input name="name" id="distributor" readonly disabled
+                                   type="text" class="form-control"                                   
+                                   [value]="destinationWareHouse" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr />
+
+        <div>
+            <app-p-table [pTableSetting]="transactionDetailsPtableSettings" [pTableMasterData]="selectedStockTableData">
+            </app-p-table>
+
+            
+            <div class="text-right py-2">
+                <button type="button" class="mr-2  btn-hover-shine btn btn-dark" (click)="backToMain()"><i class="pe-7s-back pr-1"></i> Back </button>
+                <button [disabled]="!selectedStockTableData.length" type="submit" class="mr-3 btn btn-primary"(click)="handleReceive()"><i class="fa fa-save pr-1"></i>Receive Stock</button>
+            </div>
+        </div>
+
+    </div>
+</div>

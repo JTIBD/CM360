@@ -1,0 +1,41 @@
+.cm-task-accordion button.calendar, .cm-task-accordion button.calendar:active {
+    width: 2.75rem;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=)!important;
+    background-repeat: no-repeat;
+    background-size: 23px;
+    background-position: 50%;
+    }
+
+    .node-tree{
+        max-height: 60vh;
+        overflow: auto;
+    }
+    
+    
+    .menu-list-area .custom-control-input ~ .custom-control-label.expand::before {
+        content: "";
+        color: #fff;
+        border-color: #007bff;
+        background: #2bbbad linear-gradient(180deg, #4bc5b9, #2bbbad) repeat-x;
+    }
+    .menu-list-area .role-dropdown-item .custom-control-input ~ .custom-control-label.expand::after {
+        content: "";
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%23fff' stroke='%23fff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' class='feather feather-plus'%3E%3Cline x1='12' y1='5' x2='12' y2='19'%3E%3C/line%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
+    }
+    
+    .menu-list-area .role-dropdown-item .custom-control-input:checked ~ .custom-control-label.expand::after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' class='feather feather-minus'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
+    }
+    .menu-list-area .role-dropdown-item.last .custom-control-input ~ .custom-control-label.expand::after,
+    .menu-list-area .role-dropdown-item.last .custom-control-input:checked ~ .custom-control-label.expand::after{
+        display: none;
+    }
+
+    .map-panel{
+        border-bottom: 1px solid rgba(19, 83, 77, 0.125);
+    }
+    .audit-area .accordion .card:first-of-type{
+        border-bottom: 1px solid rgba(19, 83, 77, 0.125);
+    }
+
+    

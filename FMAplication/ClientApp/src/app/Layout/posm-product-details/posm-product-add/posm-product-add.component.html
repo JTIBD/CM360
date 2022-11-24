@@ -1,0 +1,140 @@
+
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+            <span>{{posmProdModel.id == 0 ? "Create New POSM Product":"Edit POSM Product"}}</span>
+        </div>
+        <div class="btn-actions-pane-right">
+            <!--<button type="button" class="mb-2 mr-2 btn-transition btn btn-outline-success" (click)="fnRoutePosmProdList()">
+                <fa class="mr-2" name="list"></fa>
+                Back to list
+            </button>-->
+        </div>
+    </div>
+    <div class="card-body">
+        <form #posmProdForm="ngForm" (submit)="fnSavePosmProduct(posmProdForm.value)">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="code">Product Code</label>
+                        <input required name="code" #code="ngModel" autocomplete="off"
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':code.valid,'is-invalid':code.invalid && code.touched }"
+                               [(ngModel)]="posmProdModel.code" />
+                        <small class="text-danger" [class.d-none]="code.valid || code.untouched">
+                            Product code is required
+                        </small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="name">Product Name</label>
+                        <input required name="name" #name="ngModel"
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':name.valid,'is-invalid':name.invalid && name.touched }"
+                               [(ngModel)]="posmProdModel.name" />
+                        <small class="text-danger" [class.d-none]="name.valid || name.untouched">
+                            Product name is required
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="col-md-4">
+                    <div class="position-relative form-group">
+                        <label for="campaign">Campaign</label>
+                        <ng-select required name="campaign" #campaign="ngModel" [(ngModel)]="posmProdModel.campaignId">
+                            <ng-option *ngFor="let campaign of campaignList;" [value]="campaign.id">{{campaign.campaignName}}</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="position-relative form-group">
+                        <label for="brand">Brand</label>
+                        <ng-select name="brand" #brand="ngModel" [(ngModel)]="posmProdModel.brandId" (change)="getSubBrandList($event)">
+                            <ng-option *ngFor="let brand of brandList;" [value]="brand.id">{{brand.name}}</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="position-relative form-group">
+                        <label for="subbrand">Sub Brand</label>
+                        <ng-select name="subbrand" #subbrand="ngModel" [(ngModel)]="posmProdModel.subBrandId">
+                            <ng-option *ngFor="let brand of subbrandList;" [value]="brand.id">{{brand.name}}</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4">
+                    <div class="position-relative form-group">
+                        <label for="type">Product Type</label>
+                        <ng-select required name="type" #type="ngModel" [(ngModel)]="posmProdModel.type" [ngClass]="{'is-valid':type.valid,'is-invalid':type.invalid && type.touched }">
+                            <ng-option *ngFor="let key of enumPosmProductType;" [value]="key.id">{{key.label}}</ng-option>
+                        </ng-select>
+                        <small class="text-danger" [class.d-none]="type.valid || type.untouched">
+                            Product type is required
+                        </small>
+                    </div>
+                </div>
+              
+                <div class="col-md-4">
+                    <div class="position-relative form-group">
+                        <label for="status">Status</label>
+                        <ng-select name="status" #status="ngModel" [(ngModel)]="posmProdModel.status">
+                            <ng-option *ngFor="let key of enumStatusTypes;" [value]="key.id">{{key.label}}</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex align-items-center">
+                    <div class="custom-checkbox custom-control">
+                        <input name="isJTIProduct" #isJTIProduct="ngModel" type="checkbox" id="isJTIProduct"
+                               [(ngModel)]="posmProdModel.isJTIProduct" class="custom-control-input">
+                        <label for="isJTIProduct" class="custom-control-label">Is JTI Product?</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="custom-checkbox custom-control">
+                        <input name="isPlanogram" #isJTIProduct="ngModel" type="checkbox" id="isPlanogram"
+                            [(ngModel)]="posmProdModel.isPlanogram" class="custom-control-input">
+                        <label for="isPlanogram" class="custom-control-label">Is Planogram?</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="custom-checkbox custom-control">
+                        <input name="isDigitalSignatureEnable" #isDigitalSignatureEnable="ngModel" type="checkbox" id="isDigitalSignatureEnable"
+                               [(ngModel)]="posmProdModel.isDigitalSignatureEnable" class="custom-control-input">
+                        <label for="isDigitalSignatureEnable" class="custom-control-label">Is Digital Signature Enable?</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="uploader" *ngIf="posmProdModel.isPlanogram">
+                        <app-image-uploader (onChangeFile)="onChangePlanogramFile($event)"  name="planogramImageUrl" [url]="posmProdModel.planogramImageUrl" 
+                            [title]="'Planogram Image'" [width]="'300px'" [height]="'180px'" [removable]="true">
+                        </app-image-uploader>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="uploader">
+                        <app-image-uploader  name="imageUrl" (onChangeFile)="onChangeImageFile($event)" [url]="posmProdModel.imageUrl" 
+                            [title]="'Product Image'" [width]="'300px'" [height]="'180px'" [removable]="true">
+                        </app-image-uploader>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="d-flex justify-content-end">
+                <button type="button" class="mb-2 mr-2 btn-hover-shine btn btn-dark" (click)="fnRoutePosmProdList()"><i class="pe-7s-back pr-1"></i> Back </button>
+                <button [disabled]="!posmProdForm.valid" type="submit" class="mb-2 btn btn-primary"><i class="fa fa-save pr-1"></i> Save </button>
+            </div>
+        </form>
+    </div>
+</div>

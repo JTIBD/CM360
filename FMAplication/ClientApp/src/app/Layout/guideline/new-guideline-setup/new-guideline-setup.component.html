@@ -1,0 +1,126 @@
+<div class="card-header">
+    <h5 class="card-title">Guideline Setup Form</h5>
+</div>
+<form #surveyForm="ngForm">
+  <div class="main-card mb-3 card">
+      <div class="card-header">
+          <div class="form-row">
+              <div class="col-md-6">
+                  <div class="position-relative form-group">
+                      <label for="dp">From Date:</label>
+                      <div class="form-inline">
+                        <div class="form-group w-100">
+                            <div class="input-group w-100">
+                                <input class="form-control" required placeholder="yyyy-mm-dd" name="dp"
+                                    [(ngModel)]="selectedFromDate" ngbDatepicker #d="ngbDatepicker"
+                                     placement="bottom" (dateSelect)="handleFromDateChange()"
+                                     [maxDate]="selectedToDate" [minDate]="minDate">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar"
+                                        (click)="d.toggle()" type="button"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="position-relative form-group">
+                      <label for="dp2">To Date:</label>
+                      <div class="form-inline">
+                        <div class="form-group w-100">
+                            <div class="input-group w-100">
+                                <input class="form-control" required placeholder="yyyy-mm-dd" name="dp2"
+                                    [(ngModel)]="selectedToDate" ngbDatepicker #d2="ngbDatepicker"
+                                     placement="bottom" (dateSelect)="handleToDateChange()" [minDate]="selectedFromDate">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar"
+                                        (click)="d2.toggle()" type="button"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+                <div class="position-relative form-group">
+                    <label for="outlet-id">User Type:</label>
+                    <ng-select id="outlet-id" name="fmuser" [multiple]="false"
+                        [dropdownPosition]="'bottom'" 
+                        [(ngModel)]="selectedUserType"
+                    >
+                        <ng-option *ngFor="let dis of userTypes;let i = index" [value]="i">{{dis}}
+                        </ng-option>
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="pt-2">
+                    <span>Select Sales points</span>
+                </div>
+                <div class="pt-2 menu-list-area role-dropdown">
+                    <ul *ngIf="nodeTree.length > 0" class="node-tree border pt-3 rounded">
+                        <ng-container *ngTemplateOutlet="recursiveNodeListTmpl; context:{ $implicit: nodeTree }"[(ngModel)]="nodeTree"></ng-container>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12">
+                <div class="pt-2">
+                    <span>Guideline text: </span>
+                </div>
+                <div class="position-relative form-group">
+                    <angular-editor [(ngModel)]="htmlContent" [config]="config" [ngModelOptions]="{standalone: true}"></angular-editor>          
+                  </div>
+            </div>
+        </div>
+        <div class="d-block text-right card-footer">
+			<!-- <button *ngIf="(selectedQuestions.length>0)" class="mr-2 btn-icon btn-icon-only btn btn-danger"
+				(click)="removeAll()">
+				<i class="fa fa-trash" aria-hidden="true"></i> Remove All
+			</button> -->
+            <button type="button" class="mr-2 btn-hover-shine btn btn-dark" (click)="handleBack()"><i class="pe-7s-back pr-1"></i> Back </button>
+			<button class="btn btn-primary" [disabled]="!surveyForm.valid" type="submit" (click)="submit()">
+				<i class="fa fa-save pr-1"></i>Save
+			</button>
+		</div>
+      </div>
+
+   
+  </div>
+</form>
+
+
+<ng-template #recursiveNodeListTmpl let-nodeTree>
+    <li *ngFor="let item of nodeTree;" class="role-dropdown-item custom-control">
+        <div class="custom-checkbox custom-control">
+            <input type="checkbox" [attr.id]="item.node.id" [attr.checked]="item.expanded"
+              class="custom-control-input">
+            <label [attr.for]="item.node.id" class="custom-control-label expand"> </label>
+            <input name="selecton-check{{item.node.id}}" id="selecton-check{{item.node.id}}" type="checkbox" [checked]="item.isSelected" class="pl-0" (change)="handleNodeSelect(item,$event.target.checked)">
+            <label for="selecton-check{{item.node.id}}" class="pl-1">{{item.node.name}} [{{item.node.code}}]</label> 
+
+            <ul *ngIf="!!item.nodes && item.nodes.length > 0" class="sub-role-dropdown">
+              <ng-container *ngTemplateOutlet="recursiveNodeListTmpl; context:{ $implicit: item.nodes }"></ng-container>
+            </ul>
+            <ul *ngIf="!!item.salesPoints && !!item.salesPoints.length" class="sub-role-dropdown">
+                <ng-container *ngTemplateOutlet="salesPoints; context:{ $implicit: item.salesPoints }"></ng-container>
+            </ul>
+          </div>
+    </li>
+
+</ng-template>
+
+<ng-template #salesPoints let-salesPoints>
+    <li *ngFor="let item of salesPoints;" class="role-dropdown-item custom-control">
+        <div class="custom-checkbox custom-control pl-0">
+            <input type="checkbox" id="'exampleCustomCheckbox'{{item.id}}" [checked]="item.isSelected"
+              class="" (change)="handleSalesPointSelect($event,item)">
+            <label for="'exampleCustomCheckbox'{{item.id}}" class="pl-1">{{item.name}} [{{item.code}}]</label>            
+          </div>
+    </li>
+</ng-template>

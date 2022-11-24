@@ -1,0 +1,23 @@
+
+<div class="col col-lg-12">  
+    <div  class="card">
+  <app-p-table [pTableSetting]="ptableSettings" [pTableMasterData]="avCommunicationTable" 
+        (customActivityOnRecord)="haneleCustomActivityOnRecord($event)"
+        (cellClickCallbackFn)="fnPtableCellClick($event)" >
+  </app-p-table>
+    <!-- <div class="p-table-footer">
+        <div class="row">
+            <div class="col col-xs-4">
+                <div [innerHTML]="showingPageDetails"></div>
+            </div>
+            <div class="col-md-8">
+                <p-paginator #paging class="page-item"
+                [rows]="pageSize" 
+                (onPageChange)="paginate($event)"></p-paginator>
+            </div>
+
+        </div>
+    </div> -->
+</div>
+  
+  </div>

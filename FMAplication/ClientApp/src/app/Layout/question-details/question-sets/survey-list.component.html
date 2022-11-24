@@ -1,0 +1,46 @@
+<div class="col col-lg-12">  
+    <app-p-table [pTableSetting]="ptableSettings" [pTableMasterData]="questionSetTableData"
+      (customActivityOnRecord)="fnCustomTrigger($event)">
+    </app-p-table>
+  </div>
+
+<!-- <div class="main-card mb-3 card">
+    <div class="card-header">
+        Active Users
+    </div>
+    <div class="table-responsive">
+        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">SL#</th>
+                    <th>Survey Name</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let s of surveys; let i = index">
+                    <td class="text-center">{{i+1}}</td>
+                    <td class="text-center">
+                        {{s.surveyName}}
+                    </td>
+                    <td class="text-center">
+                        <div [ngClass]="[ (s.status == enumStatus.Active) ? 'badge badge-success' : 'badge badge-warning']">
+                            {{(s.status == enumStatus.Active) ? "Active":"Inactive"}}
+                        </div> 
+                    </td>
+                    <td class="text-center">
+                        <button class="mr-2 btn-icon btn-icon-only btn btn-outline-info" (click)="edit(s.id)">
+                            <i class="pe-7s-note btn-icon-wrapper"> </i>
+                        </button>
+                        <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger" (click)="delete(s.id)">
+                            <i class="pe-7s-trash btn-icon-wrapper"> </i>
+                        </button>
+                    </td>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-block text-center card-footer">
+       
+    </div>
+</div> -->

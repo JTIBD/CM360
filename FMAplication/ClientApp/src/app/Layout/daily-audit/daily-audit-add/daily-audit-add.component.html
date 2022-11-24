@@ -1,0 +1,174 @@
+
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Daily Audit Form</div>
+        <div class="btn-actions-pane-right">
+            <button type="button" class="mb-2 mr-2 btn-transition btn btn-outline-success" (click)="dailyAuditList()">
+                <fa class="mr-2" name="list"></fa>
+                Back to list
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <form #dailyAuditForm="ngForm" (submit)="saveDailyAudit(dailyAuditModel)">
+            
+            <div class="form-row">
+                <div class="col-md-4">
+                    <div class="position-relative form-group">
+                        <label for="dailyCMActivityId "> Select Outlet</label>
+                        <select name="dailyCMActivityId " id="dailyCMActivityId "
+                                [(ngModel)]="dailyAuditModel.dailyCMActivityId " class="form-control">
+                            <option *ngFor="let key of choices" [value]="key.id" [label]="key.name"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+           
+            
+            
+            <div class="form-row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="isDistributionCheck">Distribution Check</label>
+                        <input style="position:relative; left: 30px;" name="isDistributionCheck" #isDistributionCheck="ngModel" type="checkbox"
+                               [(ngModel)]="dailyAuditModel.isDistributionCheck" class="form-check-input">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="isFacingCount">Facing Count</label>
+                        <input style="position:relative; left: 30px;" name="isFacingCount" #isFacingCount="ngModel" type="checkbox"
+                               [(ngModel)]="dailyAuditModel.isFacingCount" class="form-check-input">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="isPlanogramCheck">POSM Removal</label>
+                        <input style="position:relative; left: 30px;" name="isPlanogramCheck" #isPlanogramCheck="ngModel" type="checkbox"
+                               [(ngModel)]="dailyAuditModel.isPlanogramCheck" class="form-check-input">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="isPriceAudit">Price Audit</label>
+                        <input style="position:relative; left: 30px;" name="isPriceAudit" #isPriceAudit="ngModel" type="checkbox"
+                               [(ngModel)]="dailyAuditModel.isPriceAudit" class="form-check-input">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="col-md-3">
+                    <div class="position-relative form-group">
+                        <label for="distributionCheckStatus">Distribution Check Status</label>
+                        <select  name="distributionCheckStatus" id="distributionCheckStatus" 
+                        [(ngModel)]="dailyAuditModel.distributionCheckStatus" class="form-control">
+                            <option *ngFor="let key of InstallationOptions" [value]="key" [label]="InstallationOption[key]"></option>
+                          </select>
+                      </div>
+                  </div>
+                
+                  <div class="col-md-3">
+                    <div class="position-relative form-group">
+                        <label for="facingCountStatus">Faciing Count Status</label>
+                        <select  name="facingCountStatus" id="facingCountStatus" 
+                        [(ngModel)]="dailyAuditModel.facingCountStatus" class="form-control">
+                            <option *ngFor="let key of InstallationOptions" [value]="key" [label]="InstallationOption[key]"></option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="position-relative form-group">
+                        <label for="planogramCheckStatus">Planogram Check Status</label>
+                        <select  name="planogramCheckStatus" id="planogramCheckStatus" 
+                        [(ngModel)]="dailyAuditModel.planogramCheckStatus" class="form-control">
+                            <option *ngFor="let key of InstallationOptions" [value]="key" [label]="InstallationOption[key]"></option>
+                          </select>
+                      </div>
+                </div>
+                 
+                <div class="col-md-3">
+                    <div class="position-relative form-group">
+                        <label for="priceAuditCheckStatus">Price Audit Check Status</label>
+                        <select  name="priceAuditCheckStatus" id="priceAuditCheckStatus" 
+                        [(ngModel)]="dailyAuditModel.priceAuditCheckStatus" class="form-control">
+                            <option *ngFor="let key of InstallationOptions" [value]="key" [label]="InstallationOption[key]"></option>
+                          </select>
+                      </div>
+                </div>
+                
+                  
+
+             </div>
+
+            
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="Type">Distribution Check Incomplete Reason</label>
+                        <input required name="distributionCheckIncompleteReason" #distributionCheckIncompleteReason="ngModel" placeholder=""
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':distributionCheckIncompleteReason.valid,'is-invalid':distributionCheckIncompleteReason.invalid && distributionCheckIncompleteReason.touched }"
+                               [(ngModel)]="dailyAuditModel.distributionCheckIncompleteReason" />
+                        <small class="text-danger" [class.d-none]="distributionCheckIncompleteReason.valid || distributionCheckIncompleteReason.untouched">
+                            this field is required
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="Type">Facing Count Check Incomplete Reason</label>
+                        <input required name="facingCountCheckIncompleteReason" #facingCountCheckIncompleteReason="ngModel" placeholder=""
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':facingCountCheckIncompleteReason.valid,'is-invalid':facingCountCheckIncompleteReason.invalid && facingCountCheckIncompleteReason.touched }"
+                               [(ngModel)]="dailyAuditModel.facingCountCheckIncompleteReason" />
+                        <small class="text-danger" [class.d-none]="facingCountCheckIncompleteReason.valid || facingCountCheckIncompleteReason.untouched">
+                            this field is required
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="Type">Planogram Check Incomplete Reason</label>
+                        <input required name="planogramCheckIncompleteReason" #planogramCheckIncompleteReason="ngModel" placeholder=""
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':planogramCheckIncompleteReason.valid,'is-invalid':planogramCheckIncompleteReason.invalid && planogramCheckIncompleteReason.touched }"
+                               [(ngModel)]="dailyAuditModel.planogramCheckIncompleteReason" />
+                        <small class="text-danger" [class.d-none]="planogramCheckIncompleteReason.valid || planogramCheckIncompleteReason.untouched">
+                            Product code is required
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="Type">Price Audit Check Incomplete Reason</label>
+                        <input required name="priceAuditCheckIncompleteReason" #priceAuditCheckIncompleteReason="ngModel" placeholder=""
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':priceAuditCheckIncompleteReason.valid,'is-invalid':priceAuditCheckIncompleteReason.invalid && priceAuditCheckIncompleteReason.touched }"
+                               [(ngModel)]="dailyAuditModel.priceAuditCheckIncompleteReason" />
+                        <small class="text-danger" [class.d-none]="priceAuditCheckIncompleteReason.valid || priceAuditCheckIncompleteReason.untouched">
+                            Product code is required
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            
+            <button  [disabled]="!dailyAuditForm.valid" type="submit" class="mt-2 btn btn-primary pull-right">
+                <fa class="mr-2" name="save"></fa>
+                Save
+            </button>
+        </form>
+    </div>
+</div>

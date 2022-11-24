@@ -1,0 +1,257 @@
+
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Create HHT User</div>
+        <div class="btn-actions-pane-right">
+           
+        </div>
+    </div>
+    <div class="card-body">
+        <form #cmUserForm="ngForm" method="post" (ngSubmit)="submitUserForm(cmUserForm.value)"  [mustMatch]="['passWord', 'confirmPassword']">
+            <div class="form-row">
+                
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="name">User Type</label>
+
+                        <ng-select required name="userType" #userType="ngModel" [multiple]="false" [(ngModel)]="userModel.userType" 
+                        (ngModelChange)="userTypeChange($event)"  
+                        [ngClass]="{'is-valid':userType.valid,'is-invalid':userType.invalid && userType.touched }">
+                            <ng-option *ngFor="let user of UserTypes; index as i" [value]="user.id"> {{user.label}} </ng-option>
+                        </ng-select>
+                        <small class="text-danger" [class.d-none]="userType.valid || userType.untouched">
+                            User Type is required
+                        </small>
+                        <!--<div class="text-danger" *ngIf="userName.errors.required">First Name is required</div>-->
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="name">Code</label>
+                        <input required name="code" #code="ngModel" id="code" disabled
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':code.valid,'is-invalid':code.invalid && code.touched }"
+                               [(ngModel)]="userModel.code" />
+                        <small class="text-danger" [class.d-none]="code.valid || code.untouched">
+                            Code is required
+                        </small>
+                    </div>
+                </div>
+                
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="name">Name</label>
+                        <input required name="name" #name="ngModel" id="name"
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':name.valid,'is-invalid':name.invalid && name.touched }"
+                               [(ngModel)]="userModel.name" />
+                        <small class="text-danger" [class.d-none]="name.valid || name.untouched">
+                            Name is required
+                        </small>
+                        <!--<div class="text-danger" *ngIf="userName.errors.required">First Name is required</div>-->
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="designation">Designation</label>
+                        <input required name="designation" #designation="ngModel" id="designation" placeholder=""
+                               type="text" class="form-control" 
+                               [(ngModel)]="userModel.designation" />
+                            <small class="text-danger" [class.d-none]="designation.valid || designation.untouched">
+                                Designation is required
+                            </small>
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="email">Email</label>
+                        <input name="email" #email="ngModel" id="email" placeholder=""
+                               type="email" class="form-control" 
+                               [(ngModel)]="userModel.email" />
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="name">NID / Birth Certificate</label>
+                        <input  name="nidBirthCertificate" #nidBirthCertificate="ngModel" id="nidBirthCertificate"
+                               type="text" class="form-control"
+                               maxlength="17"
+                               [(ngModel)]="userModel.nidBirthCertificate" />
+                        
+                               <small class="text-danger" [class.d-none]="nidBirthCertificate.valid || nidBirthCertificate.untouched">
+                                NID / Birth Certificate must be within 17 characters
+                            </small>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-6">
+                    <label for="tagged-cm-id"> Joining Date</label>
+                    <div class="form-inline mb-3 ">
+                        <div class="form-group w-100">
+                            <div class="input-group w-100">
+                                <input class="form-control"  placeholder="yyyy-mm-dd" name="dp"
+                                    [(ngModel)]="selectedDate" ngbDatepicker #d="ngbDatepicker"
+                                    [minDate]="fromDate" >
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar"
+                                        (click)="d.toggle()" type="button"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="email">Joining Date</label>
+                        <input name="joining" #joining="ngModel" id="joining" placeholder=""
+                               type="joining" class="form-control"
+                               [ngClass]="{'is-valid':joining.valid,'is-invalid':joining.invalid && joining.touched }"
+                               [(ngModel)]="userModel.joiningDate" />
+                        <small class="text-danger" [class.d-none]="joining.valid || joining.untouched">
+                            Joining Date address is required
+                        </small>
+                    </div>
+                </div> -->
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="code">Alternative Code</label>
+                        <input name="altCode" #altCode="ngModel" id="altCode" placeholder=""
+                               type="text" class="form-control"
+                               [(ngModel)]="userModel.altCode" />
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="phoneNumber">Mobile Number</label>
+                        <input required name="phoneNumber" #phoneNumber="ngModel" id="phoneNumber" placeholder=""
+                               type="text" class="form-control" [pattern]="phoneNumberPattern"
+                               [ngClass]="{'is-valid':phoneNumber.valid,'is-invalid':phoneNumber.invalid && phoneNumber.touched}"
+                               [(ngModel)]="userModel.phoneNumber" numbersOnly />
+                        <small class="text-danger" [class.d-none]="phoneNumber.valid || phoneNumber.untouched">
+                            Mobile Number is required and must be 11 characters 
+                        </small>
+                       
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="passWord">Password</label>
+                        <div class="input-group">
+                            <input required name="passWord" #passWord="ngModel"
+                                [ngClass]="{'is-valid':passWord.valid,'is-invalid':passWord.invalid && passWord.touched }"
+                                placeholder="" [type]="passwordTextType ? 'text' : 'password'" class="form-control" [(ngModel)]="userModel.passWord" />
+                            <div class="input-group-append" (click)="togglePasswordTextType()">
+                                <span class="input-group-text">
+                                    <i class="fa" [ngClass]="{ 'fa-eye-slash': !passwordTextType, 'fa-eye': passwordTextType }"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <small class="text-danger" [class.d-none]="passWord.valid || passWord.untouched">
+                            Password is required
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="input-group">
+                            <input required name="confirmPassword" #confirmPassword="ngModel"
+                                [ngClass]="{'is-valid':confirmPassword.valid,'is-invalid':confirmPassword.invalid && confirmPassword.touched }"
+                                [(ngModel)]="userModel.confirmPassword"
+                                [type]="confirmPasswordTextType ? 'text' : 'password'" class="form-control" />
+                            <div class="input-group-append" (click)="toggleConfirmPasswordTextType()">
+                                <span class="input-group-text">
+                                    <i class="fa" [ngClass]="{ 'fa-eye-slash': !confirmPasswordTextType, 'fa-eye': confirmPasswordTextType }"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <small class="text-danger" [class.d-none]="confirmPassword.valid || confirmPassword.untouched">
+                            Confirm Password is required and Passwords must match
+                        </small>
+                       
+                        <!--<div class="text-danger" *ngIf="confirmPassword.errors.mustMatch">Passwords must match</div>-->
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="familyContactNo">Family Contact No</label>
+                        <input #familyContactNo="ngModel" [(ngModel)]="userModel.familyContactNo" 
+                        name="familyContactNo" numbersOnly id="familyContactNo" type="text" class="form-control">
+                    </div>
+                </div>
+
+
+
+
+      
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="salesPointId"> Sales Point</label>
+
+                        <ng-select required name="salesPointId" #salesPointId="ngModel" [multiple]="userModel.userType && userModel.userType === 1 ? true : false" [(ngModel)]="userModel.salesPointIds" [ngClass]="{'is-valid':salesPointId.valid,'is-invalid':salesPointId.invalid && salesPointId.touched }">
+                            <ng-option *ngFor="let point of salesPoints; index as i" [value]="point.id"> {{point.name}} </ng-option>
+                        </ng-select>
+                        <small class="text-danger" [class.d-none]="salesPointId.valid || salesPointId.untouched">
+                            Sales Point is required
+                        </small>
+
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="address">Address</label>
+                        <!--<input #address="ngModel"  name="address" id="address"   placeholder="" type="text" class="form-control" [(ngModel)]="userModel.address">-->
+                        <textarea class="form-control" #address="ngModel"  name="address" id="address" 
+                            placeholder="" [(ngModel)]="userModel.address" rows="2" required></textarea>  
+                        <small class="text-danger" [class.d-none]="address.valid || address.untouched">
+                            Address is Required
+                        </small>       
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="status">Status</label>
+                        <ng-select name="status" #status="ngModel" [(ngModel)]="userModel.status">
+                            <ng-option *ngFor="let key of enumStatusTypes;" [value]="key.id">{{key.label}}</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+
+
+            </div>
+         
+            <!-- <div class="text-right">
+                <button type="button" class="mb-2 mr-2 btn-hover-shine btn btn-dark" (click)="backToUserList()"><i class="pe-7s-back pr-1"></i> Back </button>
+                <button [disabled]="!cmUserForm.valid" type="submit" class="mt-2 btn btn-primary"><i class="fa fa-save pr-1"></i>Save CM User</button>
+            </div> -->
+
+            <div class="d-flex justify-content-end">
+                <button type="button" class="mb-2 mr-2 btn-hover-shine btn btn-dark" (click)="backToUserList()"><i class="pe-7s-back pr-1"></i> Back </button>
+                <button [disabled]="!cmUserForm.valid" type="submit" class="mb-2 btn btn-primary"><i class="fa fa-save pr-1"></i> Save </button>
+            </div>
+                </form>
+    </div>
+</div>

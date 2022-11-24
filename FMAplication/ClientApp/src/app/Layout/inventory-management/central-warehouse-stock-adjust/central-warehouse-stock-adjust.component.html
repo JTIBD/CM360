@@ -1,0 +1,128 @@
+
+<div *ngIf="transactionData">
+
+    <div class="main-card mb-3 card" *ngIf="transactionData.transactionNotification">
+        <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+            <div class="card-header-title font-size-lg font-weight-normal">
+                The transaction is awaiting for approval. 
+            </div>
+    
+            <div class="btn-actions-pane-right">
+                <button type="button" class="mb-2 mr-2 btn-transition btn btn-success" (click)="accept(transactionData.transactionNotification)">
+                    Accept
+                </button>
+                <button type="button" class="mb-2 mr-2 btn-transition btn btn-danger" (click)="reject(transactionData.transactionNotification)">
+                    Reject
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="main-card mb-3 card">
+        <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+            <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Stock Adjustment</div>
+            <div class="btn-actions-pane-right">
+                <!--<button type="button" class="mb-2 mr-2 btn-transition btn btn-outline-success" (click)="fnRoutePosmProdList()">
+                    <fa class="mr-2" name="list"></fa>
+                    Back to list
+                </button>-->
+            </div>
+        </div>
+    
+        
+        <div class="card-body">
+            <form >
+                <div >
+                    <div class="form-row" *ngIf="isNew"   >
+                       
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="outlet-id">Select Warehouse </label>
+                                    <ng-select class="flex-fill" name="wareHouse" [multiple]="false" [(ngModel)]="selectedWarehouseId">
+                                        <ng-option *ngFor="let wareHouse of wareHouses" [value]="wareHouse.id">
+                                            {{wareHouse.name}}
+                                        </ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <label for="outlet-id">Transaction Date</label>
+                                    <input class="form-control" placeholder="Transaction Date" name="TransactionDate" disabled [(ngModel)]="transactionDate" />
+                                </div>
+                            </div>
+                    </div>
+                    <div class="form-row" *ngIf="isNew === false" >
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="outlet-id">Transaction No</label>
+                                <input class="form-control" placeholder="Transaction No" name="transactionSerial" disabled [(ngModel)]="transactionData.transactionNumber" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="outlet-id">Transaction Date</label>
+                                <input class="form-control" placeholder="Transaction Date" name="TransactionDate" disabled [(ngModel)]="transactionDate"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="position-relative form-group">
+                                <label for="outlet-id">Remarks</label>
+                                <textarea class="form-control" placeholder="Enter Remarks" name="Remarks"  [(ngModel)]="transactionData.remarks"   rows="2" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+     
+    
+                <div class="col-md-12 mb-3">
+                    <div  class="d-flex justify-content-end">
+                    <button  *ngIf="isNew" ng class="mt-2 btn btn-outline-primary"  type="button" (click)="selectProduct()">
+                        <i  class="fa fa-plus pr-1">
+                        </i> Select POSM
+                    </button></div></div>
+    
+    
+                <table class="table table-hover table-sm table-striped table-bordered"  *ngIf="!loading">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th scope="col" width="5%">#</th>
+                            <th scope="col" width="10%">POSM Code</th>
+                            <th scope="col" width="20%">POSM Name</th>
+                            <th scope="col" width="10%">Quantity</th>
+                            <th scope="col" width="15%">Adjusted Quantity</th>
+                            <th scope="col" width="10%" *ngIf="!transactionData.isConfirmed">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let m of selectedItems;let i = index" [attr.data-index]="i">
+                            <td scope="row">{{i+1}}</td>
+                            <td>{{m.code}}</td>
+                            <td>{{m.name}}</td>
+                            <td>{{m.quantity}}</td>
+                            <td>
+                                <input *ngIf="!transactionData.isConfirmed" required name="{{m.adjustedQuantity}}" id="{{m.code}}" placeholder="" type="text"  [(ngModel)]="m.adjustedQuantity" 
+                                       class="form-control" numbersOnly />
+                                <span *ngIf="transactionData.isConfirmed"> {{m.adjustedQuantity}}</span>
+                            </td>
+                            <td *ngIf="!transactionData.isConfirmed">
+                                <a class="cur-point" (click)="removeItem(m.code)">
+                                    <i class="fa fa-trash" ></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <div class="d-flex justify-content-end" >
+                    <button type="button" class="mb-2 mr-2 btn-hover-shine btn btn-dark"  (click)="BackToPage()"><i class="pe-7s-back pr-1"></i> Back </button>
+                    <button type="submit" class="mb-2 btn btn-primary" *ngIf="!transactionData.isConfirmed" (click)="saveTransaction()" [disabled]="selectedItems.length === 0"><i class="fa fa-save pr-1"></i> Save </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+</div>
+

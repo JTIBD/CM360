@@ -1,0 +1,19 @@
+<form>
+    <div class="modal-header">
+        Download stocks
+    </div>
+    <div class="modal-body">
+        <div class="menu-form d-flex justify-content-center align-items-center">
+                <label for="wareHouse" class="mb-0 mr-2">Select WareHouse</label>
+                <ng-select id="wareHouse" class="flex-fill" name="wareHouse" [multiple]="false" [(ngModel)]="selectedWareHouse">
+                    <ng-option *ngFor="let wareHouse of wareHouses" [value]="wareHouse">
+                        {{wareHouse.name}}
+                    </ng-option>
+                </ng-select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+        <button type="button" class="btn btn-primary" (click)="downloadFormat()" [disabled]="!selectedWareHouse">Download</button>
+    </div>
+</form>

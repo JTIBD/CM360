@@ -1,0 +1,97 @@
+
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+            <span>{{model.id == 0 ? "Create AV/Communication Upload":"Edit AV/Communication Upload"}}</span>
+        </div>
+        <div class="btn-actions-pane-right">
+        </div>
+    </div>
+    <div class="card-body">
+        <form #avForm="ngForm" (submit)="fnSaveProduct()">
+            <div class="form-row">
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="Type">Campaign Name</label>
+                        <input name="campaignName" required  #campaignName="ngModel" type="text" 
+                        [ngClass]="{'is-valid':campaignName.valid,'is-invalid':campaignName.invalid && campaignName.touched }"
+                        [(ngModel)]="model.campaignName" class="form-control" />
+
+                        <small class="text-danger" [class.d-none]="campaignName.valid || campaignName.untouched">
+                            Campaign name is required
+                        </small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="Type">AV/Communication</label>
+                        <ng-select  required name="campaignType" #campaign="ngModel" [(ngModel)]="model.campaignType" 
+                        (change)="campaignChange()"
+                        [ngClass]="{'is-valid':campaign.valid,'is-invalid':campaign.invalid && campaign.touched }">
+                            <ng-option *ngFor="let c of campaignTypes;" [value]="c.id">{{c.label}}</ng-option>
+                        </ng-select>
+                        <small class="text-danger" [class.d-none]="campaign.valid || campaign.untouched">
+                            Campaign Type is required
+                        </small>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="form-row">
+                
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="brand">Brand</label>
+                        <ng-select  required name="brand" #brand="ngModel" [(ngModel)]="model.brandId" 
+                        [ngClass]="{'is-valid':brand.valid,'is-invalid':brand.invalid && brand.touched }">
+                            <ng-option *ngFor="let brand of brandList;" [value]="brand.id">{{brand.name}}</ng-option>
+                        </ng-select>
+                        <small class="text-danger" [class.d-none]="brand.valid || brand.untouched">
+                            Brand is required
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="Type">Description </label>
+                        <textarea name="type" rows="1" #type="ngModel"
+                               type="text" class="form-control"
+                               [(ngModel)]="model.description">
+                            
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6" >
+                    <div class="position-relative form-group">
+                        <label for="inputFile">Upload files 
+                            <span *ngIf="model.campaignType || model.campaignType === 0">
+                                (max size: {{model.campaignType === 0 ? 30 : 1}} MB)
+                            </span>
+                        </label>
+                        <div class="custom-file">
+                            <input *ngIf="model.campaignType === 0"  type="file" class="custom-file-input" accept=".mpeg,.avi,.mp4,'wmv'" #inputFile id="inputFile" 
+                                (change)="onChangeInputFile($event)">
+
+                            <input *ngIf="model.campaignType === 1" type="file" class="custom-file-input" accept=".jpeg,.jpg,.png" #inputFile id="inputFile" 
+                                (change)="onChangeInputFile($event)">
+                            <label class="custom-file-label" for="inputFile">{{selectedFileName?selectedFileName:'Choose file'}}</label>
+                        </div>
+                        <small class="text-danger" *ngIf="fileError">
+                            {{fileError}}
+                        </small>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="d-flex justify-content-end">
+                <button type="button" class="mb-2 mr-2 btn-hover-shine btn btn-dark" (click)="fnRouteProdList()"><i class="pe-7s-back pr-1"></i> Back </button>
+                <button [disabled]="!avForm.valid || !isFormValid" type="submit" class="mb-2 btn btn-primary"><i class="fa fa-save pr-1"></i> Save </button>
+            </div>
+        </form>
+    </div>
+</div>

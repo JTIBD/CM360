@@ -1,0 +1,107 @@
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+            <span>
+                {{reasonModel.id ? "Edit Non-Execution Reason":"Create New Non-Execution Reason"}}
+            </span>
+        </div>
+        <div class="btn-actions-pane-right">
+            <!--<button type="button" class="mb-2 mr-2 btn-transition btn btn-outline-success" (click)="fnRoutePosmProdList()">
+                <fa class="mr-2" name="list"></fa>
+                Back to list
+            </button>-->
+        </div>
+    </div>
+    <div class="card-body">
+        <form #executionReasonForm="ngForm" (submit)="fnSaveExecutionReason(executionReasonForm.value)">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="name">Reason Code</label>
+                        <input required name="name" #name="ngModel"
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':name.valid,'is-invalid':name.invalid && name.touched }"
+                               [(ngModel)]="reasonModel.name"
+                               (ngModelChange)="changeReason(executionReasonForm)" />
+                        <small class="text-danger" [class.d-none]="name.valid || name.untouched">
+                            Reason Code is required
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="name">Description In English</label>
+                        <input name="reason" #reason="ngModel"
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':reason.valid,'is-invalid':reason.invalid && reason.touched }"
+                               [(ngModel)]="reasonModel.reasonInEnglish" 
+                               (ngModelChange)="changeReason(executionReasonForm)" />
+                        <small class="text-danger" [class.d-none]="reason.valid || reason.untouched">
+                            Description In English is required
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="name">Description in Bangla</label>
+                        <input name="reasonBangla" #reasonBangla="ngModel"
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':reasonBangla.valid,'is-invalid':reasonBangla.invalid && reasonBangla.touched }"
+                               [(ngModel)]="reasonModel.reasonInBangla"
+                               (ngModelChange)="changeReason(executionReasonForm)" />
+                            <small class="text-danger" [class.d-none]="reasonBangla.valid || reasonBangla.untouched">
+                                Description in Bangla is required
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="status">Status</label>
+                        <ng-select required name="status" #status="ngModel" [(ngModel)]="reasonModel.status"
+                        (ngModelChange)="changeReason(executionReasonForm)"
+                        >
+                            <ng-option *ngFor="let key of enumStatusTypes;" [value]="key.id">{{key.label}}</ng-option>
+                        </ng-select>
+                        <small class="text-danger" [class.d-none]="status.valid || status.untouched">
+                            Status is required
+                        </small>
+                    </div>
+                </div>
+            </div>   
+
+            <div class="form-row">
+                <div class="col-md-6">
+                    <ng-container >
+                            <div class="position-relative form-group">
+                                <label for="nationalNodeId">Select Type</label>
+                                <ng-select required id="nationalNodeId" #nationalNodeId="ngModel" name="nationalNodeId"
+                                           [multiple]="true" [(ngModel)]="selectedReasonTypeIds">
+                                    <ng-option *ngFor="let reason of reasonTypes" [value]="reason.id">{{reason.text}}</ng-option>
+                                </ng-select>
+                                <small class="text-danger"
+                                    [class.d-none]="nationalNodeId.valid || nationalNodeId.untouched">
+                                    Type is Required
+                                </small>
+                            </div>
+                    </ng-container>
+                </div>
+            </div>
+            
+            
+
+            <div class="d-flex justify-content-end">
+                <button type="button" class="mb-2 mr-2 btn-hover-shine btn btn-dark" (click)="fnRouteExecutionReasonList()"><i class="pe-7s-back pr-1"></i> Back </button>
+                <button [disabled]="!executionReasonForm.valid" type="submit" class="mb-2 btn btn-primary"><i class="fa fa-save pr-1"></i> Save </button>
+            </div>
+        </form>
+    </div>
+</div>

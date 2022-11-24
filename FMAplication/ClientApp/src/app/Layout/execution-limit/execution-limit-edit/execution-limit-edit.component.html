@@ -1,0 +1,41 @@
+<div class="main-card mb-3 card">
+
+    <div class="card-body">
+        <div class="question-header border-bottom mb-2">
+            <h5 class="card-title">Edit an Target Outlet </h5>
+        </div>
+        <div *ngIf="!!minimumExecutionLimit" class="row no-gutters py-2">
+            <div class="col">
+                <span class="font-weight-bold">Salespoint: </span>
+                <span *ngIf="!!minimumExecutionLimit.salesPoint">{{minimumExecutionLimit.salesPoint.name}}</span>
+            </div>            
+        </div>
+        <form #surveyForm="ngForm">
+            <div class="main-card mb-3 card">
+                <div class="card-header">
+                
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="outlet-id">Target Visited Outlet:</label>
+                                <input type="number" required name="targetVisitedOutlet"
+                                    class="form-control" [(ngModel)]="minimumExecutionLimit.targetVisitedOutlet" 
+                                />  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-block text-right card-footer">
+                        <!-- <button *ngIf="(selectedQuestions.length>0)" class="mr-2 btn-icon btn-icon-only btn btn-danger"
+                            (click)="removeAll()">
+                            <i class="fa fa-trash" aria-hidden="true"></i> Remove All
+                        </button> -->
+                        <button type="button" class="mr-2 btn-hover-shine btn btn-dark" (click)="handleBack()"><i class="pe-7s-back pr-1"></i> Back </button>
+                        <button class="btn btn-primary" [disabled]="!surveyForm.valid" type="submit" (click)="submit()">
+                            <i class="fa fa-save pr-1"></i>Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<form>
+    <div class="modal-header">
+        Download stocks distributions
+    </div>
+    <div class="modal-body">
+        <div class="menu-form d-flex justify-content-center align-items-center">
+                <label for="wareHouse" class="mb-0 mr-2">Select Source Salespoint</label>
+                <ng-select id="wareHouse" class="flex-fill" name="wareHouse" [multiple]="false" [(ngModel)]="selectedSourceSalesPoint">
+                    <ng-option *ngFor="let sp of sourceSalesPoints" [value]="sp">
+                        {{sp.name}}
+                    </ng-option>
+                </ng-select>
+        </div>
+
+        <div>
+            <div class="py-2">
+                <span>Select Destination Salespoints</span>
+            </div>
+            <div class="pt-4 menu-list-area role-dropdown">
+                <ul *ngIf="nodeTree.length > 0" class="node-tree border pt-3 rounded">
+                    <ng-container *ngTemplateOutlet="recursiveNodeListTmpl; context:{ $implicit: nodeTree }"[(ngModel)]="nodeTree"></ng-container>
+                </ul>
+            </div>
+        </div>
+        
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+        <button type="button" class="btn btn-primary" (click)="downloadFormat()" [disabled]="!selectedSourceSalesPoint">Download</button>
+    </div>
+</form>
+
+
+<ng-template #recursiveNodeListTmpl let-nodeTree>
+    <li *ngFor="let item of nodeTree;" class="role-dropdown-item custom-control">
+        <div class="custom-checkbox custom-control">
+            <input type="checkbox" [attr.id]="item.node.id" [attr.checked]="item.expanded"
+              class="custom-control-input">
+            <label [attr.for]="item.node.id" class="custom-control-label expand"> </label>
+            <input name="selecton-check{{item.node.id}}" id="selecton-check{{item.node.id}}" type="checkbox" [checked]="item.isSelected" class="pl-0" (change)="handleNodeSelect(item,$event.target.checked)">
+            <label for="selecton-check{{item.node.id}}" class="pl-1">{{item.node.name}} [{{item.node.code}}]</label> 
+
+            <ul *ngIf="!!item.nodes && item.nodes.length > 0" class="sub-role-dropdown">
+              <ng-container *ngTemplateOutlet="recursiveNodeListTmpl; context:{ $implicit: item.nodes }"></ng-container>
+            </ul>
+            <ul *ngIf="!!item.salesPoints && !!item.salesPoints.length" class="sub-role-dropdown">
+                <ng-container *ngTemplateOutlet="salesPoints; context:{ $implicit: item.salesPoints }"></ng-container>
+            </ul>
+          </div>
+    </li>
+
+</ng-template>
+
+<ng-template #salesPoints let-salesPoints>
+    <li *ngFor="let item of salesPoints;" class="role-dropdown-item custom-control">
+        <div class="custom-checkbox custom-control pl-0">
+            <input type="checkbox" id="'exampleCustomCheckbox'{{item.id}}" [checked]="item.isSelected"
+              class="" (change)="handleSalesPointSelect($event,item)">
+            <label for="'exampleCustomCheckbox'{{item.id}}" class="pl-1">{{item.name}} [{{item.code}}]</label>            
+          </div>
+    </li>
+</ng-template>

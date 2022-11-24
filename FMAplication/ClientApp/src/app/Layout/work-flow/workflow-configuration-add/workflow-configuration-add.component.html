@@ -1,0 +1,63 @@
+
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Create WorkFlow Configuration </div>
+        <div class="btn-actions-pane-right">
+            
+        </div>
+    </div>
+    <div class="card-body">
+        <form #workFlowConfigurationsForm="ngForm" (submit)="fnSaveWorkFlowConfiguration()">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="masterWorkFlowId">Select WorkFlow</label>
+                        <ng-select required name="masterWorkFlowId" #masterWorkFlowId="ngModel" 
+                        [(ngModel)]="workFlowConfigurationModel.masterWorkFlowId"   (change)="workFlowChange()"
+                        [ngClass]="{'is-valid':masterWorkFlowId.valid,'is-invalid':masterWorkFlowId.invalid && masterWorkFlowId.touched }">
+                            <ng-option *ngFor="let workFlow of this.workFlowList; index as i" [value]="workFlow.id"> {{workFlow.name}} </ng-option>
+                        </ng-select>
+                        <small class="text-danger" [class.d-none]="masterWorkFlowId.valid || masterWorkFlowId.untouched">
+                            WorkFlow is required
+                        </small>
+                    </div>
+                </div>
+               
+            </div>
+
+
+            <div *ngIf="workFlowModel">
+                <div *ngFor="let m of sequences;let i = index" [attr.data-index]="i">
+                    <!-- 1 === user -->
+                    <div class="form-row" *ngIf="workFlowModel.workflowConfigType === 1">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="status">Approver {{i+1}}</label>
+                                <ng-select required [name]="m.id" [(ngModel)]="m.value"  [multiple]="false"
+                                (click)="changeUser($event.target.value, i+1)">
+                                    <ng-option *ngFor="let user of this.userInfoList; index as i" [value]="user.id"> {{user.name}} </ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2 === role -->
+                    <div class="form-row" *ngIf="workFlowModel.workflowConfigType === 2">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="status">Approver {{i+1}}</label>
+                                <ng-select required [name]="m.id"  [(ngModel)]="m.value"  [multiple]="false">
+                                    <ng-option *ngFor="let role of this.organizationRoleList; index as i" [value]="role.id"> {{role.name}} </ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <button type="button" class="mb-2 mr-2 btn-hover-shine btn btn-dark" (click)="fnRouteWorkFlowConfigurationList()"><i class="pe-7s-back pr-1"></i> Back </button>
+                <button [disabled]="!isValidForm()" type="submit" class="mb-2 btn btn-primary"><i class="fa fa-save pr-1"></i> Save </button>
+            </div>
+        </form>
+    </div>
+</div>

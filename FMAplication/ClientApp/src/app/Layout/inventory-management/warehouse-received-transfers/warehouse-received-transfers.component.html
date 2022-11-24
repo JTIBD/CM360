@@ -1,0 +1,38 @@
+<div  class="col col-lg-12">  
+    <div *ngIf="permissionGroup.canCreate">
+        <button type="button" class="mb-2 mr-2 btn-transition btn btn-outline-success" (click)="navigateToReceive()">
+            Receive New Transfer
+        </button>
+    </div>
+    <div class="card" [ngClass]="selectedView !== 'default'?'d-none':''">
+        <app-p-table [pTableSetting]="transactionPtableSettings" [pTableMasterData]="stockTransferTableData" 
+        (cellClickCallbackFn)="fnTransactionPtableCellClick($event)" (customActivityOnRecord)="haneleCustomActivityOnRecord($event)"
+        (serverSiteCallbackFn)="fnSearch($event)"
+        (callbackFnOnPageSizeChange)="handlePazeSizeChange($event)" (dateRangeCallbackFn)="handleDateRange($event)"
+        >
+        </app-p-table>
+        <div class="p-table-footer">
+            <div class="row">              
+                <div class="col-12">
+                    <p-paginator #paging class="page-item"
+                    [rows]="pageSize" [totalRecords]="total"
+                    (onPageChange)="paginate($event)" [currentPageReportTemplate]="getPaginationStatus()" ></p-paginator>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div *ngIf="selectedView === 'transactionDetails'" class="card">
+        <div class="px-2 py-2">
+            <p class="mb-0"><span class="font-weight-bold">From warehouse</span>: {{selectedTransaction.fromWarehouse.name}}</p>
+            <p class="mb-0"> <span class="font-weight-bold">Transaction Id</span>: {{selectedTransaction.transactionNumber}}</p>
+            <p class="mb-0"> <span class="font-weight-bold"> Transaction Date</span>: {{getTransactionDate(selectedTransaction.transactionDate)}}</p>
+        </div>
+        <app-p-table [pTableSetting]="transactionDetailsPtableSettings" [pTableMasterData]="stockDistributionRowDetailsTableData" [pTableSummery]="ptableSummery">
+        </app-p-table>
+
+        <div class="text-right py-2">
+            <button type="button" class="ml-2  btn-hover-shine btn btn-dark" (click)="setViewView('default')"><i class="pe-7s-back pr-1"></i> Back </button>
+        </div>
+    </div>    
+  </div>

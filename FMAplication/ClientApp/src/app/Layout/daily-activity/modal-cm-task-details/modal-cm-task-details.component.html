@@ -1,0 +1,275 @@
+
+    <div class="modal-header">
+        <h4 class="modal-title">Daily CM Activity</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div>
+            <table class="table table-borderless activity-info-table">
+                <tbody>
+                    <tr>
+                        <td>Date</td>
+                        <td>{{dailyCmActivity.displayDate}}</td>
+                        <td>FM User</td>
+                        <td>{{dailyCmActivity.fmUserName}}</td>
+                    </tr>
+                    <tr>
+                        <td>CM User</td>
+                        <td>{{dailyCmActivity.cmUserName}}</td>
+                        <td>Route</td>
+                        <td>{{dailyCmActivity.routeName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Outlet</td>
+                        <td>{{dailyCmActivity.outletName}}</td>
+                        <td>Is POSM</td>
+                        <td>{{dailyCmActivity.displayIsPOSM}}</td>
+                    </tr>
+                    <tr>
+                        <td>Is Audit</td>
+                        <td>{{dailyCmActivity.displayIsAudit}}</td>
+                        <td>Is Survey</td>
+                        <td>{{dailyCmActivity.displayIsSurvey}}</td>
+                    </tr>
+                    <tr>
+                        <td>Is Consumer Survey</td>
+                        <td>{{dailyCmActivity.displayIsConsSurAct}}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div *ngIf="dailyCmActivity.isPOSM">
+            <label class="font-weight-bold border-bottom">POSM</label>
+            <table class="table table-sm table-borderless map-info-table">
+                <tbody>
+                    <tr>
+                        <td>POSM Installation</td>
+                        <td>{{dailyCmActivity.dailyPOSM.isPOSMInstallation ? 'YES' : 'NO'}}</td>
+                    </tr>
+                    <tr>
+                        <td>POSM Repair</td>
+                        <td>{{dailyCmActivity.dailyPOSM.isPOSMRepair ? 'YES' : 'NO'}}</td>
+                    </tr>
+                    <tr>
+                        <td>POSM Removal</td>
+                        <td>{{dailyCmActivity.dailyPOSM.isPOSMRemoval ? 'YES' : 'NO'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="dailyCmActivity.dailyPOSM.isPOSMInstallation">
+                <label class="font-weight-bold">POSM Installation Product</label>
+                <table class="table table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Product Code</th>
+                            <th>Product Name</th>
+                            <th>Signature Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of posmInstallationProducts; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{product.code}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.isDigitalSignatureEnable?'Yes':"No"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="dailyCmActivity.dailyPOSM.isPOSMRepair">
+                <label class="font-weight-bold">POSM Repair Product</label>
+                <table class="table table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Product Code</th>
+                            <th>Product Name</th>
+                            <th>Signature Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of posmRepairProducts; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{product.code}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.isDigitalSignatureEnable?'Yes':"No"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="dailyCmActivity.dailyPOSM.isPOSMRemoval">
+                <label class="font-weight-bold">POSM Removal Product</label>
+                <table class="table table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Product Code</th>
+                            <th>Product Name</th>
+                            <th>Signature Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of posmRemovalProducts; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{product.code}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.isDigitalSignatureEnable?'Yes':"No"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div *ngIf="dailyCmActivity.isAudit">
+            <label class="font-weight-bold border-bottom">Audit</label>
+            <table class="table table-sm table-borderless map-info-table">
+                <tbody>
+                    <tr>
+                        <td>Distribution Check</td>
+                        <td>{{dailyCmActivity.dailyAudit.isDistributionCheck ? 'YES' : 'NO'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Facing Count</td>
+                        <td>{{dailyCmActivity.dailyAudit.isFacingCount ? 'YES' : 'NO'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Planogram Check</td>
+                        <td>{{dailyCmActivity.dailyAudit.isPlanogramCheck ? 'YES' : 'NO'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Price Audit</td>
+                        <td>{{dailyCmActivity.dailyAudit.isPriceAudit ? 'YES' : 'NO'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="dailyCmActivity.dailyAudit.isDistributionCheck">
+                <label class="font-weight-bold">Distribution Check Product</label>
+                <table class="table table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Product Code</th>
+                            <th>Product Name</th>
+                            <th>Is JTI Product</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of distributionCheckProducts; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{product.code}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.isJTIProduct?'Yes':"No"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="dailyCmActivity.dailyAudit.isFacingCount">
+                <label class="font-weight-bold">Facing Count Product</label>
+                <table class="table table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Product Code</th>
+                            <th>Product Name</th>
+                            <th>Is JTI Product</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of facingCountProducts; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{product.code}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.isJTIProduct?'Yes':"No"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="dailyCmActivity.dailyAudit.isPlanogramCheck">
+                <label class="font-weight-bold">Planogram Check POSM Product</label>
+                <table class=" col-md-12 table table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Product Code</th>
+                            <th>Product Name</th>
+                            <th>Signature Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of planogramCheckProducts; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{product.code}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.isDigitalSignatureEnable?'Yes':"No"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="dailyCmActivity.dailyAudit.isPriceAudit">
+                <label class="font-weight-bold">Price Audit Product</label>
+                <table class="table table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Product Code</th>
+                            <th>Product Name</th>
+                            <th>Is JTI Product</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of priceAuditProducts; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{product.code}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.isJTIProduct?'Yes':"No"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div *ngIf="dailyCmActivity.isSurvey">
+            <label class="font-weight-bold">Survey</label>
+            <table class="table table-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th>SL</th>
+                        <th>Survey Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let survey of surveys; let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{survey.surveyName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div *ngIf="dailyCmActivity.isConsumerSurveyActive">
+            <label class="font-weight-bold">Consumer Survey</label>
+            <table class="table table-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th>SL</th>
+                        <th>Survey Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let survey of consumerSurveys; let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{survey.surveyName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+    </div>

@@ -1,0 +1,70 @@
+
+<div>
+    <div *ngIf="selectedView==='default'">
+        <button type="button" class="mb-2 mr-2 btn-transition btn btn-outline-success" (click)="openExcelImportModal()">
+            Download Format
+        </button>
+        <span *ngIf="permissionGroup.canCreate">
+            <input id="stock-upload" type="file" class="mb-2 mr-2 btn-transition btn btn-outline-success d-none" (change)="handleUpload($event)"
+               accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+            <label for="stock-upload" class="mb-2 mr-2 btn-transition btn btn-outline-success">Upload Stock</label>
+        </span>
+    </div>
+    
+
+    <div class="card" [ngClass]="selectedView !== 'default'?'d-none':''">
+        <app-p-table [pTableSetting]="transactionPtableSettings" [pTableMasterData]="transactionTableData" 
+        (cellClickCallbackFn)="fnTransactionPtableCellClick($event)" (customActivityOnRecord)="haneleCustomActivityOnRecord($event)"
+        (serverSiteCallbackFn)="fnSearch($event)"
+        (callbackFnOnPageSizeChange)="handlePazeSizeChange($event)" (dateRangeCallbackFn)="handleDateRange($event)"
+        >
+        </app-p-table>
+        <div class="p-table-footer">
+            <div class="row">
+                <!-- <div class="col col-xs-4">
+                    <div [innerHTML]="showingPageDetails"></div>
+                </div> -->
+                <div class="col-12">
+                    <p-paginator #paging class="page-item"
+                    [rows]="pageSize" [totalRecords]="total"
+                    (onPageChange)="paginate($event)" [currentPageReportTemplate]="getPaginationStatus()" ></p-paginator>
+                </div>
+    
+            </div>
+        </div>
+    </div>       
+    
+
+    <div *ngIf="selectedView !== 'default'" class="card">
+            <div class="p-2">
+                <h6>Summary</h6>
+                <hr />
+                <div>
+                    <div>
+                        <div class="col-md-6 px-0">
+                            <label for="tagged-cm-id"> Transaction Date: </label>
+                            <span *ngIf="selectedView==='transactionDetails'"> {{getStockAddDateString(selectedTransaction.transactionDateStr)}}</span>                        
+                            <div *ngIf="selectedView==='transactionEdit'" class="form-inline mb-3 ">
+                                <input  class="form-control" name="TransactionDate" disabled [(ngModel)]="selectedDate"  />                                
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="remarks">Remarks: </label>
+                        <textarea *ngIf="selectedView==='transactionEdit'" class="form-control" placeholder="Enter Remarks" name="Remarks"  [(ngModel)]="remark"   rows="2" ></textarea>                
+                        <span *ngIf="selectedView==='transactionDetails'"> {{selectedTransaction.remarks}}</span>
+                    </div>                    
+
+                </div>
+            </div>
+      
+        <app-p-table [pTableSetting]="transactionDetailsPtableSettings" [pTableMasterData]="transactionDetailsTableData" [pTableSummery]="ptableSummery" (customActivityOnRecord)="haneleDetailsTableCustomActivityOnRecord($event)">
+        </app-p-table>
+
+        <div class="text-right py-2">
+            <button type="button" class="mr-2  btn-hover-shine btn btn-dark" (click)="showDefaultView()"><i class="pe-7s-back pr-1"></i> Back </button>   
+            <button *ngIf="selectedView==='transactionEdit'" [disabled]="false" type="submit" class="mr-3 btn btn-primary" (click)="saveTransactions()"><i class="fa fa-save pr-1"></i>Save</button>
+        </div>
+    </div>   
+
+</div>

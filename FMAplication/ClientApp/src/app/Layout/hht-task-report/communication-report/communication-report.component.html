@@ -1,0 +1,15 @@
+<div class="col col-lg-12">
+    <div class="row no-gutters">
+        <div class="col text-right">
+            <button type="button" class="mb-2 mr-2 btn-transition btn btn-outline-success" (click)="handleExport()">
+                Export to Excel
+            </button>
+        </div>        
+    </div>
+    <app-p-table [pTableSetting]="ptableSettings" [pTableMasterData]="rows"
+                 (serverSiteCallbackFn)="fnSearch($event)"
+                 (customActivityOnRecord)="fnCustomTrigger($event)" (dateRangeCallbackFn)="handleDateRange($event)"
+                 (callbackFnOnPageSizeChange)="handlePazeSizeChange($event)">
+    </app-p-table>
+    <p-paginator #paging [rows]="pageSize" [totalRecords]="total" (onPageChange)="paginate($event)" [currentPageReportTemplate]="getPaginationStatus()" ></p-paginator>
+</div>

@@ -1,0 +1,85 @@
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Stock Adjustment List</div>
+        <div class="btn-actions-pane-right">
+           
+           
+            <button [disabled]="!permissionGroup.canCreate"  type="button" class="mb-2 mr-2 btn-transition btn btn-outline-success" (click)="addNewStockAdjust()">
+                <fa class="mr-2" name="plus"></fa>
+                Add New
+            </button>
+        </div>
+    </div>
+    <div>
+        
+           
+
+        <div class="card">
+            <app-p-table [pTableSetting]="transactionPtableSettings" [pTableMasterData]="stockAdjustmentTableData"
+            (cellClickCallbackFn)="fnTransactionPtableCellClick($event)" (customActivityOnRecord)="haneleCustomActivityOnRecord($event)"
+            (serverSiteCallbackFn)="fnSearch($event)" (dropdownCallbackFn) = "dropDownChange($event)"
+            (callbackFnOnPageSizeChange)="handlePazeSizeChange($event)" (dateRangeCallbackFn)="handleDateRange($event)">
+            </app-p-table>
+            <div class="p-table-footer">
+                <div class="row">
+                    <!-- <div class="col col-xs-4">
+                        <div [innerHTML]="showingPageDetails"></div>
+                    </div> -->
+                    <div class="col-12">
+                        <p-paginator #paging class="page-item"
+                        [rows]="params.pageSize" 
+                        (onPageChange)="paginate($event)" [currentPageReportTemplate]="getPaginationStatus()" ></p-paginator>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+
+
+            <!-- <table class="table table-hover table-sm table-striped table-bordered">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col" width="5%">#</th>
+                        <th scope="col" width="10%"> Warehouse </th>
+                        <th scope="col" width="15%">Transaction No</th>
+                        <th scope="col" width="10%">Date</th>
+                        <th scope="col" width="10%">#Lines</th>
+                        <th scope="col" width="10%">Total Decrease</th>
+                        <th scope="col" width="10%">Total Increase</th>
+                        <th scope="col" width="10%">Date</th>
+                        <th scope="col" width="10%">Status</th>
+                        <th scope="col" width="10%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let t of transactions;let i = index" [attr.data-index]="i">
+                        <td scope="row">{{i+1}} </td>
+                        <td scope="row">{{t.wareHouseModel?.name}} </td>
+                        <td>{{t.transactionNumber}}</td>
+                        <td>{{t.transactionDate}}</td>
+                        <td>{{t.lines}}</td>
+                        <td>{{t.totalIncrease}}</td>
+                        <td>{{t.totalDecrease}}</td>
+                        <td>{{t.transactionDate}}</td>
+
+                        <td>{{  getTransactionStatus(t)}}</td>
+                        <td>
+                                <a *ngIf="!t.isConfirmed"  class="" [routerLink]="['/inventory/stock-adjustment', t.id]" >
+                                    <i title="edit"  class="fa fa-edit"></i>
+                                </a>
+
+                                <a class="ml-2 cur-point" *ngIf="!t.isConfirmed" (click)="confirmTransaction(t)"> 
+                                    <i  class="fa fa-check" title="confirm"></i>
+                                </a>
+                                <a class="ml-2 cur-point" *ngIf="t.isConfirmed" [routerLink]="['/inventory/stock-adjustment', t.id]"> 
+                                    <i  class="fa fa-eye" title="view transaction"></i>
+                                </a>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table> -->
+
+
+    </div>
+</div>

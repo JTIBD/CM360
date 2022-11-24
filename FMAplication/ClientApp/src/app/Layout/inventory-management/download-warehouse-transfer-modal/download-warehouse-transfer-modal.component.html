@@ -1,0 +1,29 @@
+<form>
+    <div class="modal-header">
+        Download warehouse transfer
+    </div>
+    <div class="modal-body">
+        <div class="menu-form d-flex justify-content-center align-items-center py-2">
+                <label for="wareHouse" class="mb-0 mr-2">Source WareHouse</label>
+                <ng-select id="wareHouse" class="flex-fill" name="wareHouse" [multiple]="false" [(ngModel)]="selectedFromWareHouse">
+                    <ng-option *ngFor="let wareHouse of wareHouses" [value]="wareHouse">
+                        {{wareHouse.name}}
+                    </ng-option>
+                </ng-select>
+        </div>
+
+        <div class="menu-form d-flex justify-content-center align-items-center">
+            <label for="toWareHouse" class="mb-0 mr-2">Destination WareHouse</label>
+            <ng-select id="toWareHouse" class="flex-fill" name="toWareHouse" [multiple]="false" [(ngModel)]="selecteToWareHouse">
+                <ng-option *ngFor="let wareHouse of wareHouses" [value]="wareHouse">
+                    {{wareHouse.name}}
+                </ng-option>
+            </ng-select>
+    </div>         
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+        <button type="button" class="btn btn-primary" (click)="downloadFormat()" [disabled]="!selectedFromWareHouse || !selectedFromWareHouse">Download</button>
+    </div>
+</form>

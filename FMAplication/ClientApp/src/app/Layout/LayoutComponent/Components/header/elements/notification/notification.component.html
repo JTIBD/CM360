@@ -1,0 +1,96 @@
+<div class="header-dots">
+  <div ngbDropdown class="d-inline-block" (openChange)="notificationDialogeClose($event)">
+    <button class="btn btn-link p-0 mr-2 dropdown-toggle" id="dropdownBasic1" ngbDropdownToggle>
+      <span>
+        <div class="icon-wrapper icon-wrapper-alt rounded-circle">
+          <div class="icon-wrapper-bg bg-danger"></div><i class="fa fa-bell-o text-danger" aria-hidden="true"
+            title="bullhorn"></i>
+          <div class="badge badge-danger badge-number " *ngIf="notificationCount!=0">{{notificationCount}}</div>
+        </div>
+      </span>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="p-0" style="width: 320px;">
+      <div class="notification-header text-center text-white bg-primary p-3">
+        <h5>Notifications</h5>
+        <p class="mb-0">You have <strong>{{notificationCount}}</strong> unread messages</p>
+      </div>
+      <div class="notification-body p-3" style="max-height: 500px;overflow-y: scroll;">
+        <div class="notifications">
+          <ul class="notification-list" *ngIf="notificationList.length > 0">
+              <li *ngFor="let notification of notificationList">
+                  <div class="media"  style="cursor: pointer;">
+                      <!-- <div class="media-left">
+                          <a href="#" >
+                              <img  src="./assets/image/like.png" class="media-object cat-icon rounded" alt="...">
+                          </a>
+                          
+                      </div> -->
+                      <div class="media-body ml-2">
+                        <span class="media-heading">
+                          <span class="text-body" >
+                           
+                             <!--workflow status pending-->
+                              <span  *ngIf="notification.twStatus === 0">
+                                A new transaction <b> <a class="cursor-pointer" (click)="navigateToTransaction(notification)" queryParamsHandling="merge" > {{notification.transaction.transactionNumber}}</a></b> is awaiting for your approval
+                              </span>
+                               <!--workflow status approved-->
+                              <span *ngIf="notification.twStatus === 1">
+                                A transaction <b><a class="cursor-pointer" (click)="navigateToTransaction(notification)" queryParamsHandling="merge">
+                                   {{notification.transaction.transactionNumber}}</a>
+                                </b> {{notification.submittedBy}} have already accepted.
+                              </span>
+                              <!--workflow status rejected-->
+                              <span *ngIf="notification.twStatus === 2">
+                                A transaction <b><a class="cursor-pointer" (click)="navigateToTransaction(notification)" queryParamsHandling="merge"> 
+                                  {{notification.transaction.transactionNumber}}</a></b> 
+                                {{notification.submittedBy}} have already rejected.
+                              </span>
+                            
+                            
+                            <br/>
+                            <!--workflow status pending-->
+                            <span *ngIf="notification.twStatus === 0">
+                              <button class="btn btn-primary btn-sm mr-2" (click)="accept(notification)">Accept</button>
+                              <button class="btn btn-danger btn-sm" (click)="reject(notification)">Reject</button>
+                            </span>
+                          </span>
+                        </span> <br/>
+                        <!-- <span class="text-muted timeAgo">{{notification.dateTime | timeAgo}}</span> -->
+                      </div>
+                  </div>
+              </li>
+             
+          </ul>
+          <ul class="notification-list" *ngIf="notificationList.length == 0">
+            <li>
+                <div class="media"  style="cursor: pointer;">
+                    <!-- <div class="media-left">
+                        
+                        <a>
+                            <img  src="./assets/image/sad.png" class="media-object cat-icon rounded" alt="...">
+                        </a>
+                    </div> -->
+                    <div class="media-body ml-2">
+                      <span class="media-heading">
+                        <span class="text-body">
+                          <b>You do not have any notification yet.</b> 
+                        </span>
+                      </span> <br/>
+                      <span class="text-muted timeAgo"></span>
+                    </div>
+                </div>
+            </li>
+           
+        </ul>
+      </div>
+      </div>
+      <div class="notification-footer px-3 py-2 text-center border-top">
+
+        <button type="button" class="btn-transition btn btn-outline-success" (click)="fnRouteNotification()">
+          <fa class="mr-2" name="list"></fa>
+          View All Notification
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

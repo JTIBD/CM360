@@ -1,0 +1,92 @@
+<div class="main-card mb-3 card">
+
+    <div class="card-body">
+        <div class="question-header border-bottom mb-2">
+            <h5 class="card-title">Edit Guideline Setup</h5>
+        </div>
+        <div *ngIf="!!guidelineSetup" class="row no-gutters py-2">
+            <div class="col">
+                <span class="font-weight-bold">Salespoint: </span>
+                <span *ngIf="!!guidelineSetup.salesPoint">{{guidelineSetup.salesPoint.name}}</span>
+            </div>            
+        </div>
+        <form #surveyForm="ngForm">
+            <div class="main-card mb-3 card">
+                <div class="card-header">
+                    <div class="form-row">
+
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="dp">From Date:</label>
+                                <div class="form-inline">
+                                    <div class="form-group w-100">
+                                        <div class="input-group w-100">
+                                            <input class="form-control" required placeholder="yyyy-mm-dd" name="dp"
+                                                [(ngModel)]="selectedFromDate" ngbDatepicker #d="ngbDatepicker"
+                                                placement="bottom" [disabled]="!canEditStartDate"  [maxDate]="selectedToDate" [minDate]="minDate">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                                    type="button" [disabled]="!canEditStartDate"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="dp2">To Date:</label>
+                                <div class="form-inline">
+                                    <div class="form-group w-100">
+                                        <div class="input-group w-100">
+                                            <input class="form-control" required placeholder="yyyy-mm-dd" name="dp2"
+                                                [(ngModel)]="selectedToDate" ngbDatepicker #d2="ngbDatepicker"
+                                                placement="bottom" [minDate]="selectedFromDate"
+                                                [disabled]="!canEditEndDate">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()"
+                                                    type="button" [disabled]="!canEditEndDate"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                <label for="status">Status</label>
+                                <ng-select required name="status" #status="ngModel" [(ngModel)]="guidelineStatus">
+                                    <ng-option *ngFor="let key of enumStatusTypes;" [value]="key.id">{{key.label}}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>     
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">                           
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="pt-2">
+                                        <span>Guideline text: </span>
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <angular-editor [(ngModel)]="htmlContent" [config]="config" [ngModelOptions]="{standalone: true}"></angular-editor>          
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-block text-right card-footer">
+                        <!-- <button *ngIf="(selectedQuestions.length>0)" class="mr-2 btn-icon btn-icon-only btn btn-danger"
+                            (click)="removeAll()">
+                            <i class="fa fa-trash" aria-hidden="true"></i> Remove All
+                        </button> -->
+                        <button type="button" class="mr-2 btn-hover-shine btn btn-dark" (click)="handleBack()"><i class="pe-7s-back pr-1"></i> Back </button>
+                        <button class="btn btn-primary" [disabled]="!surveyForm.valid" type="submit" (click)="submit()">
+                            <i class="fa fa-save pr-1"></i>Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

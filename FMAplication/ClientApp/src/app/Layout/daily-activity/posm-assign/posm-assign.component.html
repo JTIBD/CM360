@@ -1,0 +1,55 @@
+<div  [ngClass]="currentView !== 'ListView'?'d-none':''">
+    <div class="main-card mb-3 card">
+        <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+            <div class="card-header-title font-size-lg text-capitalize font-weight-normal">POSM Assign List</div>
+            <div class="btn-actions-pane-right">
+                <button type="button" class="mb-2 mr-2 btn-transition btn btn-outline-info  pr-1" (click)="openExcelImportModal()" >
+                    <fa class="mr-2 fa fa-file-excel-o"></fa>
+                    Import POSM Assign
+                </button>
+               
+               
+            </div>
+        </div>
+        <div  *ngIf="salesPointDropdownData.length > 0 && PosmAssigns" >
+                <app-p-table [pTableSetting]="ptableSettings" [pTableMasterData]="PosmAssigns"
+                    (cellClickCallbackFn)="fnTransactionPtableCellClick($event)" (customActivityOnRecord)="haneleCustomActivityOnRecord($event)" 
+                    (serverSiteCallbackFn)="fnSearch($event)" (dropdownCallbackFn) = "dropDownChange($event)"
+                             (callbackFnOnPageSizeChange)="handlePazeSizeChange($event)" (dateRangeCallbackFn)="handleDateRange($event)">
+                </app-p-table>
+    
+                <div class="p-table-footer">
+                    <div class="row">
+                        <div class="col-12">
+                            <p-paginator #paging class="page-item"
+                            [rows]="params.pageSize" [totalRecords]="totalNumber"
+                            (onPageChange)="paginate($event)" [currentPageReportTemplate]="getPaginationStatus()" ></p-paginator>
+                        </div>
+        
+                    </div>
+                </div>
+               
+        </div>
+    </div>
+    
+</div>
+
+<div *ngIf="currentView === 'DetailsView'">
+    <div class="main-card mb-3 card">
+        <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+            <div class="card-header-title font-size-lg text-capitalize font-weight-normal">POSM Assign Details</div>
+           
+        </div>
+        <div  *ngIf="PosmAssignDetailsList.length > 0">
+                
+    
+            <app-p-table [pTableSetting]="posmDetailstableSettings" [pTableMasterData]="PosmAssignDetails" [pTableSummery]="ptableSummery">
+            </app-p-table>
+               
+        <div class="text-right py-2">
+            <button type="button" class="ml-2  btn-hover-shine btn btn-dark" (click)="changeView('ListView')"><i class="pe-7s-back pr-1"></i> Back </button>
+        </div>
+        </div>
+    </div>
+    
+</div>

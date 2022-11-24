@@ -1,0 +1,136 @@
+<form>
+    <div class="modal-header">
+        <h4 class="modal-title">Import POSM Assign</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" *ngIf="errors.length === 0">
+        <div>
+
+            <div class="form-row">
+                <div class="col-md-8">
+                    <div class="position-relative form-group">
+                        <label for="salesPointId"> Sales Point</label>
+
+                        <ng-select   required name="salesPointId" #salesPointId="ngModel" [multiple]="false"  required
+                        [(ngModel)]="selectedSalesPointId" [ngClass]="{'is-valid':salesPointId.valid,'is-invalid':salesPointId.invalid && salesPointId.touched }">
+                            <ng-option *ngFor="let point of salesPoints; index as i" [value]="point.id"> {{point.name}} </ng-option>
+                        </ng-select>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-check pull-right mr-2 pt-3 mt-3">
+                        <input type="checkbox" class="form-check-input" (change)="checkValue(includeFriday?'true':'false')"  id="includeFriday" 
+                        [(ngModel)]="includeFriday" [ngModelOptions]="{standalone: true}">
+                        <label class="form-check-label" for="includeFriday">Include Friday</label>
+                      </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="pull-left d-flex">
+                        <div  class="d-flex align-items-center">
+                            <label for="from-date-picker-ptable"> From: </label>
+                            <div class="form-inline px-2">
+                                <div class="form-group w-100">
+                                    <div class="input-group w-100">
+                                        <input class="form-control" placeholder="yyyy-mm-dd" name="dp"
+                                            [(ngModel)]="selectedFromDate" ngbDatepicker #d="ngbDatepicker"
+                                            [minDate]="fromMinDate" placement="bottom" (dateSelect)="handleFromDateChange()">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary calendar"
+                                                (click)="d.toggle()" type="button"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <label for="to-date-picker-ptable pr-2"> To: </label>
+                            <div class="form-inline px-2">
+                                <div class="form-group w-100">
+                                    <div class="input-group w-100">
+                                        <input class="form-control" placeholder="yyyy-mm-dd" name="dp2"
+                                            [minDate]="toMinDate" [maxDate]="toMaxDate"
+                                            [(ngModel)]="selectedToDate" ngbDatepicker #d2="ngbDatepicker"
+                                             placement="bottom">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary calendar"
+                                                (click)="d2.toggle()" type="button"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                </div>
+            </div>
+            <br/> 
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label>1. Select and download excel template</label><br />
+                        <button (click)="downloadExcel()" type="button" class="btn btn-info btn-sm active"  [disabled]="!selectedToDate || !selectedFromDate || !selectedSalesPointId" >Download</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label>2. Edit your excel file</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12" >
+                    <div class="position-relative form-group">
+                        <label for="inputFile">3. Upload your excel file</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" accept=".xlsx,.xls,.csv" #inputFile id="inputFile" 
+                                (change)="onChangeInputFile($event)">
+                            <label class="custom-file-label" for="inputFile">{{selectedFileName?selectedFileName:'Choose file'}}</label>
+                        </div>
+                        <small class="text-danger" *ngIf="fileError">
+                            {{fileError}}
+                        </small>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+       
+       
+
+    </div>
+
+    <div *ngIf="errors.length > 0">
+        <div class="form-row">
+            <div class="col-md-12">
+                <table class="table table-hover table-sm table-striped table-bordered" >
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th scope="col" width="10%">Row</th>
+                            <th scope="col" width="30%">Column Name</th>
+                            <th scope="col" width="60%">Error Message</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let m of errors;let i = index" [attr.data-index]="i">
+                            <td>{{m.row}}</td>
+                            <td>{{m.columnName}}</td>
+                            <td>{{m.errorMessage}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+        <button type="button" class="btn btn-primary" (click)="submit()" [disabled]="!isFormValid" *ngIf="errors.length === 0">Import</button>
+        <button type="button" class="btn btn-primary" (click)="importAgain()"  *ngIf="errors.length > 0">Import Again</button>
+    </div>
+</form>

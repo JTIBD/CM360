@@ -1,0 +1,135 @@
+<div class="card-header">
+	  <h5 class="card-title">Question Set Generation Form</h5>
+</div>
+<form #surveyForm="ngForm">
+	<div class="main-card mb-3 card">
+		<div class="card-header">
+			<div class="form-row">
+				<div class="col-md-8">
+					<div class="position-relative form-group">
+						<label for="surveyName">Question Set Title</label>
+						<input required name="surveyName" #surveyName="ngModel" id="surveyName" [disabled]="!survey.isEditable"
+							placeholder="Name of the set" type="text" class="form-control"
+							[ngClass]="{'is-valid':surveyName.valid,'is-invalid':surveyName.invalid && surveyName.touched }"
+							[(ngModel)]="survey.name" />
+						<small class="text-danger" [class.d-none]="surveyName.valid || surveyName.untouched">
+							Title is required
+						</small>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="position-relative form-group">
+						<label for="status">Select Status</label>
+						<select name="status" id="status" class="form-control" [(ngModel)]="survey.status" required #status="ngModel" [disabled]="!survey.isEditable"
+						[ngClass]="{'is-valid':status.valid,'is-invalid':status.invalid && status.touched}">
+						<option *ngFor="let s of statusValues" [value]="s" [label]="enumStatus[s]">
+							</option>
+						</select>
+						<small class="text-danger" [class.d-none]="status.valid || status.untouched"> Status is
+							required
+						</small>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card-header">
+			Selected Questions
+		</div>
+		<div class="table-responsive">
+			<div class="card-header text-center" *ngIf="!(selectedQuestions.length>0)">No question selected</div>
+			<table *ngIf="(selectedQuestions.length>0)"
+				class="align-middle mb-0 table table-borderless table-striped table-hover">
+				<thead>
+					<tr>
+						<th class="text-center">#</th>
+						<th class="text-center">Name</th>
+						<th class="text-center">Question Type</th>
+						<th class="text-center">Remove</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let question of selectedQuestions; let i = index">
+						<td class="text-center">
+							{{i+1}}
+						</td>
+						<td class="text-center">
+							{{question.questionTitle}}
+						</td>
+						<td class="text-center">{{question.questionType}}</td>
+						<td class="text-center">
+							<button class="mr-2 btn-icon btn btn-outline-danger" [disabled]="!survey.isEditable"
+								(click)="removeFromSelectedBucket(question.id)">
+								<i class="pr-2 fa fa-minus" aria-hidden="true"></i>Remove From Survey
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="d-block text-right card-footer">
+			<button type="button" class="mr-2 btn-hover-shine btn btn-dark" 
+			(click)="handleBack()"><i class="pe-7s-back pr-1"></i> Back </button>
+			<button *ngIf="(selectedQuestions.length>0)" [disabled]="!survey.isEditable" class="mr-2 btn-icon btn-icon-only btn btn-danger"
+				(click)="removeAll()">
+				<i class="fa fa-trash" aria-hidden="true"></i> Remove All
+			</button>
+			<button class="btn btn-primary" [disabled]="!surveyForm.valid" type="submit" (click)="submit()">
+				<i class="fa fa-save pr-1"></i>Save
+			</button>
+		</div>
+	</div>
+</form>
+
+<div *ngIf="!!survey && survey.isEditable" class="col col-lg-12 px-0">
+	<app-p-table [pTableSetting]="ptableSettings" [pTableMasterData]="questions"
+		(cellClickCallbackFn)="addToBtnClick($event)">
+	</app-p-table>
+</div>
+
+<!-- <div class="main-card mb-3 card survey-generation-form">
+	<div class="card-header">
+		Select Active Questions
+	</div>
+	<div class="table-responsive">
+		<table class="align-middle mb-0 table table-borderless table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="text-center">SL#</th>
+					<th class="text-center">Name</th>
+					<th class="text-center">Question Type</th>
+					<th class="text-center">Statu</th>
+					<th class="text-center">Add/Remove</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let question of questions; let i = index">
+					<td class="text-center">
+						{{i+1}}
+					</td>
+					<td class="text-center">
+						{{question.questionTitle}}
+					</td>
+					<td class="text-center">{{question.questionType}}</td>
+					 <td class="text-center">
+						<div [ngClass]="[ question.isActive ? 'badge badge-success' : 'badge badge-warning']">
+							{{(question.isActive)?"Active":"Inactive"}}
+						</div>
+					</td> 
+					<td class="text-center">
+						<button [disabled]="question.isSelected"
+							class="mr-2 btn-icon btn-icon-only btn btn-outline-info"
+							(click)="addToSelectedBucket(question.id)">
+							<i class="pe-7s-plus btn-icon-wrapper"> </i>
+						</button>
+						<button [disabled]="!question.isSelected"
+							class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"
+							(click)="removeFromSelectedBucket(question.id)">
+							<i class="pe-7s-less btn-icon-wrapper"> </i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div> -->

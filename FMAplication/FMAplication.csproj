@@ -1,0 +1,247 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+	<NullableReferenceTypes>true</NullableReferenceTypes>
+  <LangVersion>8.0</LangVersion>
+  <UserSecretsId>9ab8db5c-a1f9-4dd8-83a4-2115b6d057cc</UserSecretsId>
+  <!--<Nullable>enable</Nullable>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Common" Version="12.7.2" />
+    <PackageReference Include="Cronos" Version="0.7.1" />
+    <PackageReference Include="EPPlus" Version="5.0.3" />
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.15" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="3.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.10" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.6.3" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.1.0" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+    <PackageReference Include="X.PagedList" Version="7.9.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
+    <PackageReference Include="NetCore.AutoRegisterDi" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\Layout\cm-user-details\user-info\**" />
+    <Compile Remove="Interfaces\**" />
+    <Compile Remove="Models\DailyActivities\**" />
+    <Compile Remove="Services\DailyPOSM\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\Layout\cm-user-details\user-info\**" />
+    <Content Remove="Interfaces\**" />
+    <Content Remove="Models\DailyActivities\**" />
+    <Content Remove="Services\DailyPOSM\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\Layout\cm-user-details\user-info\**" />
+    <EmbeddedResource Remove="Interfaces\**" />
+    <EmbeddedResource Remove="Models\DailyActivities\**" />
+    <EmbeddedResource Remove="Services\DailyPOSM\**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\Layout\cm-user-details\user-info\**" />
+    <None Remove="Interfaces\**" />
+    <None Remove="Models\DailyActivities\**" />
+    <None Remove="Services\DailyPOSM\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200425064157_ProductAndPosmProductColumnUpdated.cs" />
+    <Compile Remove="Migrations\20200425064157_ProductAndPosmProductColumnUpdated.Designer.cs" />
+    <Compile Remove="Migrations\20200505072837_ActivityAndPErmissionTableAdd.cs" />
+    <Compile Remove="Migrations\20200505072837_ActivityAndPErmissionTableAdd.Designer.cs" />
+    <Compile Remove="Migrations\20200511070311_workflowTypetable.cs" />
+    <Compile Remove="Migrations\20200511070311_workflowTypetable.Designer.cs" />
+    <Compile Remove="Migrations\20200514102407_removeFKfromUserTerr.cs" />
+    <Compile Remove="Migrations\20200514102407_removeFKfromUserTerr.Designer.cs" />
+    <Compile Remove="Migrations\20200514103055_removeFKfromUserTerr.cs" />
+    <Compile Remove="Migrations\20200514103055_removeFKfromUserTerr.Designer.cs" />
+    <Compile Remove="Migrations\20200519155016_AddHierarchyTable.cs" />
+    <Compile Remove="Migrations\20200519155016_AddHierarchyTable.Designer.cs" />
+    <Compile Remove="Migrations\20200610072840_AuditReportEntityUpdated.cs" />
+    <Compile Remove="Migrations\20200610072840_AuditReportEntityUpdated.Designer.cs" />
+    <Compile Remove="Migrations\20200610084328_AuditReportEntityUpdated.cs" />
+    <Compile Remove="Migrations\20200610084328_AuditReportEntityUpdated.Designer.cs" />
+    <Compile Remove="Migrations\20200610124525_AuditReportEntityUpdate.cs" />
+    <Compile Remove="Migrations\20200610124525_AuditReportEntityUpdate.Designer.cs" />
+    <Compile Remove="Migrations\20200610125527_AuditReportEntityUpdate.cs" />
+    <Compile Remove="Migrations\20200610125527_AuditReportEntityUpdate.Designer.cs" />
+    <Compile Remove="Migrations\20210329090655_trasactionAdded.cs" />
+    <Compile Remove="Migrations\20210329090655_trasactionAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210331055922_StockAddTransaction_Table.cs" />
+    <Compile Remove="Migrations\20210331055922_StockAddTransaction_Table.Designer.cs" />
+    <Compile Remove="Migrations\20210405073622_cmsuserTableModification.cs" />
+    <Compile Remove="Migrations\20210405073622_cmsuserTableModification.Designer.cs" />
+    <Compile Remove="Migrations\20210415071632_test.cs" />
+    <Compile Remove="Migrations\20210415071632_test.Designer.cs" />
+    <Compile Remove="Migrations\20210415073344_test.cs" />
+    <Compile Remove="Migrations\20210415073344_test.Designer.cs" />
+    <Compile Remove="Migrations\20210429122437_dailyAVCommunicationTaskAdded.cs" />
+    <Compile Remove="Migrations\20210429122437_dailyAVCommunicationTaskAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210429123012_dailyCommunicationTaskAdded.cs" />
+    <Compile Remove="Migrations\20210429123012_dailyCommunicationTaskAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210430083414_dailyTaskModelUpdated.cs" />
+    <Compile Remove="Migrations\20210430083414_dailyTaskModelUpdated.Designer.cs" />
+    <Compile Remove="Migrations\20210503125636_dailyTaskAudit.cs" />
+    <Compile Remove="Migrations\20210503125636_dailyTaskAudit.Designer.cs" />
+    <Compile Remove="Migrations\20210505105328_addReasonModel.cs" />
+    <Compile Remove="Migrations\20210505105328_addReasonModel.Designer.cs" />
+    <Compile Remove="Migrations\20210506064641_Add_Table_WareHouseTransaction.cs" />
+    <Compile Remove="Migrations\20210506064641_Add_Table_WareHouseTransaction.Designer.cs" />
+    <Compile Remove="Migrations\20210506064839_Add_Table_WareHouseTransaction.cs" />
+    <Compile Remove="Migrations\20210506064839_Add_Table_WareHouseTransaction.Designer.cs" />
+    <Compile Remove="Migrations\20210506072439_GuidelineSetupModelCreated.cs" />
+    <Compile Remove="Migrations\20210506072439_GuidelineSetupModelCreated.Designer.cs" />
+    <Compile Remove="Migrations\20210519080407_transactionWorkflowUpdatedAndNotificationTableAdded.cs" />
+    <Compile Remove="Migrations\20210519080407_transactionWorkflowUpdatedAndNotificationTableAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210519080749_transactionWorkflowUpdatedAndNotificationTableAdded.cs" />
+    <Compile Remove="Migrations\20210519080749_transactionWorkflowUpdatedAndNotificationTableAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210519081102_transactionWorkflowUpdatedAndNotificationTableAdded.cs" />
+    <Compile Remove="Migrations\20210519081102_transactionWorkflowUpdatedAndNotificationTableAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210519081305_transactionWorkflowUpdatedAndNotificationTableAdded.cs" />
+    <Compile Remove="Migrations\20210519081305_transactionWorkflowUpdatedAndNotificationTableAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210519081628_transactionWorkflowUpdatedAndNotificationTableAdded.cs" />
+    <Compile Remove="Migrations\20210519081628_transactionWorkflowUpdatedAndNotificationTableAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210519081804_transactionWorkflowUpdatedAndNotificationTableAdded.cs" />
+    <Compile Remove="Migrations\20210519081804_transactionWorkflowUpdatedAndNotificationTableAdded.Designer.cs" />
+    <Compile Remove="Models\Task\DailyTaskViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <None Remove="ClientApp\src\app\Layout\cm-user-details\user-info\user-info.component.css" />
+    <None Remove="ClientApp\src\app\Layout\cm-user-details\user-info\user-info.component.html" />
+    <None Remove="ClientApp\src\app\Layout\cm-user-details\user-info\user-info.component.spec.ts" />
+    <None Remove="ClientApp\src\app\Layout\cm-user-details\user-info\user-info.component.ts" />
+    <None Remove="ClientApp\src\app\Layout\inventory-management\inventory-management-routing-module.ts" />
+    <None Remove="ClientApp\src\app\Shared\Entity\Organizations\orgrole.ts" />
+    <None Remove="ClientApp\src\app\Shared\Entity\Organizations\userrorgolemapping.ts" />
+
+    <None Remove="ClientApp\src\app\Shared\Entity\Products\posmproduct.ts" />
+
+    <None Remove="ClientApp\src\app\Shared\Entity\Users\role.ts" />
+    <None Remove="ClientApp\src\app\Shared\Entity\Users\userInfo.ts" />
+    <None Remove="ClientApp\src\app\Shared\Entity\Users\userrolemapping.ts" />
+
+    <None Remove="ClientApp\src\app\Shared\Entity\WorkFlows\workflowconfiguration.ts" />
+    <None Remove="ClientApp\src\app\Shared\Enums\approvalStatus.ts" />
+    <None Remove="ClientApp\src\app\Shared\Enums\modeOfApproval.ts" />
+    <None Remove="ClientApp\src\app\Shared\Enums\notificationStatus.ts" />
+    <None Remove="ClientApp\src\app\Shared\Enums\posmproducttype.ts" />
+    <None Remove="ClientApp\src\app\Shared\Enums\rejectedStatus.ts" />
+    <None Remove="ClientApp\src\app\Shared\Enums\statusTypes.ts" />
+
+    <None Remove="ClientApp\src\app\Shared\Enums\yesno.ts" />
+
+    <None Remove="ClientApp\src\app\Shared\interfaces\files.ts" />
+
+    <None Remove="ClientApp\src\app\Shared\interfaces\index.ts" />
+
+    <None Remove="ClientApp\src\app\Shared\interfaces\response.ts" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\Shared\Entity\File\" />
+    <Folder Include="ClientApp\src\app\Shared\Services\fileUtility\" />
+    <Folder Include="Domain\BarandSubBrand\" />
+    <Folder Include="Models\DailyActivities\" />
+    <Folder Include="Models\Organizations\" />
+    <Folder Include="Models\Task\" />
+    <Folder Include="Services\Examples\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\Layout\inventory-management\inventory-management-routing-module.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Entity\Organizations\orgrole.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Entity\Organizations\userrorgolemapping.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Entity\Products\posmproduct.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Entity\Users\role.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Entity\Users\userInfo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Entity\Users\userrolemapping.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Entity\WorkFlows\workflowconfiguration.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Enums\approvalStatus.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Enums\modeOfApproval.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Enums\notificationStatus.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Enums\posmproducttype.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Enums\rejectedStatus.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Enums\statusTypes.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\Enums\yesno.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\interfaces\response.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\interfaces\files.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\Shared\interfaces\index.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\src\app\Shared\interfaces\files - Copy.js">
+      <DependentUpon>files.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\Shared\interfaces\files - Copy.js.map">
+      <DependentUpon>files.js.map</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

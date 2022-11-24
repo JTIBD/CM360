@@ -1,0 +1,20 @@
+<div class="col col-lg-12">
+    <div class="card">
+        <app-p-table [pTableSetting]="ptableSettings" [pTableMasterData]="minimumExecutionLimitTableData"
+            (customActivityOnRecord)="handleCustomActivityOnRecord($event)" 
+            (serverSiteCallbackFn)="fnSearch($event)"
+            (dropdownCallbackFn)="dropDownChange($event)"
+             (callbackFnOnPageSizeChange)="handlePageSizeChange($event)">
+        </app-p-table>
+
+        <div class="p-table-footer">
+            <div class="row">
+                <div class="col-12">
+                    <p-paginator #paging class="page-item" [rows]="pageSize" [totalRecords]="total"
+                        (onPageChange)="paginate($event)" [currentPageReportTemplate]="getPaginationStatus()"></p-paginator>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

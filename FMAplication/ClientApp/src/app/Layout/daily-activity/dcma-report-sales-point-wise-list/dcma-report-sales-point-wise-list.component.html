@@ -1,0 +1,12 @@
+<div class="col col-lg-12">
+    <div>
+        <button type="button" class="btn-column-setting" title="Excel Export"
+                (click)="fnExeclDownload()">
+            <i class="fa fa-file-excel-o p-table-action-button"></i>
+        </button>
+    </div> <app-p-table [pTableSetting]="ptableSettings" [pTableMasterData]="DCMAReportInDetailsList"
+                        (serverSiteCallbackFn)="fnSearch($event)"
+                        (customActivityOnRecord)="fnCustomTrigger($event)">
+    </app-p-table>
+    <p-paginator #paging [rows]="pageSize" (onPageChange)="paginate($event)"></p-paginator>
+</div>

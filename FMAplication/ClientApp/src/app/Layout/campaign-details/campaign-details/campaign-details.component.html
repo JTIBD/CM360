@@ -1,0 +1,37 @@
+<div class="card-shadow-warning border mb-3 card card-body border-warning">
+
+    <div class="card-body">
+        <h5 class="card-title">Campaign Details</h5>
+        <div class="row">
+            <div class="col-sm-6">
+                <p><span><strong>Campaign Name:</strong></span> {{campaign.campaignName}}</p>
+            </div>
+            <div class="col-sm-6">
+                <p><span><strong>Start Date:</strong></span> {{campaign.startDate | date:'yyyy-MM-dd'}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <p><span><strong>Campaign Details:</strong></span> {{campaign.campaignDetails }}</p>
+            </div>
+            <div class="col-sm-6">
+                <p><span><strong>End Date:</strong></span> {{campaign.endDate | date:'yyyy-MM-dd'}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <p><span><strong>Status:</strong></span> {{statusText(campaign.status)}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-12">
+                <app-p-table [pTableSetting]="ptableSettings" [pTableMasterData]="campaign.campaignHistories">
+                </app-p-table>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="mb-2 mr-2 btn-hover-shine btn btn-dark" (click)="goBack()"><i class="pe-7s-back pr-1"></i> Back </button>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+

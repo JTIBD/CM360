@@ -1,0 +1,286 @@
+
+<!-- <app-page-title [heading]="heading" [subheading]="subheading" [icon]="icon"></app-page-title> -->
+
+<div class="mb-3 card">
+  <div class="card-header-tab card-header">
+    <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+      <i class="header-icon lnr-charts icon-gradient bg-happy-green"> </i>
+      POSM Summary (monthly)
+    </div>
+  </div>
+  <div class="no-gutters row">
+    <div class="col-sm-6 col-md-3 col-xl-3">
+      <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+        <div class="icon-wrapper rounded-circle">
+          <div class="icon-wrapper-bg opacity-10 bg-warning"></div>
+          <i class="pe-7s-album text-white opacity-8"></i>
+        </div>
+        <div class="widget-chart-content">
+          <div class="widget-subheading">Completed POSM Installation</div>
+          <div class="widget-numbers">{{this.dashboardModel.totalCurrentMonthPosmInstallationProductCount}}</div>
+          <div class="widget-description opacity-8 text-focus">
+            Total :
+            <span class="pl-1">{{this.dashboardModel.totalCurrentMonthPosmInstallationProductCount}}</span>
+            <!-- <div class="d-inline text-danger pr-1">
+              <fa name="angle-down"></fa>
+              
+            </div>
+            less earnings -->
+          </div>
+        </div>
+      </div>
+      <div class="divider m-0 d-md-none d-sm-block"></div>
+    </div>
+    <div class="col-sm-6 col-md-3 col-xl-3">
+      <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+        <div class="icon-wrapper rounded-circle">
+          <div class="icon-wrapper-bg opacity-9 bg-danger"></div>
+          <i class="pe-7s-portfolio text-white"></i>
+        </div>
+        <div class="widget-chart-content">
+          <div class="widget-subheading">Completed POSM Removal</div>
+          <div class="widget-numbers"><span>{{this.dashboardModel.totalCurrentMonthPosmRemovalProductCount}}</span></div>
+          <div class="widget-description opacity-8 text-focus">
+            Total :
+            <span class="pl-1">{{this.dashboardModel.totalCurrentMonthPosmRemovalProductCount}}</span>
+           
+          </div>
+        </div>
+      </div>
+      <div class="divider m-0 d-md-none d-sm-block"></div>
+    </div>
+    <div class="col-sm-12 col-md-3 col-xl-3">
+      <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+        <div class="icon-wrapper rounded-circle">
+          <div class="icon-wrapper-bg opacity-9 bg-success"></div>
+          <i class="pe-7s-light text-white"></i>
+        </div>
+        <div class="widget-chart-content">
+          <div class="widget-subheading">Completed POSM Repair</div>
+          <div class="widget-numbers text-success"><span>{{this.dashboardModel.totalCurrentMonthPosmRepairProductCount}}</span></div>
+          <div class="widget-description text-focus">
+            Total :
+            <span class="pl-1">{{this.dashboardModel.totalCurrentMonthPosmRepairProductCount}}</span>
+            <!-- Increased by
+            <span class="text-warning pl-1">
+              <fa name="angle-up"></fa>
+             
+            </span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-3 col-xl-3">
+      <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+        <div class="icon-wrapper rounded-circle">
+          <div class="icon-wrapper-bg opacity-9 bg-success"></div>
+          <i class="pe-7s-light text-white"></i>
+        </div>
+        <div class="widget-chart-content">
+          <div class="widget-subheading">Completed POSM Removal And Reinstallation</div>
+          <div class="widget-numbers text-success"><span>{{this.dashboardModel.totalCurrentMonthPosmRemovalAndReInstallationCount}}</span></div>
+          <div class="widget-description text-focus">
+            Total :
+            <span class="pl-1">{{this.dashboardModel.totalCurrentMonthPosmRemovalAndReInstallationCount}}</span>
+            <!-- Increased by
+            <span class="text-warning pl-1">
+              <fa name="angle-up"></fa>
+             
+            </span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="no-gutters row">
+    <div class="col-sm-6 col-md-3 col-xl-3">
+      <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+        <div class="icon-wrapper rounded-circle">
+          <div class="icon-wrapper-bg opacity-10 bg-warning"></div>
+          <i class="pe-7s-album text-white opacity-8"></i>
+        </div>
+        <div class="widget-chart-content">
+          <div class="widget-subheading">Completed Audit</div>
+          <div class="widget-numbers">{{this.dashboardModel.totalCurrentMonthAuditReportProductCount}}</div>
+          <div class="widget-description opacity-8 text-focus">
+            Total :
+            <span class="pl-1">{{this.dashboardModel.totalCurrentMonthAuditReportProductCount}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="divider m-0 d-md-none d-sm-block"></div>
+    </div>
+    <div class="col-sm-6 col-md-3 col-xl-3">
+      <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+        <div class="icon-wrapper rounded-circle">
+          <div class="icon-wrapper-bg opacity-9 bg-danger"></div>
+          <i class="pe-7s-portfolio text-white"></i>
+        </div>
+        <div class="widget-chart-content">
+          <div class="widget-subheading">Completed Customer Survey</div>
+          <div class="widget-numbers"><span>{{this.dashboardModel.totalCurrentMonthSurveyReportProductCount}}</span></div>
+          <div class="widget-description opacity-8 text-focus">
+            Total :
+            <span class="pl-1">{{this.dashboardModel.totalCurrentMonthSurveyReportProductCount}}</span>
+           
+          </div>
+        </div>
+      </div>
+      <div class="divider m-0 d-md-none d-sm-block"></div>
+    </div>
+    <div class="col-sm-12 col-md-3 col-xl-3">
+      <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+        <div class="icon-wrapper rounded-circle">
+          <div class="icon-wrapper-bg opacity-9 bg-success"></div>
+          <i class="pe-7s-light text-white"></i>
+        </div>
+        <div class="widget-chart-content">
+          <div class="widget-subheading">Completed Consumer Survey</div>
+          <div class="widget-numbers text-success"><span>{{this.dashboardModel.totalCurrentMonthConsumerSurveyReportProductCount}}</span></div>
+          <div class="widget-description text-focus">
+            Total :
+            <span class="pl-1">{{this.dashboardModel.totalCurrentMonthConsumerSurveyReportProductCount}}</span>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+<div class="row">
+
+
+  <div class="col-sm-12 col-lg-12">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-3 widget-chart widget-chart2 text-left card-btm-border card-shadow-success border-success">
+          <div class="widget-chat-wrapper-outer">
+            <div class="widget-chart-content pt-3 pl-3 pb-1">
+              <div class="widget-chart-flex">
+                <div class="widget-numbers">
+                  <div class="widget-chart-flex">
+                    <div class="fsize-4">
+                      <!-- <small class="opacity-5">$</small> -->
+                      <span>{{this.dashboardModel.totalLastMonthPosmInstallationProductCount}}</span></div>
+                  </div>
+                </div>
+              </div>
+              <h6 class="widget-subheading mb-0 opacity-5">Last Month Total POSM Installation</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-3 widget-chart widget-chart2 text-left card-btm-border card-shadow-primary border-primary">
+          <div class="widget-chat-wrapper-outer">
+            <div class="widget-chart-content pt-3 pl-3 pb-1">
+              <div class="widget-chart-flex">
+                <div class="widget-numbers">
+                  <div class="widget-chart-flex">
+                    <div class="fsize-4">
+                      <!-- <small class="opacity-5">$</small> -->
+                      <span>{{this.dashboardModel.totalLastMonthPosmRepairProductCount}}</span></div>
+                  </div>
+                </div>
+              </div>
+              <h6 class="widget-subheading mb-0 opacity-5">Last Month Total POSM Repair</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-3 widget-chart widget-chart2 text-left card-btm-border card-shadow-warning border-warning">
+          <div class="widget-chat-wrapper-outer">
+            <div class="widget-chart-content pt-3 pl-3 pb-1">
+              <div class="widget-chart-flex">
+                <div class="widget-numbers">
+                  <div class="widget-chart-flex">
+                    <div class="fsize-4">
+                      <!-- <small class="opacity-5">$</small> -->
+                      <span>{{this.dashboardModel.totalLastMonthPosmRemovalProductCount}}</span></div>
+                  </div>
+                </div>
+              </div>
+              <h6 class="widget-subheading mb-0 opacity-5">Last Month Total POSM Removal</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-3 widget-chart widget-chart2 text-left card-btm-border card-shadow-warning border-warning">
+          <div class="widget-chat-wrapper-outer">
+            <div class="widget-chart-content pt-3 pl-3 pb-1">
+              <div class="widget-chart-flex">
+                <div class="widget-numbers">
+                  <div class="widget-chart-flex">
+                    <div class="fsize-4">
+                      <span>{{this.dashboardModel.totalLastMonthPosmRemovalAndReInstallationCount}}</span></div>
+                  </div>
+                </div>
+              </div>
+              <h6 class="widget-subheading mb-0 opacity-5">Last Month Total POSM Removal And Reinstallation</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-3 widget-chart widget-chart2 text-left card-btm-border card-shadow-danger border-danger">
+          <div class="widget-chat-wrapper-outer">
+            <div class="widget-chart-content pt-3 pl-3 pb-1">
+              <div class="widget-chart-flex">
+                <div class="widget-numbers">
+                  <div class="widget-chart-flex">
+                    <div class="fsize-4">
+                      <!-- <small class="opacity-5">$</small> -->
+                      <span>{{this.dashboardModel.totalLastMonthAuditReportProductCount}}</span></div>
+                  </div>
+                </div>
+              </div>
+              <h6 class="widget-subheading mb-0 opacity-5">Last Month Total Audit</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-3 widget-chart widget-chart2 text-left card-btm-border card-shadow-info border-info">
+          <div class="widget-chat-wrapper-outer">
+            <div class="widget-chart-content pt-3 pl-3 pb-1">
+              <div class="widget-chart-flex">
+                <div class="widget-numbers">
+                  <div class="widget-chart-flex">
+                    <div class="fsize-4">
+                      <!-- <small class="opacity-5">$</small> -->
+                      <span>{{this.dashboardModel.totalLastMonthSurveyReportProductCount}}</span></div>
+                  </div>
+                </div>
+              </div>
+              <h6 class="widget-subheading mb-0 opacity-5">Last Month Total Customer Survey</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-3 widget-chart widget-chart2 text-left card-btm-border card-shadow-warning border-warning">
+          <div class="widget-chat-wrapper-outer">
+            <div class="widget-chart-content pt-3 pl-3 pb-1">
+              <div class="widget-chart-flex">
+                <div class="widget-numbers">
+                  <div class="widget-chart-flex">
+                    <div class="fsize-4">
+                      <!-- <small class="opacity-5">$</small> -->
+                      <span>{{this.dashboardModel.totalLastMonthConsumerSurveyReportProductCount}}</span></div>
+                  </div>
+                </div>
+              </div>
+              <h6 class="widget-subheading mb-0 opacity-5">Last Month Total Consumer Survey</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,66 @@
+<div class="col col-lg-12">
+    <div class="card">
+        <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+            <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Notification List</div>
+           
+        </div>
+        <div class="card-body">
+            <div class="notifications">
+                <ul class="notification-list" *ngIf="notifications.length > 0">
+                    <li *ngFor="let notification of notifications">
+                        <div class="media"  style="cursor: pointer;">
+                            <div class="media-body ml-2">
+                              <span class="media-heading">
+                                <span class="text-body" >
+                                 
+                                   <!--workflow status pending-->
+                                    <span  *ngIf="notification.twStatus === 0">
+                                      A new transaction <b> <a class="cursor-pointer" (click)="navigateToTransaction(notification)" queryParamsHandling="merge" > {{notification.transaction.transactionNumber}}</a></b> is awaiting for your approval
+                                    </span>
+                                     <!--workflow status approved-->
+                                    <span *ngIf="notification.twStatus === 1">
+                                      A transaction <b><a class="cursor-pointer" (click)="navigateToTransaction(notification)" queryParamsHandling="merge">
+                                         {{notification.transaction.transactionNumber}}</a>
+                                      </b> {{notification.submittedBy}} have already accepted.
+                                    </span>
+                                    <!--workflow status rejected-->
+                                    <span *ngIf="notification.twStatus === 2">
+                                      A transaction <b><a class="cursor-pointer" (click)="navigateToTransaction(notification)" queryParamsHandling="merge"> 
+                                        {{notification.transaction.transactionNumber}}</a></b> 
+                                      {{notification.submittedBy}} have already rejected.
+                                    </span>
+                                  
+                                  
+                                  
+                                  <!--workflow status pending-->
+                                  <span class="btn-actions-pane-right" *ngIf="notification.twStatus === 0">
+                                    <button class="btn btn-primary btn-sm mr-2" (click)="accept(notification)">Accept</button>
+                                    <button class="btn btn-danger btn-sm" (click)="reject(notification)">Reject</button>
+                                  </span>
+                                </span>
+                              </span> <br/>
+                              <!-- <span class="text-muted timeAgo">{{notification.dateTime | timeAgo}}</span> -->
+                            </div>
+                        </div>
+                    </li>
+                   
+                </ul>
+                <ul class="notification-list" *ngIf="notifications.length == 0">
+                  <li>
+                      <div class="media"  style="cursor: pointer;">
+                          <div class="media-body ml-2">
+                            <span class="media-heading">
+                              <span class="text-body">
+                                <b>You do not have any notification yet.</b> 
+                              </span>
+                            </span> <br/>
+                            <span class="text-muted timeAgo"></span>
+                          </div>
+                      </div>
+                  </li>
+                 
+              </ul>
+            </div>
+        </div>
+    </div>
+</div>

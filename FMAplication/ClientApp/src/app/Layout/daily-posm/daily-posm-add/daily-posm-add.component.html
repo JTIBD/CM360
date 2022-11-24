@@ -1,0 +1,135 @@
+
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Create New Daily POSM</div>
+        <div class="btn-actions-pane-right">
+            <button type="button" class="mb-2 mr-2 btn-transition btn btn-outline-success" (click)="fnRouteDailyPOSMList()">
+                <fa class="mr-2" name="list"></fa>
+                Back to list
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <form #dailyPOSMForm="ngForm" (submit)="fnSaveDailyPOSM(dailyPOSMModel)">
+
+            <div class="form-row">
+                <div class="col-md-4">
+                    <div class="position-relative form-group">
+                        <label for="dailyCMActivityId "> Select Outlet</label>
+                        <select name="dailyCMActivityId " id="dailyCMActivityId "
+                                [(ngModel)]="dailyPOSMModel.dailyCMActivityId " class="form-control">
+                            <option *ngFor="let key of choices" [value]="key.id" [label]="key.name"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="IsPOSMInstallation">POSM Installation</label>
+                        <input style="position:relative; left: 30px;" name="IsPOSMInstallation" #IsPOSMInstallation="ngModel" type="checkbox"
+                               [(ngModel)]="dailyPOSMModel.isPOSMInstallation" class="form-check-input">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="IsPOSMRepair">POSM Repair</label>
+                        <input style="position:relative; left: 30px;" name="IsPOSMRepair" #IsPOSMInstallation="ngModel" type="checkbox"
+                               [(ngModel)]="dailyPOSMModel.isPOSMRepair" class="form-check-input">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="IsPOSMRemoval">POSM Removal</label>
+                        <input style="position:relative; left: 30px;" name="IsPOSMRemoval" #IsPOSMRemoval="ngModel" type="checkbox"
+                               [(ngModel)]="dailyPOSMModel.isPOSMRemoval" class="form-check-input">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                
+                  <div class="col-md-4">
+                    <div class="position-relative form-group">
+                        <label for="POSMInstallationStatus">POSM Installation Status</label>
+                        <select  name="POSMInstallationStatus" id="POSMInstallationStatus" 
+                        [(ngModel)]="dailyPOSMModel.posmInstallationStatus" class="form-control">
+                            <option *ngFor="let key of InstallationOptions" [value]="key" [label]="InstallationOption[key]"></option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="position-relative form-group">
+                        <label for="POSMRepairStatus">POSM Repair Status</label>
+                        <select  name="POSMRepairStatus" id="POSMRepairStatus" 
+                        [(ngModel)]="dailyPOSMModel.posmRepairStatus" class="form-control">
+                            <option *ngFor="let key of InstallationOptions" [value]="key" [label]="InstallationOption[key]"></option>
+                          </select>
+                      </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="position-relative form-group">
+                        <label for="POSMRemovalStatus">POSM Removal Status</label>
+                        <select  name="POSMRemovalStatus" id="POSMRemovalStatus" 
+                        [(ngModel)]="dailyPOSMModel.posmRemovalStatus" class="form-control">
+                            <option *ngFor="let key of InstallationOptions" [value]="key" [label]="InstallationOption[key]"></option>
+                          </select>
+                      </div>
+                </div>
+                  
+                
+                  
+
+            </div>
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="Type">POSM Repair Incomplete Reason</label>
+                        <input required name="POSMRepairIncompleteReason" #POSMRepairIncompleteReason="ngModel" placeholder=""
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':POSMRepairIncompleteReason.valid,'is-invalid':POSMRepairIncompleteReason.invalid && POSMRepairIncompleteReason.touched }"
+                               [(ngModel)]="dailyPOSMModel.posmRepairIncompleteReason" />
+                        <small class="text-danger" [class.d-none]="POSMRepairIncompleteReason.valid || POSMRepairIncompleteReason.untouched">
+                            this field is required
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="Type">POSM Installation Incomplete Reason</label>
+                        <input required name="POSMInstallationIncompleteReason" #POSMInstallationIncompleteReason="ngModel" placeholder=""
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':POSMInstallationIncompleteReason.valid,'is-invalid':POSMInstallationIncompleteReason.invalid && POSMInstallationIncompleteReason.touched }"
+                               [(ngModel)]="dailyPOSMModel.posmInstallationIncompleteReason" />
+                        <small class="text-danger" [class.d-none]="POSMInstallationIncompleteReason.valid || POSMInstallationIncompleteReason.untouched">
+                            this field is required
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="Type">POSM Removal Incomplete Reason</label>
+                        <input required name="POSMRemovalIncompleteReason" #POSMRemovalIncompleteReason="ngModel" placeholder=""
+                               type="text" class="form-control"
+                               [ngClass]="{'is-valid':POSMRemovalIncompleteReason.valid,'is-invalid':POSMRemovalIncompleteReason.invalid && POSMRemovalIncompleteReason.touched }"
+                               [(ngModel)]="dailyPOSMModel.posmRemovalIncompleteReason" />
+                        <small class="text-danger" [class.d-none]="POSMRemovalIncompleteReason.valid || POSMRemovalIncompleteReason.untouched">
+                            Product code is required
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            
+            <button  [disabled]="!dailyPOSMForm.valid" type="submit" class="mt-2 btn btn-primary pull-right">
+                <fa class="mr-2" name="save"></fa>
+                Save
+            </button>
+        </form>
+    </div>
+</div>

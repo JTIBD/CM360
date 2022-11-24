@@ -1,0 +1,246 @@
+<div class="card-header">
+    <h5 class="card-title">Audit Generation Form</h5>
+</div>
+<form #auditSetupForm="ngForm">
+  <div class="main-card mb-3 card">
+      <div class="card-header">
+          <div class="form-row">
+              <div class="col-md-6">
+                  <div class="position-relative form-group">
+                      <label for="dp">From Date:</label>
+                      <div class="form-inline">
+                        <div class="form-group w-100">
+                            <div class="input-group w-100">
+                                <input class="form-control" required placeholder="yyyy-mm-dd" name="dp"
+                                    [(ngModel)]="selectedFromDate" ngbDatepicker #d="ngbDatepicker"
+                                     placement="bottom" (dateSelect)="handleFromDateChange()"
+                                     [maxDate]="selectedToDate" [minDate]="minDate">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar"
+                                        (click)="d.toggle()" type="button"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="position-relative form-group">
+                      <label for="dp2">To Date:</label>
+                      <div class="form-inline">
+                        <div class="form-group w-100">
+                            <div class="input-group w-100">
+                                <input class="form-control" required placeholder="yyyy-mm-dd" name="dp2"
+                                    [(ngModel)]="selectedToDate" ngbDatepicker #d2="ngbDatepicker"
+                                     placement="bottom" (dateSelect)="handleToDateChange()" [minDate]="selectedFromDate">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar"
+                                        (click)="d2.toggle()" type="button"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">            
+            <div class="col-md-6">
+                <div class="position-relative form-group">
+                    <label for="outlet-id">User Type:</label>
+                    <ng-select id="outlet-id" name="fmuser" [multiple]="false"
+                        [dropdownPosition]="'bottom'" 
+                        [(ngModel)]="selectedUserType"
+                    >
+                        <ng-option *ngFor="let dis of userTypes;let i = index" [value]="i">{{dis}}
+                        </ng-option>
+                    </ng-select>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-8">
+                <div class="form-row">
+                                    
+                    <div class="col-12 mb-3">
+                        <div class="audit-area">
+
+                            <div class="distribution-check mb-2 map-panel">
+                                <ngb-accordion #acc5="ngbAccordion" activeIds="ngb-panel-5">
+                                    <ngb-panel id="myPanel5">
+                                        <ng-template ngbPanelHeader let-opened5="opened5">
+                                            <div
+                                                class="card-header-content d-flex align-items-center justify-content-between" (click)="acc5.toggle('myPanel5')">
+                                                <div
+                                                    class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input" id="distribution" name="distribution"
+                                                        [(ngModel)]="this.dailyTaskGenerate.dailyAudit.isDistributionCheck">
+                                                    <label class="custom-control-label" for="distribution">Distribution Check</label>
+                                                </div>
+                                                <button class="btn btn-link collapsed-button p-0">
+                                                    <i class="fa fa-plus" *ngIf="!opened5" aria-hidden="true"></i>
+                                                    <i class="fa fa-minus" *ngIf="opened5" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template ngbPanelContent>
+                                            <div class="card">
+                                                <app-p-table [pTableSetting]="distCheckPtableSettings" [pTableMasterData]="distributionCheckProducts"
+                                                    (cellClickCallbackFn)="fnDistCheckPtableCellClick($event)">
+                                                </app-p-table>
+                                            </div>
+                                        </ng-template>
+                                    </ngb-panel>
+                                </ngb-accordion>
+                            </div>
+                            <div class="price-audit mb-2 map-panel">
+                                <ngb-accordion #acc8="ngbAccordion" activeIds="ngb-panel-8">
+                                    <ngb-panel id="myPanel8">
+                                        <ng-template ngbPanelHeader let-opened8="opened8">
+                                            <div
+                                                class="card-header-content d-flex align-items-center justify-content-between" (click)="acc8.toggle('myPanel8')">
+                                                <div
+                                                    class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox"
+                                                        class="custom-control-input" id="is-price-audit" name="is-price-audit"
+                                                        [(ngModel)]="this.dailyTaskGenerate.dailyAudit.isPriceAudit">
+                                                    <label class="custom-control-label" for="is-price-audit">Price Audit</label>
+                                                </div>
+                                                <button class="btn btn-link collapsed-button p-0">
+                                                    <i class="fa fa-plus" *ngIf="!opened8" aria-hidden="true"></i>
+                                                    <i class="fa fa-minus" *ngIf="opened8" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template ngbPanelContent>
+                                            <div class="card">
+                                                <app-p-table [pTableSetting]="priceAuditPtableSettings" [pTableMasterData]="priceAuditProducts"
+                                                    (cellClickCallbackFn)="fnPriceAuditPtableCellClick($event)">
+                                                </app-p-table>
+                                            </div>
+                                        </ng-template>
+                                    </ngb-panel>
+                                </ngb-accordion>
+                            </div>  
+                            <div class="facing-count mb-2 map-panel">
+                                <ngb-accordion #acc6="ngbAccordion" activeIds="ngb-panel-6">
+                                    <ngb-panel id="myPanel6">
+                                        <ng-template ngbPanelHeader let-opened6="opened6">
+                                            <div
+                                                class="card-header-content d-flex align-items-center justify-content-between" (click)="acc6.toggle('myPanel6')">
+                                                <div
+                                                    class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input" id="facing-count" name="facing-count"
+                                                        [(ngModel)]="this.dailyTaskGenerate.dailyAudit.isFacingCount">
+                                                    <label class="custom-control-label" for="facing-count">Facing Count</label>
+                                                </div>
+                                                <button class="btn btn-link collapsed-button p-0">
+                                                    <i class="fa fa-plus" *ngIf="!opened6" aria-hidden="true"></i>
+                                                    <i class="fa fa-minus" *ngIf="opened6" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template ngbPanelContent>
+                                            <div class="card">
+                                                <app-p-table [pTableSetting]="facingCountPtableSettings" [pTableMasterData]="facingCountProducts"
+                                                    (cellClickCallbackFn)="fnFacingCountPtableCellClick($event)">
+                                                </app-p-table>
+                                            </div>
+                                        </ng-template>
+                                    </ngb-panel>
+                                </ngb-accordion>
+                            </div>
+                            <div class="planogram-check mb-2 map-panel">
+                                <ngb-accordion #acc7="ngbAccordion" activeIds="ngb-panel-7">
+                                    <ngb-panel id="myPanel7">
+                                        <ng-template ngbPanelHeader let-opened7="opened7">
+                                            <div
+                                                class="card-header-content d-flex align-items-center justify-content-between" (click)="acc7.toggle('myPanel7')">
+                                                <div
+                                                    class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input" id="planogram-check" name="planogram-check"
+                                                        [(ngModel)]="this.dailyTaskGenerate.dailyAudit.isPlanogramCheck">
+                                                    <label class="custom-control-label" for="planogram-check">Planogram Check</label>
+                                                </div>
+                                                <button class="btn btn-link collapsed-button p-0">
+                                                    <i class="fa fa-plus" *ngIf="!opened7" aria-hidden="true"></i>
+                                                    <i class="fa fa-minus" *ngIf="opened7" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template ngbPanelContent>
+                                            <div class="card">
+                                                <app-p-table [pTableSetting]="planCheckPtableSettings" [pTableMasterData]="planogramCheckProducts"
+                                                    (cellClickCallbackFn)="fnPlanCheckPtableCellClick($event)">
+                                                </app-p-table>
+                                            </div>
+                                        </ng-template>
+                                    </ngb-panel>
+                                </ngb-accordion>
+                            </div>
+                                                    
+                        </div>
+                    </div>
+                                                       
+                </div>                
+            </div>
+            <div class="col-md-4">
+                <div class="border px-2">
+                    <div class="pt-2">
+                        <span>Select Sales points</span>
+                    </div>
+                    <div class="pt-2 menu-list-area role-dropdown">
+                        <ul *ngIf="nodeTree.length > 0" class="node-tree border pt-3 rounded">
+                            <ng-container *ngTemplateOutlet="recursiveNodeListTmpl; context:{ $implicit: nodeTree }"[(ngModel)]="nodeTree"></ng-container>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="form-row">
+            
+
+        </div>
+        <div class="d-block text-right card-footer">
+            <button type="button" class="mr-2 btn-hover-shine btn btn-dark" (click)="handleBack()"><i class="pe-7s-back pr-1"></i> Back </button>			
+			<button class="btn btn-primary" [disabled]="!auditSetupForm.valid" type="submit" (click)="submit()">
+				<i class="fa fa-save pr-1"></i>Save
+			</button>
+		</div>
+      </div>
+
+   
+  </div>
+</form>
+
+
+<ng-template #recursiveNodeListTmpl let-nodeTree>
+    <li *ngFor="let item of nodeTree;" class="role-dropdown-item custom-control">
+        <div class="custom-checkbox custom-control">
+            <input type="checkbox" [attr.id]="item.node.id" [attr.checked]="item.expanded"
+              class="custom-control-input">
+            <label [attr.for]="item.node.id" class="custom-control-label expand"> </label>
+            <input name="selecton-check{{item.node.id}}" id="selecton-check{{item.node.id}}" type="checkbox" [checked]="item.isSelected" class="pl-0" (change)="handleNodeSelect(item,$event.target.checked)">
+            <label for="selecton-check{{item.node.id}}" class="pl-1">{{item.node.name}} [{{item.node.code}}]</label> 
+
+            <ul *ngIf="!!item.nodes && item.nodes.length > 0" class="sub-role-dropdown">
+              <ng-container *ngTemplateOutlet="recursiveNodeListTmpl; context:{ $implicit: item.nodes }"></ng-container>
+            </ul>
+            <ul *ngIf="!!item.salesPoints && !!item.salesPoints.length" class="sub-role-dropdown">
+                <ng-container *ngTemplateOutlet="salesPoints; context:{ $implicit: item.salesPoints }"></ng-container>
+            </ul>
+          </div>
+    </li>
+
+</ng-template>
+
+<ng-template #salesPoints let-salesPoints>
+    <li *ngFor="let item of salesPoints;" class="role-dropdown-item custom-control">
+        <div class="custom-checkbox custom-control pl-0">
+            <input type="checkbox" id="'exampleCustomCheckbox'{{item.id}}" [checked]="item.isSelected"
+              class="" (change)="handleSalesPointSelect($event,item)">
+            <label for="'exampleCustomCheckbox'{{item.id}}" class="pl-1">{{item.name}} [{{item.code}}]</label>            
+          </div>
+    </li>
+</ng-template>

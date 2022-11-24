@@ -1,0 +1,15 @@
+.p-table-edit-icon {
+    font-size: 18px;
+    padding: 3px;
+    background-color: transparent;
+    padding-right: 8px;
+    cursor: pointer;
+}
+
+.p-table-delete-icon {
+    font-size: 18px;
+    color: #da9297!important;
+    background-color: transparent;
+    padding: 3px;
+    cursor: pointer;
+}

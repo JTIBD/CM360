@@ -1,0 +1,570 @@
+<div class="main-card mb-3 card">
+    <div class="card-header sticky-card d-flex justify-content-between align-items-center">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">CM Task Creation Form</div>
+    </div>
+    <div class="card-body">
+        <form #cmTaskForm="ngForm" class="cm-activity-form">
+            <div class="cm-task-accordion mb-3">
+                <ngb-accordion #acc1="ngbAccordion" activeIds="ngb-panel-1">
+                    <ngb-panel id="myPanel1">
+                        <ng-template ngbPanelHeader let-opened1="opened1">
+                            <div class="card-header-content d-flex align-items-center justify-content-between" (click)="acc1.toggle('myPanel1')">
+                                <!-- <div class="custom-control custom-checkbox mr-sm-2"> -->
+                                    <!-- <input type="checkbox" class="custom-control-input" id="cm-task"> -->
+                                    <label class="control-label font-weight-bold" for="cm-task">CM Task</label>
+                                <!-- </div> -->
+                                <button class="btn btn-link collapsed-button p-0">
+                                    <i class="fa fa-plus" *ngIf="!opened1" aria-hidden="true"></i>
+                                    <i class="fa fa-minus" *ngIf="opened1" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <div class="form-row">
+                                <!-- <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="cm-activity-id">CM Activity Id</label>
+                                        <input name="city" id="cm-activity-id" type="text" class="form-control"
+                                            disabled>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="outlet-id">FM Name</label>
+                                        <ng-select id="outlet-id" name="fmuser" [multiple]="false"
+                                            [dropdownPosition]="'bottom'" 
+                                            [(ngModel)]="this.dailyTaskGenerate.assignedFMUserId"
+                                            (change)="fnChangeFMUser($event)">
+                                            <ng-option *ngFor="let fm of this.fmUsers" [value]="fm.id">{{fm.name}}
+                                            </ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="tt-id">Task Type</label>
+                                        <ng-select id="tt-id" name="tt-id" [multiple]="false"
+                                            [dropdownPosition]="'bottom'" 
+                                            [(ngModel)]="selectedTaskType"
+                                            (change)="fnChangeTaskType($event)">
+                                            <ng-option *ngFor="let tt of tasktypes" [value]="tt.id" > {{tt.name}}
+                                            </ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="sales-id">Sales Point</label>
+                                        <ng-select id="sales-id" name="sales-id" [multiple]="false"
+                                            [dropdownPosition]="'bottom'" 
+                                            [(ngModel)]="selectedSalesPoint" (change)="fnChangeSalespoint($event)">
+                                            <ng-option *ngFor="let point of salesPoints" [value]="point.salesPointId">
+                                                {{point.name}}
+                                            </ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div *ngIf="show" class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="route-id">Route</label>
+                                        <ng-select id="route-id" name="route-id" [multiple]="true"
+                                            [dropdownPosition]="'bottom'" 
+                                            [(ngModel)]="selectedRoutes" (change)="fnChangeRoutes($event)">
+                                            <ng-option *ngFor="let route of routes" [value]="route.routeId">
+                                                {{route.routeName}}
+                                            </ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div *ngIf="!show" class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="channel-id">Channel</label>
+                                        <ng-select id="channel-id" name="channel-id" [multiple]="false"
+                                            [dropdownPosition]="'bottom'" 
+                                            [(ngModel)]="selectedChannel"
+                                            (change)="fnChangeChannel($event)">
+                                            <ng-option *ngFor="let ch of channels" [value]="ch.channelID" > {{ch.name}}
+                                            </ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div *ngIf="show" class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="outlet-id">Outlets</label>
+                                        <ng-select id="outlet-id" name="outlet-id" [multiple]="true" 
+                                        [disabled]="disableOutlet" [closeOnSelect]="false" [dropdownPosition]="'bottom'" (paste)="fnCopyPasteOutlets($event)" 
+                                            [(ngModel)]="selectedOutlets" (change)="fnChangeOutlets($event)">
+                                            <ng-option *ngFor="let outlet of outlets" [value]="outlet.outletId">
+                                                {{outlet.name+' ('+outlet.code+')'}}
+                                            </ng-option>
+                                        </ng-select>
+                                        <div *ngIf="outletCopyPasteMsg">{{outletCopyPasteMsg}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="position-relative form-group">
+                                        <label for="tagged-cm-id">CM Name</label>
+                                        <ng-select id="tagged-cm-id" name="tagged-cm-id" [multiple]="true"
+                                            [dropdownPosition]="'bottom'"
+                                            [(ngModel)]="selectedCmUsers" (change)="fnChangeCmUsers($event)">
+                                            <ng-option *ngFor="let cm of cmUsers" [value]="cm.id">
+                                                {{cm.name}}
+                                            </ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="tagged-cm-id"> Date</label>
+                                    <div class="form-inline mb-3 ">
+                                        <div class="form-group w-100">
+                                            <div class="input-group w-100">
+                                                <input class="form-control" placeholder="yyyy-mm-dd" name="dp"
+                                                    [(ngModel)]="selectedDate" ngbDatepicker #d="ngbDatepicker"
+                                                    [minDate]="fromDate" [placement]="bottom">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary calendar"
+                                                        (click)="d.toggle()" type="button"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <!-- <app-p-table [pTableSetting]="ptableSettings" [pTableMasterData]="employeeList"
+                                        (cellClickCallbackFn)="fnPtableCellClick($event)" (customActivityOnRecord)="fnCustomrTrigger($event)">
+                                    </app-p-table> -->
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" class="mt-2 btn btn-outline-primary" (click)="fnClickNewCmTask()">
+                                            <i class="fa fa-plus pr-1"></i> Add New Task </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <app-p-table [pTableSetting]="cmTaskPtableSettings" [pTableMasterData]="selectedCmTasks"
+                                (cellClickCallbackFn)="fnCmTaskPtableCellClick($event)"
+                                (customActivityOnRecord)="fnCmTaskCustomTrigger($event)"
+                                (checkboxCallbackFn)="fnCmTaskPtableCheckboxClick($event)">
+                            </app-p-table>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+
+            </div>
+            <div class="posm-accordion mb-3">
+                <ngb-accordion #acc2="ngbAccordion" activeIds="ngb-panel-2">
+                    <ngb-panel id="myPanel2">
+                        <ng-template ngbPanelHeader let-opened2="opened2">
+                            <div class="card-header-content d-flex align-items-center justify-content-between" (click)="acc2.toggle('myPanel2')">
+                                <!-- <div class="custom-control custom-checkbox mr-sm-2"> -->
+                                    <!-- <input type="checkbox" class="custom-control-input" id="servey"> -->
+                                    <label class="control-label font-weight-bold" for="servey">Task Mapping</label>
+                                <!-- </div> -->
+                                <button class="btn btn-link collapsed-button p-0">
+                                    <i class="fa fa-plus" *ngIf="!opened2" aria-hidden="true"></i>
+                                    <i class="fa fa-minus" *ngIf="opened2" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <!-- <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Search"
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"
+                                            aria-hidden="true"></i></span>
+                                </div>
+                            </div> -->
+                            <div *ngIf="show" class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="outlet-id">Outlets</label>
+                                        <ng-select id="tm-outlet-id" name="tm-outlet-id" [multiple]="true" *ngIf="!isEditDailyTaskGenrate"
+                                            [(ngModel)]="selectedTaskMappingOutlets" (change)="fnChangeTaskMappingOutlets($event)">
+                                            <ng-option *ngFor="let out of selectedCmTasks" [value]="out.id">
+                                                {{out.outletName+' - '+out.cmUserName}}
+                                            </ng-option>
+                                        </ng-select>
+                                        <div *ngIf="isEditDailyTaskGenrate">{{dailyTaskGenerate.outletName+' - '+dailyTaskGenerate.cmUserName}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="posm-area-body">
+                                        <ngb-accordion #acc3="ngbAccordion" activeIds="ngb-panel-3">
+                                            <ngb-panel id="myPanel3">
+                                                <ng-template ngbPanelHeader let-opened3="opened3">
+                                                    <div class="card-header-content d-flex align-items-center justify-content-between" (click)="acc3.toggle('myPanel3')">
+                                                        <div class="custom-control custom-checkbox mr-sm-2">
+                                                            <input type="checkbox" class="custom-control-input" name="is-posm" id="is-posm" 
+                                                                [(ngModel)]="this.dailyTaskGenerate.isPOSM">
+                                                            <label class="custom-control-label" for="is-posm">Is POSM</label>
+                                                        </div>
+                                                        <button class="btn btn-link collapsed-button p-0">
+                                                            <i class="fa fa-plus" *ngIf="!opened3" aria-hidden="true"></i>
+                                                            <i class="fa fa-minus" *ngIf="opened3" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                </ng-template>
+                                                <ng-template ngbPanelContent>
+                                                    <!-- <div class="posm-section">
+                                                        <div class="custom-control custom-checkbox mb-2">
+                                                            <input type="checkbox" class="custom-control-input" name="is-audit2" id="is-audit2"
+                                                                [(ngModel)]="this.dailyTaskGenerate.dailyPOSM.isPOSMInstallation">
+                                                            <label class="custom-control-label" for="is-audit2">POSM Installation </label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-2">
+                                                            <input type="checkbox" class="custom-control-input" name="is-audit3" id="is-audit3"
+                                                                [(ngModel)]="this.dailyTaskGenerate.dailyPOSM.isPOSMRepair">
+                                                            <label class="custom-control-label" for="is-audit3">POSM Repair</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-2">
+                                                            <input type="checkbox" class="custom-control-input" name="is-audit4" id="is-audit4"
+                                                                [(ngModel)]="this.dailyTaskGenerate.dailyPOSM.isPOSMRemoval">
+                                                            <label class="custom-control-label" for="is-audit4">POSM Removal</label>
+                                                        </div>
+
+                                                        <div class="card">
+                                                            <div class="table-card-header card-header font-weight-bold"> POSM Product
+                                                            </div>
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>SL</th>
+                                                                        <th>Select</th>
+                                                                        <th>Product Code</th>
+                                                                        <th>Product Name</th>
+                                                                        <th>Signature Required</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr
+                                                                        *ngFor="let product of posmProducts; let i=index">
+                                                                        <td>{{i+1}}</td>
+                                                                        <td>
+                                                                            <div
+                                                                                class="custom-control custom-checkbox mb-2">
+                                                                                <input type="checkbox" class="custom-control-input" id="{{'posmproduct-'+(i+1)}}" name="{{'posmproduct-'+(i+1)}}"
+                                                                                    [(ngModel)]="product.isSelected">
+                                                                                <label class="custom-control-label" for="{{'posmproduct-'+(i+1)}}"></label>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>{{product.code}}</td>
+                                                                        <td>{{product.name}}</td>
+                                                                        <td>{{product.isDigitalSignatureEnable?'Yes':"No"}}
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div> -->
+                                                    
+                                                    <div class="posm-install mb-2">
+                                                        <ngb-accordion #acc31="ngbAccordion" activeIds="ngb-panel-31">
+                                                            <ngb-panel id="myPanel31">
+                                                                <ng-template ngbPanelHeader let-opened31="opened31">
+                                                                    <div
+                                                                        class="card-header-content d-flex align-items-center justify-content-between" (click)="acc31.toggle('myPanel31')">
+                                                                        <div
+                                                                            class="custom-control custom-checkbox mr-sm-2">
+                                                                            <input type="checkbox" class="custom-control-input" id="posminstall" name="posminstall"
+                                                                                [(ngModel)]="this.dailyTaskGenerate.dailyPOSM.isPOSMInstallation">
+                                                                            <label class="custom-control-label" for="posminstall">POSM Installation</label>
+                                                                        </div>
+                                                                        <button class="btn btn-link collapsed-button p-0">
+                                                                            <i class="fa fa-plus" *ngIf="!opened31" aria-hidden="true"></i>
+                                                                            <i class="fa fa-minus" *ngIf="opened31" aria-hidden="true"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </ng-template>
+                                                                <ng-template ngbPanelContent>
+                                                                    <div class="card">
+                                                                        <app-p-table [pTableSetting]="posmInstallPtableSettings" [pTableMasterData]="posmInstallationProducts"
+                                                                            (cellClickCallbackFn)="fnPosmInstallPtableCellClick($event)">
+                                                                        </app-p-table>
+                                                                    </div>
+                                                                </ng-template>
+                                                            </ngb-panel>
+                                                        </ngb-accordion>
+                                                    </div>
+                                                    
+                                                    <div class="posm-repair mb-2">
+                                                        <ngb-accordion #acc32="ngbAccordion" activeIds="ngb-panel-32">
+                                                            <ngb-panel id="myPanel32">
+                                                                <ng-template ngbPanelHeader let-opened32="opened32">
+                                                                    <div
+                                                                        class="card-header-content d-flex align-items-center justify-content-between" (click)="acc32.toggle('myPanel32')">
+                                                                        <div
+                                                                            class="custom-control custom-checkbox mr-sm-2">
+                                                                            <input type="checkbox" class="custom-control-input" id="posmrepair" name="posmrepair"
+                                                                                [(ngModel)]="this.dailyTaskGenerate.dailyPOSM.isPOSMRepair">
+                                                                            <label class="custom-control-label" for="posmrepair">POSM Repair</label>
+                                                                        </div>
+                                                                        <button class="btn btn-link collapsed-button p-0">
+                                                                            <i class="fa fa-plus" *ngIf="!opened32" aria-hidden="true"></i>
+                                                                            <i class="fa fa-minus" *ngIf="opened32" aria-hidden="true"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </ng-template>
+                                                                <ng-template ngbPanelContent>
+                                                                    <div class="card">
+                                                                        <app-p-table [pTableSetting]="posmRepairPtableSettings" [pTableMasterData]="posmRepairProducts"
+                                                                            (cellClickCallbackFn)="fnPosmRepairPtableCellClick($event)">
+                                                                        </app-p-table>
+                                                                    </div>
+                                                                </ng-template>
+                                                            </ngb-panel>
+                                                        </ngb-accordion>
+                                                    </div>
+                                                    
+                                                    <div class="posm-removal mb-2">
+                                                        <ngb-accordion #acc33="ngbAccordion" activeIds="ngb-panel-33">
+                                                            <ngb-panel id="myPanel33">
+                                                                <ng-template ngbPanelHeader let-opened33="opened33">
+                                                                    <div
+                                                                        class="card-header-content d-flex align-items-center justify-content-between" (click)="acc33.toggle('myPanel33')">
+                                                                        <div
+                                                                            class="custom-control custom-checkbox mr-sm-2">
+                                                                            <input type="checkbox" class="custom-control-input" id="posmremoval" name="posmremoval"
+                                                                                [(ngModel)]="this.dailyTaskGenerate.dailyPOSM.isPOSMRemoval">
+                                                                            <label class="custom-control-label" for="posmremoval">POSM Removal</label>
+                                                                        </div>
+                                                                        <button class="btn btn-link collapsed-button p-0">
+                                                                            <i class="fa fa-plus" *ngIf="!opened33" aria-hidden="true"></i>
+                                                                            <i class="fa fa-minus" *ngIf="opened33" aria-hidden="true"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </ng-template>
+                                                                <ng-template ngbPanelContent>
+                                                                    <div class="card">
+                                                                        <app-p-table [pTableSetting]="posmRemovalPtableSettings" [pTableMasterData]="posmRemovalProducts"
+                                                                            (cellClickCallbackFn)="fnPosmRemovalPtableCellClick($event)">
+                                                                        </app-p-table>
+                                                                    </div>
+                                                                </ng-template>
+                                                            </ngb-panel>
+                                                        </ngb-accordion>
+                                                    </div>
+
+                                                </ng-template>
+                                            </ngb-panel>
+                                        </ngb-accordion>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="audit-area">
+                                        <ngb-accordion #acc4="ngbAccordion" activeIds="ngb-panel-4">
+                                            <ngb-panel id="myPanel4">
+                                                <ng-template ngbPanelHeader let-opened4="opened4">
+                                                    <div class="card-header-content d-flex align-items-center justify-content-between" (click)="acc4.toggle('myPanel4')">
+                                                        <div class="custom-control custom-checkbox mr-sm-2">
+                                                            <input type="checkbox" class="custom-control-input" id="is-audit" name="is-audit"
+                                                            [(ngModel)]="this.dailyTaskGenerate.isAudit">
+                                                            <label class="custom-control-label" for="is-audit">Is Audit</label>
+                                                        </div>
+                                                        <button class="btn btn-link collapsed-button p-0">
+                                                            <i class="fa fa-plus" *ngIf="!opened4" aria-hidden="true"></i>
+                                                            <i class="fa fa-minus" *ngIf="opened4" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                </ng-template>
+                                                <ng-template ngbPanelContent>
+                                                    <div class="distribution-check mb-2">
+                                                        <ngb-accordion #acc5="ngbAccordion" activeIds="ngb-panel-5">
+                                                            <ngb-panel id="myPanel5">
+                                                                <ng-template ngbPanelHeader let-opened5="opened5">
+                                                                    <div
+                                                                        class="card-header-content d-flex align-items-center justify-content-between" (click)="acc5.toggle('myPanel5')">
+                                                                        <div
+                                                                            class="custom-control custom-checkbox mr-sm-2">
+                                                                            <input type="checkbox" class="custom-control-input" id="distribution" name="distribution"
+                                                                                [(ngModel)]="this.dailyTaskGenerate.dailyAudit.isDistributionCheck">
+                                                                            <label class="custom-control-label" for="distribution">Distribution Check</label>
+                                                                        </div>
+                                                                        <button class="btn btn-link collapsed-button p-0">
+                                                                            <i class="fa fa-plus" *ngIf="!opened5" aria-hidden="true"></i>
+                                                                            <i class="fa fa-minus" *ngIf="opened5" aria-hidden="true"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </ng-template>
+                                                                <ng-template ngbPanelContent>
+                                                                    <div class="card">
+                                                                        <app-p-table [pTableSetting]="distCheckPtableSettings" [pTableMasterData]="distributionCheckProducts"
+                                                                            (cellClickCallbackFn)="fnDistCheckPtableCellClick($event)">
+                                                                        </app-p-table>
+                                                                    </div>
+                                                                </ng-template>
+                                                            </ngb-panel>
+                                                        </ngb-accordion>
+                                                    </div>
+                                                    <div class="facing-count mb-2">
+                                                        <ngb-accordion #acc6="ngbAccordion" activeIds="ngb-panel-6">
+                                                            <ngb-panel id="myPanel6">
+                                                                <ng-template ngbPanelHeader let-opened6="opened6">
+                                                                    <div
+                                                                        class="card-header-content d-flex align-items-center justify-content-between" (click)="acc6.toggle('myPanel6')">
+                                                                        <div
+                                                                            class="custom-control custom-checkbox mr-sm-2">
+                                                                            <input type="checkbox" class="custom-control-input" id="facing-count" name="facing-count"
+                                                                                [(ngModel)]="this.dailyTaskGenerate.dailyAudit.isFacingCount">
+                                                                            <label class="custom-control-label" for="facing-count">Is Facing Count</label>
+                                                                        </div>
+                                                                        <button class="btn btn-link collapsed-button p-0">
+                                                                            <i class="fa fa-plus" *ngIf="!opened6" aria-hidden="true"></i>
+                                                                            <i class="fa fa-minus" *ngIf="opened6" aria-hidden="true"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </ng-template>
+                                                                <ng-template ngbPanelContent>
+                                                                    <div class="card">
+                                                                        <app-p-table [pTableSetting]="facingCountPtableSettings" [pTableMasterData]="facingCountProducts"
+                                                                            (cellClickCallbackFn)="fnFacingCountPtableCellClick($event)">
+                                                                        </app-p-table>
+                                                                    </div>
+                                                                </ng-template>
+                                                            </ngb-panel>
+                                                        </ngb-accordion>
+                                                    </div>
+                                                    <div class="planogram-check mb-2">
+                                                        <ngb-accordion #acc7="ngbAccordion" activeIds="ngb-panel-7">
+                                                            <ngb-panel id="myPanel7">
+                                                                <ng-template ngbPanelHeader let-opened7="opened7">
+                                                                    <div
+                                                                        class="card-header-content d-flex align-items-center justify-content-between" (click)="acc7.toggle('myPanel7')">
+                                                                        <div
+                                                                            class="custom-control custom-checkbox mr-sm-2">
+                                                                            <input type="checkbox" class="custom-control-input" id="planogram-check" name="planogram-check"
+                                                                                [(ngModel)]="this.dailyTaskGenerate.dailyAudit.isPlanogramCheck">
+                                                                            <label class="custom-control-label" for="planogram-check">Is Planogram Check</label>
+                                                                        </div>
+                                                                        <button class="btn btn-link collapsed-button p-0">
+                                                                            <i class="fa fa-plus" *ngIf="!opened7" aria-hidden="true"></i>
+                                                                            <i class="fa fa-minus" *ngIf="opened7" aria-hidden="true"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </ng-template>
+                                                                <ng-template ngbPanelContent>
+                                                                    <div class="card">
+                                                                        <app-p-table [pTableSetting]="planCheckPtableSettings" [pTableMasterData]="planogramCheckProducts"
+                                                                            (cellClickCallbackFn)="fnPlanCheckPtableCellClick($event)">
+                                                                        </app-p-table>
+                                                                    </div>
+                                                                </ng-template>
+                                                            </ngb-panel>
+                                                        </ngb-accordion>
+                                                    </div>
+                                                    <div class="price-audit mb-2">
+                                                        <ngb-accordion #acc8="ngbAccordion" activeIds="ngb-panel-8">
+                                                            <ngb-panel id="myPanel8">
+                                                                <ng-template ngbPanelHeader let-opened8="opened8">
+                                                                    <div
+                                                                        class="card-header-content d-flex align-items-center justify-content-between" (click)="acc8.toggle('myPanel8')">
+                                                                        <div
+                                                                            class="custom-control custom-checkbox mr-sm-2">
+                                                                            <input type="checkbox"
+                                                                                class="custom-control-input" id="is-price-audit" name="is-price-audit"
+                                                                                [(ngModel)]="this.dailyTaskGenerate.dailyAudit.isPriceAudit">
+                                                                            <label class="custom-control-label" for="is-price-audit">Is Price Audit</label>
+                                                                        </div>
+                                                                        <button class="btn btn-link collapsed-button p-0">
+                                                                            <i class="fa fa-plus" *ngIf="!opened8" aria-hidden="true"></i>
+                                                                            <i class="fa fa-minus" *ngIf="opened8" aria-hidden="true"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </ng-template>
+                                                                <ng-template ngbPanelContent>
+                                                                    <div class="card">
+                                                                        <app-p-table [pTableSetting]="priceAuditPtableSettings" [pTableMasterData]="priceAuditProducts"
+                                                                            (cellClickCallbackFn)="fnPriceAuditPtableCellClick($event)">
+                                                                        </app-p-table>
+                                                                    </div>
+                                                                </ng-template>
+                                                            </ngb-panel>
+                                                        </ngb-accordion>
+                                                    </div>
+
+                                                </ng-template>
+                                            </ngb-panel>
+                                        </ngb-accordion>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="survey-area">
+                                        <ngb-accordion #acc9="ngbAccordion" activeIds="ngb-panel-9">
+                                            <ngb-panel id="myPanel9">
+                                                <ng-template ngbPanelHeader let-opened9="opened9">
+                                                    <div class="card-header-content d-flex align-items-center justify-content-between" (click)="acc9.toggle('myPanel9')">
+                                                        <div class="custom-control custom-checkbox mr-sm-2">
+                                                            <input type="checkbox" class="custom-control-input" id="is-servey" name="is-survey"
+                                                                [(ngModel)]="this.dailyTaskGenerate.isSurvey">
+                                                            <label class="custom-control-label" for="is-servey">Is Servey</label>
+                                                        </div>
+                                                        <button class="btn btn-link collapsed-button p-0">
+                                                            <i class="fa fa-plus" *ngIf="!opened9" aria-hidden="true"></i>
+                                                            <i class="fa fa-minus" *ngIf="opened9" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                </ng-template>
+                                                <ng-template ngbPanelContent>
+                                                    <div class="card">
+                                                        <app-p-table [pTableSetting]="surveyPtableSettings" [pTableMasterData]="surveys"
+                                                            (cellClickCallbackFn)="fnSurveyPtableCellClick($event)">
+                                                        </app-p-table>
+                                                    </div>
+                                                </ng-template>
+                                            </ngb-panel>
+                                        </ngb-accordion>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="cons-survey-area">
+                                        <ngb-accordion #acc92="ngbAccordion" activeIds="ngb-panel-92">
+                                            <ngb-panel id="myPanel92">
+                                                <ng-template ngbPanelHeader let-opened92="opened92">
+                                                    <div class="card-header-content d-flex align-items-center justify-content-between" (click)="acc92.toggle('myPanel92')">
+                                                        <div class="custom-control custom-checkbox mr-sm-2">
+                                                            <input type="checkbox" class="custom-control-input" id="is-cons-servey" name="is-cons-servey"
+                                                                [(ngModel)]="this.dailyTaskGenerate.isConsumerSurveyActive">
+                                                            <label class="custom-control-label" for="is-cons-servey">Is Consumer Servey</label>
+                                                        </div>
+                                                        <button class="btn btn-link collapsed-button p-0">
+                                                            <i class="fa fa-plus" *ngIf="!opened92" aria-hidden="true"></i>
+                                                            <i class="fa fa-minus" *ngIf="opened92" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                </ng-template>
+                                                <ng-template ngbPanelContent>
+                                                    <div class="card">
+                                                        <app-p-table [pTableSetting]="consSurveyPtableSettings" [pTableMasterData]="consumerSurveys"
+                                                            (cellClickCallbackFn)="fnConsSurveyPtableCellClick($event)">
+                                                        </app-p-table>
+                                                    </div>
+                                                </ng-template>
+                                            </ngb-panel>
+                                        </ngb-accordion>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="mt-2 mr-2 btn btn-outline-secondary" (click)="fnClickClearCmTask()"><i class="fa fa-repeat"> </i> Cancel CM Task </button>
+                <button type="button" class="mt-2 btn btn-outline-primary" (click)="fnClickGenerateCmTask()"><i class="fa fa-tasks"> </i> {{isEditDailyTaskGenrate?'Update':'Generate'}} CM Task </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="main-card mb-3 card menu-list-area">
+    <app-p-table [pTableSetting]="generatedCmTaskPtableSettings" [pTableMasterData]="dailyTaskGenerates"
+        (cellClickCallbackFn)="fnGeneratedCmTaskPtableCellClick($event)" (customActivityOnRecord)="fnGeneratedCmTaskCustomTrigger($event)">
+    </app-p-table>
+    <div class="p-3 d-flex justify-content-end">
+        <button type="submit" class="mt-2 btn btn-primary" [disabled]="this.dailyTaskGenerates.length==0" (click)="submitDailyCmTaskForm()"><i class="fa fa-save pr-1"></i> Save CM Task </button>
+    </div>
+</div>
