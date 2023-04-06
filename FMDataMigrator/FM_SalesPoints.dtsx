@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{EAF5BDE5-4FC6-48CC-97CA-7EEF57DDBFD7}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{78A171C9-D42F-4E5A-BFD1-BD29483F538C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,11 +27,11 @@
           DTS:Retain="True"
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=sql-msfsax01-01.database.windows.net;User ID=fmbgd_qa_usr;Initial Catalog=sqldb-msfsax01-08_fm-bgd_qa;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=sql-msfsax01-01.database.windows.net;User ID=bgd_dev_usr;Initial Catalog=sqldb-msfsax01-08_fm-bgd_dev;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACoYF+kl239/FcvP+tPOfRSAAAAAASAAACgAAAAEAAAANckIXFjydkl0II1RyMl/34gAAAAoqGf+wYPNrHxPkQ6lQ3PR0wG7HLdcECBtBzZV7hdz6UUAAAA1LVgjE4IWfAOo0QBDwt2flXC1iw</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAYddG636tZkmB0xHWN8OwqQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB6ZatD7fTMNbH+uwYfs075AAAAAASAAACgAAAAEAAAACglk+s/4rNMtJ/CrlNylgwgAAAAdI5ncXHXJDBtaBywS2GcD4gd8NfA1LvyZpxCKK4LjuIUAAAA4qSW5cRkgP1KuOrqRTCAqTPiKDk</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -48,7 +48,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD8yg7DwJE6qVQcErNq8Q75AAAAAASAAACgAAAAEAAAAA3jL64rkw7e9LnNYoQlnNIgAAAApOfv76pTZja4m87XmNSU1NJUClI6mRxmaxwdDdm9tV4UAAAAcVM5Tx7QNcK1cbPUFQsLmxyVuzc</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAYddG636tZkmB0xHWN8OwqQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABPmNe/hAoTLO9IivV1aLS6AAAAAASAAACgAAAAEAAAAHMTssD2SEV/7+ZQS+90/YogAAAAZkkUggxZ9wkkLGBKe37WkJjfMPeBqDMhaztmyJyobWgUAAAAww6sX9mrTQiwUe+mZSjC2Pj+dNw</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2868,7 +2868,7 @@ FROM           ##tmpSalesPoints</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="173,42"
           Id="Package\Data Flow Task\OLE DB Command"
@@ -2912,9 +2912,7 @@ FROM           ##tmpSalesPoints</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2948,9 +2946,7 @@ FROM           ##tmpSalesPoints</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2968,19 +2964,19 @@ FROM           ##tmpSalesPoints</property>
     design-time-name="Package\Data Flow Task 1">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="202,42"
           Id="Package\Data Flow Task 1\Destination - SalesPoints"
           TopLeft="60,264" />
         <NodeLayout
-          Size="153,42"
-          Id="Package\Data Flow Task 1\Source - Query"
-          TopLeft="84.5,60" />
-        <NodeLayout
           Size="186,42"
           Id="Package\Data Flow Task 1\Data Conversion 0 - 0"
           TopLeft="68,162" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Data Flow Task 1\Source - Query"
+          TopLeft="84.5,60" />
         <EdgeLayout
           Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
           TopLeft="161,102">
@@ -3000,9 +2996,7 @@ FROM           ##tmpSalesPoints</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3024,9 +3018,7 @@ FROM           ##tmpSalesPoints</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

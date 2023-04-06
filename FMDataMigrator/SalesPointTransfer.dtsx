@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="SalesPointTransfer"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{B71983D8-AEA5-4A2B-AAE0-B945B898B406}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{1CC7AF78-82B0-4D5B-8F0B-11A7D0E00BF5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -30,7 +30,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAaZNBqSG95E/kNqVUgD7+BAAAAAASAAACgAAAAEAAAADmqGv92ZRpzhUcOO/IG5BogAAAAtcY2CzV7y6m9loJ1z77DuNCdtBiqWiI4fhJ7jNP3QLoUAAAAotX/KeVuAWYL848uZpTV07s7NNE</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAYddG636tZkmB0xHWN8OwqQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABk2pzwRwJVyOWlrNiTnreqAAAAAASAAACgAAAAEAAAALs+9C21vTbkbHCwvJMXO64gAAAApx5M4ePtOUOk4eqppnZzdx2Z2X5swMzGwgJZB076RMIUAAAA+iPfIxlLyTOmKJXFgAZbSUNgW9E</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -47,7 +47,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACX7vcdTNE4j9HxVITyoxmzAAAAAASAAACgAAAAEAAAAOnHpoKvNv+tsPlSBV42IcwgAAAAddjwLPYNUXMwkmy7oU4M9q/vzfH8ggZLdeErJBGBDYcUAAAAMaxtZPKxYEhsNy6DBKBUdcDZ6rM</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAYddG636tZkmB0xHWN8OwqQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACRKfpv7Y862zaQZw6MfxDXAAAAAASAAACgAAAAEAAAAK6HCz1q1gsFfkUDLLUQ6cMgAAAAPRdr757Wn+TDy5ztHYMn48RJJjPtto3kyMONd6s6dE8UAAAAmD5xd5S0ZQJ265/dLjzor1nYDwA</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1343,11 +1343,11 @@ WHERE        (Status = 16)</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,42"
+          Size="164,41.6"
           Id="Package\Data Flow Task 1"
           TopLeft="22,107.5" />
         <NodeLayout
-          Size="197,42"
+          Size="196.8,41.6"
           Id="Package\Preparation SQL Task 1"
           TopLeft="5.50000000000001,5.5" />
         <EdgeLayout
@@ -1381,15 +1381,15 @@ WHERE        (Status = 16)</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="202,42"
+          Size="201.6,41.6"
           Id="Package\Data Flow Task 1\Destination - SalesPoints"
           TopLeft="5.50000000000003,209.5" />
         <NodeLayout
-          Size="153,42"
+          Size="152.8,41.6"
           Id="Package\Data Flow Task 1\Source - Query"
           TopLeft="30,5.5" />
         <NodeLayout
-          Size="186,42"
+          Size="185.6,41.6"
           Id="Package\Data Flow Task 1\Data Conversion 0 - 0"
           TopLeft="13.5,107.5" />
         <EdgeLayout
