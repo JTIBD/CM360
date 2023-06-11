@@ -6,21 +6,21 @@
   DTS:CreatorComputerName="WDHA-W10-P056Y4"
   DTS:CreatorName="JTICORP\DHAKHONDAN"
   DTS:DelayValidation="True"
-  DTS:DTSID="{89F9F2F5-9FF5-44F3-B87F-DA6ECDA2E8F2}"
+  DTS:DTSID="{DF9D2E11-B33E-4F08-9EF7-BFEBC08C6CB0}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{95C78742-F4FA-423F-BE94-218AA30FC1AD}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{C95D1559-9A05-49E3-B94B-E2648B75A5BB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
+      DTS:DTSID="{91879F1A-A7CE-4368-A8FF-47A6D4CF232E}"
       DTS:ObjectName="DestinationConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -31,14 +31,14 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxxqummIxz0a72V0Q1I6cUwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACosDwLpApNnBE78Ck0eyQfAAAAAASAAACgAAAAEAAAAF6Eou8TzkJpaVx0PFZv9RQgAAAAMLgNKBifQ2MUkjiUmou3TsUA+d8/qaovZHcBXPf+2TcUAAAATZxqI8j+qUSBEski/dZ2w0w2n/I</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxxqummIxz0a72V0Q1I6cUwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADOieE03WvMWfu85O1gius8AAAAAASAAACgAAAAEAAAAOkMTW3CQFcIUNCWr8oh2iIgAAAAC+qTGgJSB+z2FymaiY3pfTRRg51XUzXWOogpIttWcgwUAAAAaVeuTM+MJRsyTdpAcXS8Nj7mQ8s</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SourceConnection]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{76C2516F-507F-4314-AF34-281A6DAC0BB3}"
+      DTS:DTSID="{B76F630D-F63F-4B60-834C-9EE618D2CA3F}"
       DTS:ObjectName="SourceConnection">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -48,7 +48,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxxqummIxz0a72V0Q1I6cUwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACBjQZfnAhmMRCp+pK1gJyWAAAAAASAAACgAAAAEAAAAPeHWS3XqlGUstL1CEfKDCUgAAAA+Gb5QLGLFOuWvc+GOkcpN/nZ6+MqfwSFyJ+KzQ3YrKIUAAAAMH17EUBExNLCfWKKve51AghtEfQ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxxqummIxz0a72V0Q1I6cUwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAgP0KInTOvEIPRD4rP8Ob5AAAAAASAAACgAAAAEAAAADm0W6oVB77HXThLYlwJuacgAAAAW3eJ08Tb0/8E46USlKM5KFEkAdpkDJ/Yu95RY3GLffoUAAAA3hdBuxgX6WQ7OThru1kNv7N/ANY</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -60,7 +60,7 @@
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:DelayValidation="True"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{F384BC09-C058-482F-8D69-68A92A3F44CF}"
+      DTS:DTSID="{A11844BF-4288-4315-A837-16C7AD9CD383}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Create TempTable"
@@ -69,8 +69,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
-          SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##tmpSalesPoints') IS NOT NULL&#xA;BEGIN &#xA;    DROP TABLE ##tmpSalesPoints&#xA;END&#xA;GO&#xA;CREATE TABLE ##tmpSalesPoints(&#xA;&#x9;[Id] [int] NOT NULL,&#xA;&#x9;[CreatedBy] [int] NOT NULL,&#xA;&#x9;[CreatedTime] [datetime2](7) NOT NULL,&#xA;&#x9;[ModifiedBy] [int] NULL,&#xA;&#x9;[ModifiedTime] [datetime2](7) NULL,&#xA;&#x9;[Status] [int] NOT NULL,&#xA;&#x9;[SalesPointId] [int] NOT NULL,&#xA;&#x9;[Code] [nvarchar](128) NULL,&#xA;&#x9;[Name] [nvarchar](256) NOT NULL,&#xA;&#x9;[BanglaName] [nvarchar](256) NULL,&#xA;&#x9;[OfficeAddress] [nvarchar](500) NULL,&#xA;&#x9;[ContactNo] [nvarchar](500) NULL,&#xA;&#x9;[EmailAddress] [nvarchar](128) NULL,&#xA;&#x9;[DeliveryChannelType] [int] NOT NULL,&#xA;&#x9;[Latitude] [nvarchar](128) NULL,&#xA;&#x9;[Longitude] [nvarchar](128) NULL,&#xA;&#x9;[SequenceId] [int] NOT NULL,&#xA;&#x9;[TownName] [nvarchar](128) NULL,&#xA;&#x9;[DepotCode] [int] NULL,&#xA;&#x9;[OfficeAddressBangla] [nvarchar](256) NULL,&#xA;&#x9;[ReceiveStockFromFactory] [int] NULL)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{91879F1A-A7CE-4368-A8FF-47A6D4CF232E}"
+          SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##tmpSalesPoints') IS NOT NULL&#xA;BEGIN &#xA;    DROP TABLE ##tmpSalesPoints&#xA;END&#xA;GO&#xA;CREATE TABLE ##tmpSalesPoints(&#xA;&#x9;[Id] [int] NOT NULL,&#xA;&#x9;[CreatedBy] [int] NOT NULL,&#xA;&#x9;[CreatedTime] [datetime2](7) NOT NULL,&#xA;&#x9;[ModifiedBy] [int] NULL,&#xA;&#x9;[ModifiedTime] [datetime2](7) NULL,&#xA;&#x9;[Status] [int] NOT NULL,&#xA;&#x9;[SalesPointId] [int] NOT NULL,&#xA;&#x9;[Code] [nvarchar](128) NULL,&#xA;&#x9;[Name] [nvarchar](256) NOT NULL,&#xA;&#x9;[BanglaName] [nvarchar](256) NULL,&#xA;&#x9;[OfficeAddress] [nvarchar](500) NULL,&#xA;&#x9;[ContactNo] [nvarchar](500) NULL,&#xA;&#x9;[EmailAddress] [nvarchar](128) NULL,&#xA;&#x9;[DeliveryChannelType] [int] NOT NULL,&#xA;&#x9;[Latitude] [nvarchar](128) NULL,&#xA;&#x9;[Longitude] [nvarchar](128) NULL,&#xA;&#x9;[SequenceId] [int] NOT NULL,&#xA;&#x9;[TownName] [nvarchar](128) NULL,&#xA;&#x9;[DepotCode] [int] NULL,&#xA;&#x9;[OfficeAddressBangla] [nvarchar](256) NULL,&#xA;&#x9;[ReceiveStockFromFactory] [int] NOT NULL&#xA;&#x9;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -78,7 +78,7 @@
       DTS:CreationName="Microsoft.Pipeline"
       DTS:DelayValidation="True"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{1A224CC9-3D65-4014-B6C2-917277AB929B}"
+      DTS:DTSID="{5FBA3955-481B-4A2E-959F-B8EEF079FD49}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -1414,7 +1414,7 @@ WHERE        (Status = 16)</property>
       DTS:CreationName="Microsoft.Pipeline"
       DTS:DelayValidation="True"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{DBDE48F9-4C1B-4A34-BCBB-A2E06647F699}"
+      DTS:DTSID="{D1F7B3A0-FF32-4F29-A333-8EE2D5CA8265}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task 1"
@@ -1438,7 +1438,7 @@ WHERE        (Status = 16)</property>
                   <inputColumns>
                     <inputColumn
                       refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Status]"
-                      cachedDataType="i2"
+                      cachedDataType="i4"
                       cachedName="Status"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Status]" />
                     <inputColumn
@@ -1473,22 +1473,20 @@ WHERE        (Status = 16)</property>
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[EmailAddress]" />
                     <inputColumn
                       refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[DeliveryChannelType]"
-                      cachedDataType="i2"
+                      cachedDataType="i4"
                       cachedName="DeliveryChannelType"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[DeliveryChannelType]" />
                     <inputColumn
                       refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Latitude]"
-                      cachedDataType="numeric"
+                      cachedDataType="wstr"
+                      cachedLength="128"
                       cachedName="Latitude"
-                      cachedPrecision="18"
-                      cachedScale="12"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Latitude]" />
                     <inputColumn
                       refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Longitude]"
-                      cachedDataType="numeric"
+                      cachedDataType="wstr"
+                      cachedLength="128"
                       cachedName="Longitude"
-                      cachedPrecision="18"
-                      cachedScale="12"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Longitude]" />
                     <inputColumn
                       refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[TownName]"
@@ -1828,8 +1826,9 @@ WHERE        (Status = 16)</property>
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CreatedBy]" />
                     <inputColumn
                       refId="Package\Data Flow Task 1\Destination - SalesPoints.Inputs[Destination Input].Columns[CreatedTime]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="dbTimeStamp2"
                       cachedName="CreatedTime"
+                      cachedScale="7"
                       externalMetadataColumnId="Package\Data Flow Task 1\Destination - SalesPoints.Inputs[Destination Input].ExternalColumns[CreatedTime]"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CreatedTime]" />
                     <inputColumn
@@ -1840,8 +1839,9 @@ WHERE        (Status = 16)</property>
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ModifiedBy]" />
                     <inputColumn
                       refId="Package\Data Flow Task 1\Destination - SalesPoints.Inputs[Destination Input].Columns[ModifiedTime]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="dbTimeStamp2"
                       cachedName="ModifiedTime"
+                      cachedScale="7"
                       externalMetadataColumnId="Package\Data Flow Task 1\Destination - SalesPoints.Inputs[Destination Input].ExternalColumns[ModifiedTime]"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ModifiedTime]" />
                     <inputColumn
@@ -2039,6 +2039,10 @@ WHERE        (Status = 16)</property>
                       dataType="wstr"
                       length="256"
                       name="OfficeAddressBangla" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - SalesPoints.Inputs[Destination Input].ExternalColumns[ReceiveStockFromFactory]"
+                      dataType="i4"
+                      name="ReceiveStockFromFactory" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2169,12 +2173,13 @@ FROM           ##tmpSalesPoints</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CreatedTime]"
-                      dataType="dbTimeStamp"
+                      dataType="dbTimeStamp2"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CreatedTime]"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CreatedTime]"
                       name="CreatedTime"
+                      scale="7"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ModifiedBy]"
@@ -2187,16 +2192,17 @@ FROM           ##tmpSalesPoints</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ModifiedTime]"
-                      dataType="dbTimeStamp"
+                      dataType="dbTimeStamp2"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ModifiedTime]"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ModifiedTime]"
                       name="ModifiedTime"
+                      scale="7"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Status]"
-                      dataType="i2"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Status]"
@@ -2265,7 +2271,7 @@ FROM           ##tmpSalesPoints</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[DeliveryChannelType]"
-                      dataType="i2"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[DeliveryChannelType]"
@@ -2274,25 +2280,23 @@ FROM           ##tmpSalesPoints</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Latitude]"
-                      dataType="numeric"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Latitude]"
+                      length="128"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Latitude]"
                       name="Latitude"
-                      precision="18"
-                      scale="12"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Longitude]"
-                      dataType="numeric"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
+                      length="128"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Longitude]"
                       name="Longitude"
-                      precision="18"
-                      scale="12"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SequenceId]"
@@ -2333,15 +2337,6 @@ FROM           ##tmpSalesPoints</property>
                       name="OfficeAddressBangla"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ReceiveStockFromFactory]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ReceiveStockFromFactory]"
-                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ReceiveStockFromFactory]"
-                      name="ReceiveStockFromFactory"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SalesPointId]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
@@ -2349,6 +2344,15 @@ FROM           ##tmpSalesPoints</property>
                       externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[SalesPointId]"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SalesPointId]"
                       name="SalesPointId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ReceiveStockFromFactory]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ReceiveStockFromFactory]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ReceiveStockFromFactory]"
+                      name="ReceiveStockFromFactory"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -2442,13 +2446,13 @@ FROM           ##tmpSalesPoints</property>
                       length="256"
                       name="OfficeAddressBangla" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ReceiveStockFromFactory]"
-                      dataType="i4"
-                      name="ReceiveStockFromFactory" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[SalesPointId]"
                       dataType="i4"
                       name="SalesPointId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ReceiveStockFromFactory]"
+                      dataType="i4"
+                      name="ReceiveStockFromFactory" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2611,7 +2615,7 @@ FROM           ##tmpSalesPoints</property>
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:DelayValidation="True"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{F832581B-7203-4C86-AB4D-AEE30FDC8D85}"
+      DTS:DTSID="{CCF1CB26-6CB5-44FD-A128-9E17A98B5D9B}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Execute SQL Task"
@@ -2620,7 +2624,7 @@ FROM           ##tmpSalesPoints</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
+          SQLTask:Connection="{91879F1A-A7CE-4368-A8FF-47A6D4CF232E}"
           SQLTask:SqlStatementSource="DELETE t1 FROM ##tmpSalesPoints t1 JOIN [SalesPoints] t2 ON t1.Id = t2.Id;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2629,7 +2633,7 @@ FROM           ##tmpSalesPoints</property>
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:DelayValidation="True"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{F51F4E58-C193-4721-9223-0F3E3CFB3E98}"
+      DTS:DTSID="{03F1159F-6E2E-4128-9B01-F822056DFB97}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Inactive all SalesPoints"
@@ -2638,7 +2642,7 @@ FROM           ##tmpSalesPoints</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
+          SQLTask:Connection="{91879F1A-A7CE-4368-A8FF-47A6D4CF232E}"
           SQLTask:SqlStatementSource="Update SalesPoints Set Status = 2" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2647,7 +2651,7 @@ FROM           ##tmpSalesPoints</property>
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:DelayValidation="True"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{C4C3E6B8-2A63-4537-97C9-C056DEC0836D}"
+      DTS:DTSID="{D85BF967-D359-4F23-8582-AAF19172ABFB}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Update Salespoints"
@@ -2656,8 +2660,8 @@ FROM           ##tmpSalesPoints</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
-          SQLTask:SqlStatementSource="UPDATE A&#xA;SET&#xA;           A.[Id] = B.[Id]&#xA;           ,A.[CreatedBy] = B.[CreatedBy]&#xA;           ,A.[CreatedTime] = B.[CreatedTime]&#xA;           ,A.[ModifiedBy] = B.[ModifiedBy]&#xA;           ,A.[ModifiedTime] = B.[ModifiedTime]&#xA;           ,A.[Status] = B.[Status]&#xA;           ,A.[SalesPointId] = B.[SalesPointId] &#xA;           ,A.[Code] = B.[Code]&#xA;           ,A.[Name] = B.[Name]&#xA;           ,A.[BanglaName] = B.[BanglaName]&#xA;           ,A.[OfficeAddress] = B.[OfficeAddress] &#xA;           ,A.[ContactNo] = B.[ContactNo]&#xA;           ,A.[EmailAddress] = B.[EmailAddress]&#xA;           ,A.[DeliveryChannelType] = B.[DeliveryChannelType]&#xA;           ,A.[Latitude] = B.[Latitude]&#xA;           ,A.[Longitude] = B.[Longitude]&#xA;           ,A.[SequenceId] = B.[SequenceId]&#xA;           ,A.[TownName] = B.[TownName]&#xA;           ,A.[DepotCode] = B.[DepotCode]&#xA;           ,A.[OfficeAddressBangla] = B.[OfficeAddressBangla]&#xA;           ,A.[ReceiveStockFromFactory] = B.[ReceiveStockFromFactory]&#xA;     FROM [dbo].[SalesPoints] A INNER JOIN ##tmpSalesPoints B ON A.SalesPointId = B.SalesPointId" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{91879F1A-A7CE-4368-A8FF-47A6D4CF232E}"
+          SQLTask:SqlStatementSource="UPDATE A&#xA;SET&#xA;         &#xA;         A.[CreatedBy] = B.[CreatedBy]&#xA;           ,A.[CreatedTime] = B.[CreatedTime]&#xA;           ,A.[ModifiedBy] = B.[ModifiedBy]&#xA;           ,A.[ModifiedTime] = B.[ModifiedTime]&#xA;           ,A.[Status] = B.[Status]&#xA;           ,A.[SalesPointId] = B.[SalesPointId] &#xA;           ,A.[Code] = B.[Code]&#xA;           ,A.[Name] = B.[Name]&#xA;           ,A.[BanglaName] = B.[BanglaName]&#xA;           ,A.[OfficeAddress] = B.[OfficeAddress] &#xA;           ,A.[ContactNo] = B.[ContactNo]&#xA;           ,A.[EmailAddress] = B.[EmailAddress]&#xA;           ,A.[DeliveryChannelType] = B.[DeliveryChannelType]&#xA;           ,A.[Latitude] = B.[Latitude]&#xA;           ,A.[Longitude] = B.[Longitude]&#xA;           ,A.[SequenceId] = B.[SequenceId]&#xA;           ,A.[TownName] = B.[TownName]&#xA;           ,A.[DepotCode] = B.[DepotCode]&#xA;           ,A.[OfficeAddressBangla] = B.[OfficeAddressBangla]&#xA;          , A.ReceiveStockFromFactory = B.ReceiveStockFromFactory&#xA;     FROM [dbo].[SalesPoints] A INNER JOIN ##tmpSalesPoints B ON A.SalesPointId = B.SalesPointId" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2665,7 +2669,7 @@ FROM           ##tmpSalesPoints</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{D3F7B036-BA2D-4322-8958-A7F9FFD40412}"
+      DTS:DTSID="{65D8E453-8310-4734-A054-BF38215E00BF}"
       DTS:From="Package\Create TempTable"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -2673,7 +2677,7 @@ FROM           ##tmpSalesPoints</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{F5D50FF2-E660-4545-A860-14F4BE4368D5}"
+      DTS:DTSID="{56C1F73C-0CC7-4557-AD93-271E702B5950}"
       DTS:From="Package\Data Flow Task"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -2681,7 +2685,7 @@ FROM           ##tmpSalesPoints</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{91B8AE71-603C-4846-A5E8-1C87B335EED8}"
+      DTS:DTSID="{25DB8D40-95CD-4480-AED5-90B63F52B66A}"
       DTS:From="Package\Update Salespoints"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -2689,7 +2693,7 @@ FROM           ##tmpSalesPoints</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{CAA762BE-4A0E-4F7C-8D72-F2959DB68777}"
+      DTS:DTSID="{CADFF373-020A-47B2-ACAA-878FFD95502D}"
       DTS:From="Package\Execute SQL Task"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
@@ -2697,7 +2701,7 @@ FROM           ##tmpSalesPoints</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{673C598F-F3AB-40F2-AE8D-AFD25E23BEBE}"
+      DTS:DTSID="{06AE79C6-BD52-422A-B172-2B3F5D7AC6B8}"
       DTS:From="Package\Inactive all SalesPoints"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
@@ -2716,27 +2720,27 @@ FROM           ##tmpSalesPoints</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171.2,41.6"
+          Size="171,42"
           Id="Package\Create TempTable"
           TopLeft="429,58" />
         <NodeLayout
-          Size="155.2,41.6"
+          Size="155,42"
           Id="Package\Data Flow Task"
           TopLeft="438,165" />
         <NodeLayout
-          Size="164,41.6"
+          Size="159,42"
           Id="Package\Data Flow Task 1"
           TopLeft="434,434" />
         <NodeLayout
-          Size="169.6,41.6"
+          Size="170,42"
           Id="Package\Execute SQL Task"
           TopLeft="424,337" />
         <NodeLayout
-          Size="179.2,41.6"
+          Size="179,42"
           Id="Package\Inactive all SalesPoints"
           TopLeft="182,43" />
         <NodeLayout
-          Size="174.4,41.6"
+          Size="174,42"
           Id="Package\Update Salespoints"
           TopLeft="428,257" />
         <EdgeLayout
@@ -2807,18 +2811,18 @@ FROM           ##tmpSalesPoints</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="512.5,379">
+          TopLeft="511.2,378.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55"
+              EndConnector="0,55.4"
               Start="0,0"
-              End="0,47.5">
+              End="0,47.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.5" />
+                    End="0,47.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2882,40 +2886,6 @@ FROM           ##tmpSalesPoints</property>
           Id="Package\Data Flow Task\Source - Query"
           TopLeft="60,60" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="136.5,102">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="42.5,63"
-              Start="0,0"
-              End="42.5,55.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27.5"
-                    Point2="0,31.5"
-                    Point3="4,31.5" />
-                  <mssgle:LineSegment
-                    End="38.5,31.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="38.5,31.5"
-                    Point2="42.5,31.5"
-                    Point3="42.5,35.5" />
-                  <mssgle:LineSegment
-                    End="42.5,55.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output]"
           TopLeft="179,207">
           <EdgeLayout.Curve>
@@ -2941,6 +2911,40 @@ FROM           ##tmpSalesPoints</property>
                     Point3="127.5,53" />
                   <mssgle:LineSegment
                     End="127.5,90.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="136.5,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.5,63"
+              Start="0,0"
+              End="42.5,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.5"
+                    Point2="0,31.5"
+                    Point3="4,31.5" />
+                  <mssgle:LineSegment
+                    End="38.5,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.5,31.5"
+                    Point2="42.5,31.5"
+                    Point3="42.5,35.5" />
+                  <mssgle:LineSegment
+                    End="42.5,55.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3024,6 +3028,19 @@ FROM           ##tmpSalesPoints</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Destination - SalesPoints">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task 1\Source - Query">
     <Properties>
