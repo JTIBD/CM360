@@ -8,33 +8,15 @@
   DTS:DelayValidation="True"
   DTS:DTSID="{DF9D2E11-B33E-4F08-9EF7-BFEBC08C6CB0}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="44"
-  DTS:VersionGUID="{C95D1559-9A05-49E3-B94B-E2648B75A5BB}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{88F33465-D294-4A22-8BA8-12914E04B533}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{91879F1A-A7CE-4368-A8FF-47A6D4CF232E}"
-      DTS:ObjectName="DestinationConnectionOLEDB">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Retain="True"
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=sql-msfsax01-01.database.windows.net;User ID=fmbgd_prd_usr;Initial Catalog=sqldb-msfsax01-09_fm-bgd_prd;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxxqummIxz0a72V0Q1I6cUwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADOieE03WvMWfu85O1gius8AAAAAASAAACgAAAAEAAAAOkMTW3CQFcIUNCWr8oh2iIgAAAAC+qTGgJSB+z2FymaiY3pfTRRg51XUzXWOogpIttWcgwUAAAAaVeuTM+MJRsyTdpAcXS8Nj7mQ8s</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SourceConnection]"
       DTS:CreationName="OLEDB"
@@ -44,12 +26,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=MSFSAX01-SQL-06.southeastasia.cloudapp.azure.com;User ID=Sales360SSISAcc;Initial Catalog=Drishti;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxxqummIxz0a72V0Q1I6cUwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAgP0KInTOvEIPRD4rP8Ob5AAAAAASAAACgAAAAEAAAADm0W6oVB77HXThLYlwJuacgAAAAW3eJ08Tb0/8E46USlKM5KFEkAdpkDJ/Yu95RY3GLffoUAAAA3hdBuxgX6WQ7OThru1kNv7N/ANY</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=MSFSAX01-SQL-06.southeastasia.cloudapp.azure.com;User ID=Sales360SSISAcc;Initial Catalog=Drishti;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -69,7 +46,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{91879F1A-A7CE-4368-A8FF-47A6D4CF232E}"
+          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
           SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##tmpSalesPoints') IS NOT NULL&#xA;BEGIN &#xA;    DROP TABLE ##tmpSalesPoints&#xA;END&#xA;GO&#xA;CREATE TABLE ##tmpSalesPoints(&#xA;&#x9;[Id] [int] NOT NULL,&#xA;&#x9;[CreatedBy] [int] NOT NULL,&#xA;&#x9;[CreatedTime] [datetime2](7) NOT NULL,&#xA;&#x9;[ModifiedBy] [int] NULL,&#xA;&#x9;[ModifiedTime] [datetime2](7) NULL,&#xA;&#x9;[Status] [int] NOT NULL,&#xA;&#x9;[SalesPointId] [int] NOT NULL,&#xA;&#x9;[Code] [nvarchar](128) NULL,&#xA;&#x9;[Name] [nvarchar](256) NOT NULL,&#xA;&#x9;[BanglaName] [nvarchar](256) NULL,&#xA;&#x9;[OfficeAddress] [nvarchar](500) NULL,&#xA;&#x9;[ContactNo] [nvarchar](500) NULL,&#xA;&#x9;[EmailAddress] [nvarchar](128) NULL,&#xA;&#x9;[DeliveryChannelType] [int] NOT NULL,&#xA;&#x9;[Latitude] [nvarchar](128) NULL,&#xA;&#x9;[Longitude] [nvarchar](128) NULL,&#xA;&#x9;[SequenceId] [int] NOT NULL,&#xA;&#x9;[TownName] [nvarchar](128) NULL,&#xA;&#x9;[DepotCode] [int] NULL,&#xA;&#x9;[OfficeAddressBangla] [nvarchar](256) NULL,&#xA;&#x9;[ReceiveStockFromFactory] [int] NOT NULL&#xA;&#x9;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -430,7 +407,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">INSERT INTO ##tmpSalesPoints (Id,CreatedBy,CreatedTime,ModifiedBy,ModifiedTime,Status,SalesPointId,Code,Name,BanglaName,OfficeAddress,ContactNo,EmailAddress,DeliveryChannelType,Latitude,Longitude,SequenceId,TownName,DepotCode,OfficeAddressBangla,ReceiveStockFromFactory) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">INSERT INTO ##tmpSalesPoints (Id,CreatedBy,CreatedTime,ModifiedBy,ModifiedTime,Status,SalesPointId,Code,Name,BanglaName,OfficeAddress,ContactNo,EmailAddress,DeliveryChannelType,Latitude,Longitude,SequenceId,TownName,DepotCode,OfficeAddressBangla,ReceiveStockFromFactory) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
 </property>
                 <property
                   dataType="System.Int32"
@@ -440,8 +417,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -895,7 +872,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        SalesPointID AS Id, CreatedBy, CreatedDate AS CreatedTime, ModifiedBy, ModifiedDate AS ModifiedTime, Status,  SalesPointID, Code, Name, BanglaName, OfficeAddress, ContactNo, 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        SalesPointID AS Id, CreatedBy, CreatedDate AS CreatedTime, ModifiedBy, ModifiedDate AS ModifiedTime, Status,  SalesPointID, Code, Name, BanglaName, OfficeAddress, ContactNo, 
                          EmailAddress, DeliveryChannelType, Latitude, Longitude, 0 AS SequenceId, TownName, 0 AS DepotCode, OfficeAddressBangla, RcvStkFrmFactory  AS ReceiveStockFromFactory
 FROM            SalesPoints
 WHERE        (Status = 16)</property>
@@ -1765,7 +1742,7 @@ WHERE        (Status = 16)</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1799,8 +1776,8 @@ WHERE        (Status = 16)</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task 1\Destination - SalesPoints.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2096,7 +2073,7 @@ WHERE        (Status = 16)</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT      [Id]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT      [Id]
       ,[CreatedBy]
       ,[CreatedTime]
       ,[ModifiedBy]
@@ -2143,8 +2120,8 @@ FROM           ##tmpSalesPoints</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task 1\Source - Query.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2624,7 +2601,7 @@ FROM           ##tmpSalesPoints</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{91879F1A-A7CE-4368-A8FF-47A6D4CF232E}"
+          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
           SQLTask:SqlStatementSource="DELETE t1 FROM ##tmpSalesPoints t1 JOIN [SalesPoints] t2 ON t1.Id = t2.Id;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2642,7 +2619,7 @@ FROM           ##tmpSalesPoints</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{91879F1A-A7CE-4368-A8FF-47A6D4CF232E}"
+          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
           SQLTask:SqlStatementSource="Update SalesPoints Set Status = 2" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2660,7 +2637,7 @@ FROM           ##tmpSalesPoints</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{91879F1A-A7CE-4368-A8FF-47A6D4CF232E}"
+          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
           SQLTask:SqlStatementSource="UPDATE A&#xA;SET&#xA;         &#xA;         A.[CreatedBy] = B.[CreatedBy]&#xA;           ,A.[CreatedTime] = B.[CreatedTime]&#xA;           ,A.[ModifiedBy] = B.[ModifiedBy]&#xA;           ,A.[ModifiedTime] = B.[ModifiedTime]&#xA;           ,A.[Status] = B.[Status]&#xA;           ,A.[SalesPointId] = B.[SalesPointId] &#xA;           ,A.[Code] = B.[Code]&#xA;           ,A.[Name] = B.[Name]&#xA;           ,A.[BanglaName] = B.[BanglaName]&#xA;           ,A.[OfficeAddress] = B.[OfficeAddress] &#xA;           ,A.[ContactNo] = B.[ContactNo]&#xA;           ,A.[EmailAddress] = B.[EmailAddress]&#xA;           ,A.[DeliveryChannelType] = B.[DeliveryChannelType]&#xA;           ,A.[Latitude] = B.[Latitude]&#xA;           ,A.[Longitude] = B.[Longitude]&#xA;           ,A.[SequenceId] = B.[SequenceId]&#xA;           ,A.[TownName] = B.[TownName]&#xA;           ,A.[DepotCode] = B.[DepotCode]&#xA;           ,A.[OfficeAddressBangla] = B.[OfficeAddressBangla]&#xA;          , A.ReceiveStockFromFactory = B.ReceiveStockFromFactory&#xA;     FROM [dbo].[SalesPoints] A INNER JOIN ##tmpSalesPoints B ON A.SalesPointId = B.SalesPointId" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2720,43 +2697,43 @@ FROM           ##tmpSalesPoints</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171,42"
+          Size="171.2,41.6"
           Id="Package\Create TempTable"
           TopLeft="429,58" />
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Data Flow Task"
-          TopLeft="438,165" />
+          TopLeft="438,165.866666673554" />
         <NodeLayout
-          Size="159,42"
+          Size="159.2,41.6"
           Id="Package\Data Flow Task 1"
           TopLeft="434,434" />
         <NodeLayout
-          Size="170,42"
+          Size="169.6,41.6"
           Id="Package\Execute SQL Task"
-          TopLeft="424,337" />
+          TopLeft="424.83333330022,337.866666673554" />
         <NodeLayout
-          Size="179,42"
+          Size="179.2,41.6"
           Id="Package\Inactive all SalesPoints"
           TopLeft="182,43" />
         <NodeLayout
-          Size="174,42"
+          Size="174.4,41.6"
           Id="Package\Update Salespoints"
           TopLeft="428,257" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="515,100">
+          TopLeft="515.1,99.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,65"
+              EndConnector="0,66.2666666735543"
               Start="0,0"
-              End="0,57.5">
+              End="0,58.7666666735543">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.5" />
+                    End="0,58.7666666735543" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2767,18 +2744,18 @@ FROM           ##tmpSalesPoints</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="515.25,207">
+          TopLeft="515.4,207.466666673554">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50"
+              EndConnector="0,49.5333333264457"
               Start="0,0"
-              End="0,42.5">
+              End="0,42.0333333264457">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.5" />
+                    End="0,42.0333333264457" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2789,18 +2766,18 @@ FROM           ##tmpSalesPoints</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="512,299">
+          TopLeft="512.41666665011,298.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38"
+              EndConnector="0,39.2666666735543"
               Start="0,0"
-              End="0,30.5">
+              End="0,31.7666666735543">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.5" />
+                    End="0,31.7666666735543" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2811,18 +2788,18 @@ FROM           ##tmpSalesPoints</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="511.2,378.6">
+          TopLeft="511.61666665011,379.466666673554">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55.4"
+              EndConnector="0,54.5333333264457"
               Start="0,0"
-              End="0,47.9">
+              End="0,47.0333333264457">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.9" />
+                    End="0,47.0333333264457" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2874,51 +2851,17 @@ FROM           ##tmpSalesPoints</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="173,42"
+          Size="172.8,41.6"
           Id="Package\Data Flow Task\OLE DB Command"
           TopLeft="220,305" />
         <NodeLayout
-          Size="186,42"
+          Size="185.6,41.6"
           Id="Package\Data Flow Task\Data Conversion 0 - 0"
           TopLeft="86,165" />
         <NodeLayout
-          Size="153,42"
+          Size="152.8,41.6"
           Id="Package\Data Flow Task\Source - Query"
           TopLeft="60,60" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="179,207">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="127.5,98"
-              Start="0,0"
-              End="127.5,90.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,45"
-                    Point2="0,49"
-                    Point3="4,49" />
-                  <mssgle:LineSegment
-                    End="123.5,49" />
-                  <mssgle:CubicBezierSegment
-                    Point1="123.5,49"
-                    Point2="127.5,49"
-                    Point3="127.5,53" />
-                  <mssgle:LineSegment
-                    End="127.5,90.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="136.5,102">
@@ -2945,6 +2888,40 @@ FROM           ##tmpSalesPoints</property>
                     Point3="42.5,35.5" />
                   <mssgle:LineSegment
                     End="42.5,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="179,207">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.5,98"
+              Start="0,0"
+              End="127.5,90.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45"
+                    Point2="0,49"
+                    Point3="4,49" />
+                  <mssgle:LineSegment
+                    End="123.5,49" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.5,49"
+                    Point2="127.5,49"
+                    Point3="127.5,53" />
+                  <mssgle:LineSegment
+                    End="127.5,90.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

@@ -8,32 +8,15 @@
   DTS:Description="SSIS Package Description"
   DTS:DTSID="{0CAB05AA-8F8D-4397-9329-09FCD6CF24C9}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="SalesPointTransfer"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{1CC7AF78-82B0-4D5B-8F0B-11A7D0E00BF5}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{DDD733CC-E99A-4483-AD97-D6C7E2672D52}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
-      DTS:ObjectName="DestinationConnectionOLEDB">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=sql-msfsax01-01.database.windows.net;User ID=bgd_dev_usr;Initial Catalog=sqldb-msfsax01-08_fm-bgd_dev;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAYddG636tZkmB0xHWN8OwqQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABk2pzwRwJVyOWlrNiTnreqAAAAAASAAACgAAAAEAAAALs+9C21vTbkbHCwvJMXO64gAAAApx5M4ePtOUOk4eqppnZzdx2Z2X5swMzGwgJZB076RMIUAAAA+iPfIxlLyTOmKJXFgAZbSUNgW9E</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SourceConnection]"
       DTS:CreationName="OLEDB"
@@ -43,12 +26,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=MSFSAX01-SQL-06.southeastasia.cloudapp.azure.com;User ID=Sales360SSISAcc;Initial Catalog=Drishti;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAYddG636tZkmB0xHWN8OwqQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACRKfpv7Y862zaQZw6MfxDXAAAAAASAAACgAAAAEAAAAK6HCz1q1gsFfkUDLLUQ6cMgAAAAPRdr757Wn+TDy5ztHYMn48RJJjPtto3kyMONd6s6dE8UAAAAmD5xd5S0ZQJ265/dLjzor1nYDwA</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=MSFSAX01-SQL-06.southeastasia.cloudapp.azure.com;User ID=Sales360SSISAcc;Initial Catalog=Drishti;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -418,7 +396,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -452,8 +430,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task 1\Destination - SalesPoints.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -753,7 +731,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        SalesPointID AS Id, CreatedBy, CreatedDate AS CreatedTime, ModifiedBy, ModifiedDate AS ModifiedTime, Status, 0 AS WorkflowId, 0 AS WFStatus, SalesPointID, Code, Name, BanglaName, OfficeAddress, ContactNo, 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        SalesPointID AS Id, CreatedBy, CreatedDate AS CreatedTime, ModifiedBy, ModifiedDate AS ModifiedTime, Status, 0 AS WorkflowId, 0 AS WFStatus, SalesPointID, Code, Name, BanglaName, OfficeAddress, ContactNo, 
                          EmailAddress, DeliveryChannelType, Latitude, Longitude, 0 AS SequenceId, TownName, 0 AS DepotCode, OfficeAddressBangla, RcvStkFrmFactory  AS ReceiveStockFromFactory
 FROM            SalesPoints
 WHERE        (Status = 16)</property>
@@ -1343,11 +1321,11 @@ WHERE        (Status = 16)</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,41.6"
+          Size="164,42"
           Id="Package\Data Flow Task 1"
           TopLeft="22,107.5" />
         <NodeLayout
-          Size="196.8,41.6"
+          Size="197,42"
           Id="Package\Preparation SQL Task 1"
           TopLeft="5.50000000000001,5.5" />
         <EdgeLayout

@@ -12,28 +12,11 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="NodeTransfer"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{D612F1F4-81F4-4471-A60A-C5E64AB65A64}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{F6B770E8-8E2A-4BAE-8F03-AE16DF4A2394}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{66B2DF26-572D-4977-AFE8-898EC4171A33}"
-      DTS:ObjectName="DestinationConnectionOLEDB">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=sql-msfsax01-01.database.windows.net;User ID=fmbgd_qa_usr;Initial Catalog=sqldb-msfsax01-08_fm-bgd_qa;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD8Kgwz5ZFroW/RxnTC/S4/AAAAAASAAACgAAAAEAAAABKrAKdQNnTth62SBAygJq4gAAAANXYEOhCpwWX63xzGDwtKH2h78pL2Ab57mg7bUDigwPQUAAAACMPbArmGLVcujVBqs01MA7ou364</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SourceConnection]"
       DTS:CreationName="OLEDB"
@@ -47,7 +30,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABfamzfInmzbVltJYxMSmDsAAAAAASAAACgAAAAEAAAAPxnCbBpPHr97SZTdZbsgc8gAAAAf+rStJfmAPaJeECx68bd9yThInsJvHcPxfrympyyEa8UAAAA1IpubcrLHDBpG8koncSBFhGXAcg</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAH9K1U3sD7UOSpq8emjvG4AAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADj3YaeD8xlqDwPvAr2tsOFAAAAAASAAACgAAAAEAAAAPTf3Ubfr2V+3Mj6PYIBSicgAAAA/0r6WdsLWx9+PZCGw0RduMtVxfaeQet2sMdgkEUcMJsUAAAAZb1GnsVTFLIXx9Y+6zEBflIxpAw</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -234,8 +217,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task 1\Destination - Nodes.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -706,7 +689,7 @@ WHERE        (Status = 16)</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{66B2DF26-572D-4977-AFE8-898EC4171A33}"
+          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[Nodes]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -770,7 +753,7 @@ WHERE        (Status = 16)</property>
     design-time-name="Package\Data Flow Task 1">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="153,42"
           Id="Package\Data Flow Task 1\Source - Query"
@@ -802,9 +785,7 @@ WHERE        (Status = 16)</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -826,9 +807,7 @@ WHERE        (Status = 16)</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

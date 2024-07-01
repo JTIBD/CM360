@@ -8,32 +8,15 @@
   DTS:Description="SSIS Package Description"
   DTS:DTSID="{A1053A0D-D7D5-4D81-B3D6-F4BB09810607}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="RoutesTransfer"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{428F2921-8453-42F9-A22D-33EF1D0FD99A}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{85E4E03B-4608-497F-AD34-58975E942373}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{FAABC5C8-3063-4D10-81ED-19484155843B}"
-      DTS:ObjectName="DestinationConnectionOLEDB">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=sql-msfsax01-01.database.windows.net;User ID=bgd_dev_usr;Initial Catalog=sqldb-msfsax01-08_fm-bgd_dev;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAxXXGQKE/S2OjCf9QTwwFeAAAAAASAAACgAAAAEAAAAOPlpDYUoT3Db37zEClQ/AQgAAAAjccLy0fhGNIRZpzbj3kUq2pqqPNf3E17cKUxHx8+eoMUAAAAcLyNBmC7A1VpY/XIDxst34GRa2s</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SourceConnection]"
       DTS:CreationName="OLEDB"
@@ -43,11 +26,11 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=MSFSAX01-SQL-06.southeastasia.cloudapp.azure.com;User ID=Sales360SSISAcc;Initial Catalog=Drishti;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          DTS:ConnectionString="Data Source=MSFSAX01-SQL-06.southeastasia.cloudapp.azure.com;User ID=Sales360SSISAcc;Initial Catalog=Drishti;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-RoutesTransfer-{80A02AE2-F993-4651-A62D-144353B02E94}SourceConnection;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABbLfVIeP+6ccMzM7QyZZ6OAAAAAASAAACgAAAAEAAAAGFI5nn4Xe/GLKz9BoECoaYgAAAAIxZ0mok89D9W1eHC95c+w2XNjYOFOrIBxLAVHSuKczwUAAAAt+lUup4++zBowEjPuqxatFphmO4</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwXwi896kOUSqdZPPN8PmSgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAQQEbQ3OQeO1bBrMDEBrN+08147lEMIUe1keD2RavfGwAAAAAOgAAAAAIAACAAAAAAbLJfjk6kvsLFNZMLJKS4PpA9lOXH7lf5/S/QAqZuRyAAAADHZujXL3TYngkQueyR7xeRtc7RDvHz4Es67hO8HJkF7kAAAADvRIGkRVpL7bz56scVr6WzAhDHmc++2iJmvzZ6Qv8dWPUSAKNkFi/DsSikp3KxHUpnuSyvz2Ln7kDngnG46Dk3</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -228,7 +211,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -262,8 +245,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task 1\Destination - Routes.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -357,12 +340,6 @@
                       cachedName="NodeId"
                       externalMetadataColumnId="Package\Data Flow Task 1\Destination - Routes.Inputs[Destination Input].ExternalColumns[NodeId]"
                       lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NodeId]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task 1\Destination - Routes.Inputs[Destination Input].Columns[ZoneId]"
-                      cachedDataType="i4"
-                      cachedName="ZoneId"
-                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Routes.Inputs[Destination Input].ExternalColumns[ZoneId]"
-                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ZoneId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -428,10 +405,6 @@
                       refId="Package\Data Flow Task 1\Destination - Routes.Inputs[Destination Input].ExternalColumns[NodeId]"
                       dataType="i4"
                       name="NodeId" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task 1\Destination - Routes.Inputs[Destination Input].ExternalColumns[ZoneId]"
-                      dataType="i4"
-                      name="ZoneId" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -485,7 +458,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        CreatedBy, CreatedDate AS CreatedTime, ModifiedBy, ModifiedDate AS ModifiedTime, Status, 0 AS WorkflowId, 0 AS WFStatus, RouteID, Code, Name AS RouteName, BanglaName AS RouteNameBangla, 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        CreatedBy, CreatedDate AS CreatedTime, ModifiedBy, ModifiedDate AS ModifiedTime, Status, 0 AS WorkflowId, 0 AS WFStatus, RouteID, Code, Name AS RouteName, BanglaName AS RouteNameBangla, 
                          NoOfOutlets AS NumberOfOutlets, '' AS ContactNo, SalesPointID, MHNodeID AS NodeId, ZoneID AS ZoneId
 FROM            Routes
 WHERE        (Status = 16)</property>
@@ -888,7 +861,7 @@ WHERE        (Status = 16)</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{FAABC5C8-3063-4D10-81ED-19484155843B}"
+          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[Routes]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -916,11 +889,11 @@ WHERE        (Status = 16)</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,42"
+          Size="164,41.6"
           Id="Package\Data Flow Task 1"
           TopLeft="22,107.5" />
         <NodeLayout
-          Size="197,42"
+          Size="196.8,41.6"
           Id="Package\Preparation SQL Task 1"
           TopLeft="5.50000000000001,5.5" />
         <EdgeLayout
@@ -954,15 +927,15 @@ WHERE        (Status = 16)</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="179,42"
+          Size="179.2,41.6"
           Id="Package\Data Flow Task 1\Destination - Routes"
-          TopLeft="9.00000000000003,209.5" />
+          TopLeft="10.6666666004393,209.5" />
         <NodeLayout
-          Size="186,42"
+          Size="185.6,41.6"
           Id="Package\Data Flow Task 1\Data Conversion 0 - 0"
           TopLeft="5.50000000000003,107.5" />
         <NodeLayout
-          Size="153,42"
+          Size="152.8,41.6"
           Id="Package\Data Flow Task 1\Source - Query"
           TopLeft="22,5.5" />
         <EdgeLayout
@@ -989,18 +962,18 @@ WHERE        (Status = 16)</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task 1.Paths[Data Conversion Output]"
-          TopLeft="98.5,149.5">
+          TopLeft="99.2833333002197,149.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,60.4"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

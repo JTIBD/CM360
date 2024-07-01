@@ -11,28 +11,11 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{CA420277-F70E-494D-AF7E-031805CEF2F7}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{A62FF085-C489-4419-8769-ADEC8A488E06}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
-      DTS:ObjectName="DestinationConnectionOLEDB">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=sql-msfsax01-01.database.windows.net;User ID=fmbgd_qa_usr;Initial Catalog=sqldb-msfsax01-08_fm-bgd_qa;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABvMQO8aLaedvK93lWFsEcMAAAAAASAAACgAAAAEAAAAFj87pcZduD0Fnto2xjetzwgAAAAPog7YMCWx82+A/C8eMaFXA/aESUBUJzMhKRWjH45+/YUAAAAHdrl7xBNzgA7RKlBrWX7Dlw94sE</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SourceConnection]"
       DTS:CreationName="OLEDB"
@@ -46,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADEFJ65o1IRKPFm4KMjOdgTAAAAAASAAACgAAAAEAAAABYhsjvP0XfT7AEs1M7dQH8gAAAAgrNPebk1GiyNmPVJs9UnmrV54kLD3mEVJvYVWKmdSNEUAAAAKzmzVFdrCqSonxWdg9gmHPjRpvg</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAH9K1U3sD7UOSpq8emjvG4AAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACiTsgparzO6n/wqk2WTS1PAAAAAASAAACgAAAAEAAAAIivv/G/AWx7xXFGzT42R2QgAAAAR3BOCbbIXnbSJs/Jt2GGt51eUR+q3UyEFBhXtrv9ib8UAAAAqUbogmickpjfn15EU6TBuvT9h0g</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -84,7 +67,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Zones]</property>
+                  name="OpenRowset"></property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -127,8 +110,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task 1\Destination - Zones.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

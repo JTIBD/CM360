@@ -12,28 +12,11 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="SalesPointMHNodesTransfer"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{7F15E707-B3EE-4819-BE95-0390CE5D7C9E}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{174707DD-B086-4754-8516-DC9880E3FD57}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DestinationConnection]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{4DB4DC10-9D62-4C69-87BB-2C8EC5E5E24D}"
-      DTS:ObjectName="DestinationConnection">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=sql-msfsax01-01.database.windows.net;User ID=fmbgd_prd_usr;Initial Catalog=sqldb-msfsax01-09_fm-bgd_prd;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAwEc99EVLtFvHEX990YhYHAAAAAASAAACgAAAAEAAAAGd3YLU7IW0Nst5J4dwLBNQgAAAA3vGZ3RYeiUw3qi4FezXlfUAUchxZW+2WO0JIgxVA2l0UAAAAqYdMeid+M8SokjThCtLz6iV3zUw</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SourceConnection]"
       DTS:CreationName="OLEDB"
@@ -47,7 +30,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABbOZqTTEBUyFttnBgk/6dgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACvaQb59u0ZwHmtudghNjWmAAAAAASAAACgAAAAEAAAAHpZ2aQFs1wKUvxtQyv8AlYgAAAAYs2+EjIdjokm2RbNLBGAQOLhLbiXoCX5/Fh0srCy+ucUAAAAJ46ZyZA+ebHWxGkfxA4/sopNI0A</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAH9K1U3sD7UOSpq8emjvG4AAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABJ4smXe7iXeR4/cv23pxyWAAAAAASAAACgAAAAEAAAAAxX1vE9TDnEIOj7TF5t1RggAAAArPtqaN9yNPtECo0EvXwtAerGCYCoOh8i7LQBMAPOhBsUAAAAKI+uLiIvp7s9VoM31qT5VN0BApQ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -128,8 +111,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task 1\Destination - SalesPointMHNodes.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnection]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnection]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -395,7 +378,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4DB4DC10-9D62-4C69-87BB-2C8EC5E5E24D}"
+          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[SalesPointMHNodes]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>

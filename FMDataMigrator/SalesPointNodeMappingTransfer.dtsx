@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="12/7/2020 3:31:09 PM"
@@ -8,30 +8,15 @@
   DTS:Description="SSIS Package Description"
   DTS:DTSID="{6022FCE1-1061-47B6-B32A-B9AC227CA858}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="SalesPointNodeMappingTransfer"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{4250B2B1-EC4A-42B9-8E02-3D9AB038C149}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{2D4D8FFD-F1A1-4BD5-8516-05482D50FE27}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DestinationConnection]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{52B2B769-27E3-4679-9A7A-4BE5F58018C0}"
-      DTS:ObjectName="DestinationConnection">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=sql-msfsax01-01.database.windows.net;User ID=fmbgd_prd_usr;Initial Catalog=sqldb-msfsax01-09_fm-bgd_prd;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADEhfZAL8B0ap6TYDNCF0bQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAUeyjoFtIIrZ59+8FcbIyPAAAAAASAAACgAAAAEAAAAMXwW8Q6S2fYLBUrlzlzJCAgAAAAQlkqh6RfaoG0uaFN0RSgEB/oUHLzonZcmb9uwLpy6MoUAAAA9XcjDtWJUl2ty3TLs5+Lxpt8JlU</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SourceConnection]"
       DTS:CreationName="OLEDB"
@@ -39,11 +24,13 @@
       DTS:ObjectName="SourceConnection">
       <DTS:ObjectData>
         <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=MSFSAX01-SQL-06.southeastasia.cloudapp.azure.com;User ID=Sales360SSISAcc;Initial Catalog=Drishti;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADEhfZAL8B0ap6TYDNCF0bQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAS8UPDPGS4yJX1d8l3S+fcAAAAAASAAACgAAAAEAAAAJmgC84kK3HpChN0dVo7qkAgAAAAHzm1C14AG8zVKOGkqDu7sX/qqss3pE06c8olxKsAut8UAAAAn/ueSsZkHaBrA0t/Zh+57KLrWoI</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAH9K1U3sD7UOSpq8emjvG4AAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABMbhMNLPmbcTF3cl1yhUilAAAAAASAAACgAAAAEAAAAGHhIlqfhxZ8lMKi+C51nZAgAAAAusk4KBJ6G31LujA7L8p5CCmVjMh2aluJGQvxZyh0V7oUAAAAvdDwyC+Dy+jnPEZaEvaAC9FQH2s</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -124,8 +111,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task 1\Destination - SalesPointNodeMapping.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnection]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnection]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -529,7 +516,7 @@ GO</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{52B2B769-27E3-4679-9A7A-4BE5F58018C0}"
+          SQLTask:Connection="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[SalesPointNodeMapping]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -595,11 +582,11 @@ GO</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="153.333333333334,42"
+          Size="153,42"
           Id="Package\Data Flow Task 1\Source - Query"
           TopLeft="61.5,5.5" />
         <NodeLayout
-          Size="265.333333333334,42"
+          Size="265,42"
           Id="Package\Data Flow Task 1\Destination - SalesPointNodeMapping"
           TopLeft="5.50000000000003,107.5" />
         <EdgeLayout

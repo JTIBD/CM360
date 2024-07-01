@@ -12,29 +12,11 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{95C78742-F4FA-423F-BE94-218AA30FC1AD}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{59F424B7-DB7D-468B-A0B4-742E66C925F3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
-      DTS:ObjectName="DestinationConnectionOLEDB">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Retain="True"
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=sql-msfsax01-01.database.windows.net;User ID=fmbgd_prd_usr;Initial Catalog=sqldb-msfsax01-09_fm-bgd_prd;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxxqummIxz0a72V0Q1I6cUwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACosDwLpApNnBE78Ck0eyQfAAAAAASAAACgAAAAEAAAAF6Eou8TzkJpaVx0PFZv9RQgAAAAMLgNKBifQ2MUkjiUmou3TsUA+d8/qaovZHcBXPf+2TcUAAAATZxqI8j+qUSBEski/dZ2w0w2n/I</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SourceConnection]"
       DTS:CreationName="OLEDB"
@@ -48,7 +30,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxxqummIxz0a72V0Q1I6cUwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACBjQZfnAhmMRCp+pK1gJyWAAAAAASAAACgAAAAEAAAAPeHWS3XqlGUstL1CEfKDCUgAAAA+Gb5QLGLFOuWvc+GOkcpN/nZ6+MqfwSFyJ+KzQ3YrKIUAAAAMH17EUBExNLCfWKKve51AghtEfQ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAH9K1U3sD7UOSpq8emjvG4AAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADBOCuuyqMUHx6u2V1Jva0yAAAAAASAAACgAAAAEAAAANM8Y5BFPP3hTW4g2k37TqAgAAAArgjyVdgG81Vu6XnkPDxP1T0ffGnsYHGPkd14LYre+H8UAAAAqQclXdeKh3oISs/9KQPxbnV3B40</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -440,8 +422,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1801,8 +1783,8 @@ WHERE        (Status = 16)</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task 1\Destination - SalesPoints.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2139,8 +2121,8 @@ FROM           ##tmpSalesPoints</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task 1\Source - Query.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
-                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationConnectionOLEDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2716,27 +2698,27 @@ FROM           ##tmpSalesPoints</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171.2,41.6"
+          Size="171,42"
           Id="Package\Create TempTable"
           TopLeft="429,58" />
         <NodeLayout
-          Size="155.2,41.6"
+          Size="155,42"
           Id="Package\Data Flow Task"
           TopLeft="438,165" />
         <NodeLayout
-          Size="164,41.6"
+          Size="164,42"
           Id="Package\Data Flow Task 1"
           TopLeft="434,434" />
         <NodeLayout
-          Size="169.6,41.6"
+          Size="170,42"
           Id="Package\Execute SQL Task"
           TopLeft="424,337" />
         <NodeLayout
-          Size="179.2,41.6"
+          Size="179,42"
           Id="Package\Inactive all SalesPoints"
           TopLeft="182,43" />
         <NodeLayout
-          Size="174.4,41.6"
+          Size="174,42"
           Id="Package\Update Salespoints"
           TopLeft="428,257" />
         <EdgeLayout

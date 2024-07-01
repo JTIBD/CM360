@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DestinationConnectionOLEDB"
+  DTS:DTSID="{771533C1-F2D4-4AB4-91DA-4B1BF1387176}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:Retain="True"
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=sql-msfeax03-01-shared-dev.database.windows.net;User ID=sales360_dev_usr;Initial Catalog=sqldb-msfeax03-61-sales360-dev;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;Application Name=SSIS-{771533C1-F2D4-4AB4-91DA-4B1BF1387176}DestinationConnectionOLEDB;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwXwi896kOUSqdZPPN8PmSgAAAAACAAAAAAAQZgAAAAEAACAAAAAjegXl6HU1gq4U6gi1/FCHO6lXc8FsUSDGAA5TVjAy5wAAAAAOgAAAAAIAACAAAADq/IGZdM578Di+SrGkHr+wZOCw1JQYtfUY22KK3i+LEoAAAAANMxJBXhiGto5zCmAD4e8nNFUuTo6aYuHlX94RToHcUQHs4Xca138jWwFm9Q7V/fErMzlezcTkIKVHO0rbNTFIjjfSupgGTep3gWx3voKiY9ZdgRMODnABC4zf+KTRjiQM88Toj91qZJCgB3dWB7ekTpOtHPrr5kxc5pSfJzwg4UAAAAAoI5cIJHcRhAoDUNBgDE/sjVwEsCBsZtKHoxF708dogLBydyi9ELJYdAo1aoUV6YCVsEhuoArogAmYlQP8FK5M</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
